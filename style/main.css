@@ -1,0 +1,14 @@
+body{
+	background-color:#fff;
+	margin:0;
+}
+#arrr{
+	height:210px;
+	background-image:url(../img/wht_a.png), url(../img/wht_b.png);
+	background-position:-25% 30px, 50% 30px;
+}
+#arrr div{
+	height:180px;
+	background-image:url(../img/drk_a.png), url(../img/drk_b.png);
+	background-position:25% 0, -50% 0;	
+}
