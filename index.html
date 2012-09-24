@@ -1,11 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>BenjaminBenBen</title>
-	<link rel="stylesheet" href="style/main.css">
-</head>
-<body>
-<div id="arrr"><div></div></div>
-<div class="container"></div>
-</body>
-</html>
+---
+layout: default
+---
+<h1>Benjaminbenben</h1>
+
+{% for post in site.posts %}
+<li>
+  <a href="{{ post.url }}">{{ post.title }}</a>
+</li>
+{% endfor %}
