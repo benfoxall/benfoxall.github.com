@@ -2,37 +2,10 @@ body{
 	background-color:#fff;
 	margin:0;
 }
-#arrr{
-	display:none;
-	z-index:-1;
-	position: fixed;
-	top:0;
-	width:100%;
-	height:210px;
-	background-image:url(../img/wht_a.png), url(../img/wht_b.png);
-	background-position:-25% 30px, 50% 30px;
-	-webkit-transform: rotate3d(-2, 3, 5, 10deg);  /* Saf3.1+, Chrome */
-       -moz-transform: rotate3d(-2, 3, 5, 10deg);  /* FF3.5+ */
-        -ms-transform: rotate3d(-2, 3, 5, 10deg);  /* IE9 */
-         -o-transform: rotate3d(-2, 3, 5, 10deg);  /* Opera 10.5 */
-            transform: rotate3d(-2, 3, 5, 10deg);
-}
-#arrr div{
-	height:180px;
-	background-image:url(../img/drk_a.png), url(../img/drk_b.png);
-	background-position:25% 0, -50% 0;
-	-webkit-transform: rotate3d(-2, 3, 5, 5deg);  /* Saf3.1+, Chrome */
-       -moz-transform: rotate3d(-2, 3, 5, 5deg);  /* FF3.5+ */
-        -ms-transform: rotate3d(-2, 3, 5, 5deg);  /* IE9 */
-         -o-transform: rotate3d(-2, 3, 5, 5deg);  /* Opera 10.5 */
-            transform: rotate3d(-2, 3, 5, 5deg);
-}
-
 .page{
 	margin:9em 3em;
 	padding:1em;
 	max-width:35em;
-	background-color:#fff;/*rgba(255,255,255,0.8);*/
 }
 .icon-twitter{
 	background: url('../img/bird_blue_16.png') no-repeat left center ;
