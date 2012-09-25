@@ -3,6 +3,7 @@ body{
 	margin:0;
 }
 #arrr{
+	display:none;
 	z-index:-1;
 	position: fixed;
 	top:0;
@@ -30,5 +31,10 @@ body{
 .page{
 	margin:9em 3em;
 	padding:1em;
+	max-width:35em;
 	background-color:#fff;/*rgba(255,255,255,0.8);*/
+}
+.icon-twitter{
+	background: url('../img/bird_blue_16.png') no-repeat left center ;
+	padding-left:18px;
 }
