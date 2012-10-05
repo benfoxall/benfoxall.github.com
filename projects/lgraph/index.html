@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title>canvas listening histories</title>
+	<style type="text/css" media="screen">
+body,html{white-space:nowrap;font-family:helvetica,arial;background-color:#fcfcfc;margin:1em;}
+form{display:inline;vertical-align:middle;}
+input{height:1.4em;font-size:1em;border:1px solid #ccc;left:1em;-webkit-box-shadow:0 0 5px #ddd;color:#555;z-index:100;font-family:helvetica,arial;margin-left:3em;margin-right:0;}
+input:hover{-webkit-box-shadow:0 0 5px #aaa;}
+ol{display:inline;vertical-align:middle;padding:0;}
+ol li{display:inline-block;vertical-align:middle;width:234px;line-height:0;}
+.date{display:block;text-align:center;font-size:.75em;color:#ccc;text-transform:uppercase;vertical-align:middle;text-decoration:none;position:absolute;margin-top:-1em;}
+.requesting .date{color:#000;}
+.complete .date{color:#666;}
+.error .date{color:#c00;cursor:pointer;}
+a{color:#08f;}
+p#f{background-color:#fff;margin:0;padding:1em;text-align:right;position:fixed;bottom:0;right:0;font-size:.75em;color:#aaa;}
+	</style>
+	
+	<!-- Drop any comments to @benjaminbenben -->
+</head>
+<body>
+	
+	<noscript>This is Javascript, Yo</noscript>
+	
+	<form>
+		<input type="text" name="user" id="user" placeholder="last.fm username">
+	</form>
+	<ol id="times"></ol>
+	
+	<p id="f">Built by <a href="http://twitter.com/benjaminbenben">@benjaminbenben</a> (<a class="lastfm" target="_blank" href="http://www.last.fm/user/benjaminf">benjaminf</a>) based on Lee Byrons <a href="http://www.leebyron.com/what/lastfm/">Listening History</a></p>
+	
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="u.js" type="text/javascript" charset="utf-8"></script>
+	<script src="code.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" charset="utf-8">
+		window.config = {
+			api_key:'c2899b0774a2eda7769be6eefddd94b6',
+			scale: 1.3
+		};
+		
+		if(!document.createElement("canvas").getContext){
+			$('form').replaceWith('<p>Canvas is not supported by this browser - try using <a href="http://www.mozilla.org/firefox/">Firefox</a> or <a href="www.google.co.uk/chrome">Chrome</a>.</p>')
+		} else {
+			
+			//continuously re-request any errornous elements
+			(function rerequest_errored(){
+				$('.error').first().trigger('request');
+				setTimeout(rerequest_errored, 1000);
+			})();
+			
+			
+			
+			var request_visible = _.debounce(function(){
+				$('li.unrequested').visible().trigger('request')
+			},50);
+			
+			
+			$(window).scroll(request_visible);
+			
+			$('form').submit(function(e){
+				e.preventDefault();
+				var user = $('#user').val();
+				
+				fetch(user).done(request_visible);
+				
+				var qs = "?" + $('form').serialize();
+				history.pushState({}, "", qs);
+				
+				_gaq.push(['_trackPageview', document.location.pathname + qs ]);
+			});
+			
+			//check for get params
+			var params = _(location.search).params();
+			$('#user').val(params.user || '');
+			
+			if(params.user){
+				fetch(params.user).done(request_visible);
+			}
+			
+			$('a.lastfm').click(function(){
+				$('#user').val('benjaminf');
+				$('form').submit();
+			})
+			
+		}
+		
+		
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-1591924-3']);
+		_gaq.push(['_setDomainName', '.bfoxall.com']);
+		_gaq.push(['_trackPageview']);
+		
+		(function() {
+		  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+
+	</script>
+</body>
+</html>
