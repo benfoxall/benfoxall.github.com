@@ -4,7 +4,7 @@ layout: post
 
 <p class="lead">After more than a year of no posts - I've left my old blog behind.</p>
 
-I've built this new one is built using [Jekyll][jkl] and put it online with [GitHub Pages][gh-pages].  The source is [public on github][blog-src].
+This new one is built with [Jekyll][jkl] and put it online with [GitHub Pages][gh-pages].  The source is [public on github][blog-src].
 
 It seems that a lot of Jekyll sites start with a post about the interesting way that they have been deployed.  So, for the record, I decided to go against the [auto-generate][gh-pages-jkl] style to keep my options open.
 
