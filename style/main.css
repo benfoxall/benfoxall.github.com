@@ -11,3 +11,46 @@ body{
 	background: url('../img/bird_blue_16.png') no-repeat left center ;
 	padding-left:18px;
 }
+header a{
+	/*float:right;*/
+}
+
+h1 a{
+  text-decoration: none !important;
+}
+h1 .date{
+  font-size:.4em;
+  display:block;
+  color:#999;
+}
+
+a.home{
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  font-family: monospace;
+  background-color:#eee;
+  text-align: center;
+  margin-right: .25em;
+  height:1.5em;
+  width:1.5em;
+  line-height: 1.5em;
+  float:left;
+}
+
+
+img {
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+
+  padding: 8px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+
+  margin-bottom:10px;
+}

@@ -10,9 +10,9 @@ It seems that a lot of Jekyll sites start with a post about the interesting way 
 
 Instead, I set up master as an orphan branch, and have a "[deploy script][deploy]" that generates the site, moves over to master and updates the files.  I got this idea from [octopress][octopress],  I'm not totally sure if it's the best way to do this - but I guess I'll soon see.
 
-
-[![Bfoxall.com](/img/bfoxall.png)][bfoxall]
-
+<a href="http://bfoxall.com">
+	<img src="/img/bfoxall.png" width="766" height="619" />
+</a>
 
 [bfoxall]: http://bfoxall.com
 [jkl]: http://jekyllrb.com

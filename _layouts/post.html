@@ -16,7 +16,11 @@
 	<hr />
 </header>
 <h1>
-  <a href="{{ page.url }}">{{ page.title }}</a>
+	<a href="/" class="home">&larr;</a>
+  	<a href="{{ page.url }}">
+	  	{{ page.title }}
+		<small class="date">{{ page.date | date: "%d %B %Y" }}</small>
+	</a>
 </h1>
 
 {{ content }}

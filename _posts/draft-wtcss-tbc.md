@@ -1,22 +1,25 @@
+---
+layout: post
+---
 
---
-mapping css to html
-visualising css * html
-seeing css
-seeing how css interacts with a webpage
-application of css
-wtcss
-css and html
-visualising css
-css
-linking css to pages
---
+* mapping css to html
+* visualising css * html
+* seeing css
+* seeing how css interacts with a webpage
+* application of css
+* wtcss
+* css and html
+* visualising css
+* css
+* linking css to pages
 
 # tl;dr
 
 You can see how css rules impact a page by visiting [this site][wtcss].  I'm hoping that it helps me find how I can write more semantic / modular / wonderful css.
 
 * Why I built this
+
+CSS 
 
 * What I hoped to see
 
@@ -26,7 +29,14 @@ You can see how css rules impact a page by visiting [this site][wtcss].  I'm hop
 		- Can be a bit of a bad example because it's so heavily optimised
 		- Classnames are going to be generated/minified/optimised
 	- bootstrap
-		- 
+		- ? the markup has separation of concerns
+		- ? slightly wasted 'boilerplate' - a ramification (and bonus?) of css frameworks
+	- mozilla
+		- ? <3 the web?
+		- bespoke
+	- random example that starts clean then goes messyz
+
+ - got more examples?  let me know!
 
 * Implementation
 	- phantomjs
@@ -41,7 +51,7 @@ You can see how css rules impact a page by visiting [this site][wtcss].  I'm hop
 	- what is a buildpack
 	- what I changed
 		- store nothing architecture
-		- used the embedded mongoose driver
+		- used the embedded mongoose webserver
 
 
 
