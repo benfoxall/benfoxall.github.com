@@ -4,7 +4,7 @@ layout: post
 
 <p class="lead">I built a last.fm listening histories streamgraph that renders in the browser using the canvas api</p>
 
-<a href="http://localhost:4000/projects/lgraph/?user=benjaminf"><img src="/img/lgraph.png" width="843" height="620"></a>
+<a href="/projects/lgraph/?user=benjaminf"><img src="/img/lgraph.png" width="843" height="620"></a>
 
 I've always really liked Lee Byrons [Listening History][listHist] project,  it's a really w
 

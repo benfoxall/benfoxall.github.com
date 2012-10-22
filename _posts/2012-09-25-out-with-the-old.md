@@ -4,11 +4,9 @@ layout: post
 
 <p class="lead">After more than a year of no posts - I've left my old blog behind.</p>
 
-This new one is built with [Jekyll][jkl] and put it online with [GitHub Pages][gh-pages].  The source is [public on github][blog-src].
+This new one is built with [Jekyll][jkl] and put it online with [GitHub Pages][gh-pages].  The source is [on github][blog-src].
 
-It seems that a lot of Jekyll sites start with a post about the interesting way that they have been deployed.  So, for the record, I decided to go against the [auto-generate][gh-pages-jkl] style to keep my options open.
-
-Instead, I set up master as an orphan branch, and have a "[deploy script][deploy]" that generates the site, moves over to master and updates the files.  I got this idea from [octopress][octopress],  I'm not totally sure if it's the best way to do this - but I guess I'll soon see.
+It seems that a lot of Jekyll sites start with a post about the interesting way that they have been deployed.  So, for the record, I kept it simple and went for the [github jekyll generator][gh-pages-jkl].
 
 <a href="http://bfoxall.com">
 	<img src="/img/bfoxall.png" width="766" height="619" />
