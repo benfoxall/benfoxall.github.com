@@ -147,8 +147,7 @@ var lfm_api = (function(){
 	// and runs the response through a 'processor' function to 
 	// transform the response into something more useful
 	function request(method, params, processor){
-		processor = processor || _.identity;
-
+		
 		var key = window.config.api_key;
 		var endpoint = 'http://ws.audioscrobbler.com/2.0/?callback=?';
 
@@ -158,18 +157,16 @@ var lfm_api = (function(){
 			format:'json'
 		});
 
-		var dfr = $.Deferred();
+		var request = $.getJSON(endpoint, params)
+		.pipe(function(json){
+			return json.error ?
+				$.Deferred().rejectWith(json) :
+				json
+		})
+		.pipe(processor);
 
-		$.getJSON(endpoint, params).done(function(json){
-			json.error ? 
-				dfr.reject(json.error) : 
-				dfr.resolve(processor(json));
-
-		}).fail(dfr.reject);
-
-		return dfr.promise();
+		return request;
 	}
-	
 	
 })();
 
