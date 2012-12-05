@@ -5,14 +5,16 @@ body{
 .page{
 	margin:9em 3em;
 	padding:1em;
-	max-width:38em;
+	max-width:45em;
 }
 .icon-twitter{
 	background: url('../img/bird_blue_16.png') no-repeat left center ;
 	padding-left:18px;
 }
-header a{
-	/*float:right;*/
+
+/* youtube */
+iframe{
+  margin-bottom:1em;
 }
 
 h1 a{
