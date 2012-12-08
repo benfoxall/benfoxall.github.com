@@ -8,7 +8,7 @@ layout: post
 	<img src="/img/lgraph.png" width="843" height="620" />
 </a>
 
-This is based on Lee Byrons listening histories project.  I love this project - it's a really interesting and engaging visualisation, and the last.fm data makes it really personal (I can't think of any other services that give as much personalised data as last.fm).
+This is based on Lee Byrons [listening histories][listHist] project.  I love this project - it's a really interesting and engaging visualisation, and the last.fm data makes it really personal (I can't think of any other services that give as much personalised data as last.fm).
 
 There are services that let you download a pdf streamgraph: [lastgraph.aeracode.org][areacode] & [last.fm playground][playground] (if you're a subscriber).
 
