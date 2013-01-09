@@ -99,7 +99,7 @@
 			var v = M.x(vector.v);
 
 			// skip backface points
-			if(v.elements[2] > 0) return;
+			if(v.elements[2] < 0) return;
 
 			var v2 = M.x(vector.v2);
 
