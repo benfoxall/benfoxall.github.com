@@ -1,5 +1,6 @@
 ---
 layout: post
+published: false
 ---
 
 <p class="lead">A browser based last.fm streamgraph using canvas.</p>
@@ -15,8 +16,6 @@ There are services that let you download a pdf streamgraph: [lastgraph.aeracode.
 [My version][lgraph] is different as all the api requesting and graph drawing are done in the browser - this lets you see your graph as soon as any data is ready. 
 
 I originally started creating a large svg for the whole chart,  though this became quite slow, so I used separate canvas elements for each week of data and .  This is slightly limiting - I couldn't sort or colour the artists based on when they appear in your history (as the original does).
-
-prose.io test?
 
 
 [lgraph]: /projects/lgraph/
