@@ -1,0 +1,102 @@
+<html>
+<head>
+    <title>busses</title>
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <style type="text/css">canvas{background: #f5f5f5}</style>
+</head>
+<body>
+<canvas id="canvas" width="960" height="300"></canvas>
+
+<script type="text/javascript">
+
+var data = [];
+
+$.get('data/all.json')
+.then(function(json){
+    data = json;
+
+    go/*!!!1!!one!*/();
+
+})
+
+function go(){
+
+    var times = data.map(function(bus){
+        return bus[3];
+    });
+
+    var mouseat = 0;
+
+    function draw(){
+        var canvas = document.getElementById('canvas'),
+            width = canvas.width, 
+            height = canvas.height,
+            ctx = canvas.getContext('2d');
+
+            canvas.width = canvas.width;
+
+        var min = Math.min.apply(Math, times),
+            max = Math.max.apply(Math, times),
+            xscale = width / (max - min) ,
+            getx = function(time){
+                return (time - min) * xscale;
+            },
+            yscale = height / 25;
+
+
+        var target = -1;
+        if(mouseat){
+            target = parseInt(mouseat/5) + min;
+            target -= target % 5;
+        }
+
+
+        ctx.fillStyle = 'rgba(1,100,100,0.5)'
+
+        for (var i = 0; i < data.length; i++) {
+            var d = data[i];
+            var x = getx(d[3]);
+            var y = d[1] * yscale;
+
+            ctx.fillStyle = 'rgba(1,100,100,0.5)'
+
+            ctx.fillRect(x,y,2,4);
+        };
+
+
+        // draw only highlighted one over the top
+        ctx.fillStyle = '#f08';
+        for (var i = 0; i < data.length; i++) {
+            var d = data[i];
+            if(target == d[2]){
+                d = data[i];
+                var x = getx(d[3]);
+                var y = d[1] * yscale;
+
+                ctx.fillRect(x,y-2,2,7);
+            }
+        };
+    }
+
+
+    var $can = $('canvas'),
+
+        // update?
+        left = $can.offset().left;
+
+    $can.mousemove(function(e){
+        var mx = e.pageX - left;
+        // console.log(mx, mouseat);
+        mouseat = mx;
+        draw();
+    });
+    $can.mouseout(function(e){
+       mouseat = 0; 
+    });
+
+    draw();
+
+}
+</script>
+</body>
+</html>
