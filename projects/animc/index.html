@@ -1,0 +1,104 @@
+<html>
+<head>
+	<title>animator</title>
+	<style type="text/css">canvas{border:1px solid #ccc;}body{margin:0}</style>
+	<meta name="viewport" content="width=500, initial-scale=1, maximum-scale=1">
+</head>
+<body>
+<canvas id="c" width="500" height="500"></canvas>
+<script type="text/javascript">
+
+var canvas = document.getElementById('c');
+var ctx = canvas.getContext('2d');
+
+var frames = 50;
+var current = 0;
+
+var datas = [];
+for(var i = 0; i < frames;i++){
+	datas[i] = [];
+}
+
+
+
+var mousePos; // x y of dragging mouse
+
+setInterval(function(){
+	current = (current+1) % frames;
+
+	//clear
+	canvas.width = canvas.width;
+	// ctx.fillStyle = 'rgba(255,255,255,0.1)';
+	// ctx.fillRect(0,0,500,500);
+
+	// draw guide line
+	ctx.fillStyle = '#f3f3f3'
+	var x = (current/frames) * 500;
+	ctx.fillRect(0,0,x,5);
+
+
+	ctx.fillStyle = '#000';
+
+	if(mousePos){
+		ctx.fillRect(mousePos[0]-5,mousePos[1]-5,10,10);
+		datas[current].push(mousePos);
+	}
+
+	for(var i = 0; i < 6; i++){
+		var idx = (current - i);
+		if(idx < 0){idx += frames;}
+
+		datas[idx].forEach(function(d){
+			ctx.fillRect(d[0]-5,d[1]-5,10,10);
+		});	
+	}
+
+},30);
+
+
+function start(e){
+	// alert(e.x);
+	mousePos = [e.x,e.y];
+}
+function update(e){
+	if(mousePos){
+		mousePos = [e.x,e.y];
+	}
+}
+function end(){
+	mousePos = null;
+}
+
+function t(fn){
+	return function(e){
+		e.preventDefault();
+		var touches = e.touches;
+
+		for (var i=0; i<touches.length; i++) {
+		    fn({
+				x:touches[i].pageX,
+				y:touches[i].pageY
+			})
+		}
+
+	}
+}
+
+if('ontouchstart' in window){
+
+	document.body.addEventListener('touchstart', t(start), false);
+	document.body.addEventListener('touchmove', t(update), false);
+	document.body.addEventListener('touchend', end, false);
+
+} else {
+
+	document.body.addEventListener('mousedown', start, false);
+	document.body.addEventListener('mousemove', update, false);
+	document.body.addEventListener('mouseup', end, false);
+	
+}
+
+</script>
+
+</body>
+</html>
