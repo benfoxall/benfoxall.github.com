@@ -8,13 +8,16 @@
 <canvas id="c" width="500" height="500"></canvas>
 <script type="text/javascript">
 
+// sub-optimal poc
+
 var canvas = document.getElementById('c');
 var ctx = canvas.getContext('2d');
 
-var frames = 50;
-var current = 0;
-
-var datas = [];
+var frames = 50,
+    current = 0,
+    datas = [];
+    
+// init the frame data
 for(var i = 0; i < frames;i++){
 	datas[i] = [];
 }
@@ -24,14 +27,12 @@ for(var i = 0; i < frames;i++){
 var mousePos; // x y of dragging mouse
 
 setInterval(function(){
+	
 	current = (current+1) % frames;
 
-	//clear
 	canvas.width = canvas.width;
-	// ctx.fillStyle = 'rgba(255,255,255,0.1)';
-	// ctx.fillRect(0,0,500,500);
 
-	// draw guide line
+	// draw guide line across the top
 	ctx.fillStyle = '#f3f3f3'
 	var x = (current/frames) * 500;
 	ctx.fillRect(0,0,x,5);
@@ -39,11 +40,10 @@ setInterval(function(){
 
 	ctx.fillStyle = '#000';
 
-	if(mousePos){
-		ctx.fillRect(mousePos[0]-5,mousePos[1]-5,10,10);
-		datas[current].push(mousePos);
-	}
-
+	// add mouse position to current frame
+	if(mousePos) datas[current].push(mousePos);
+	
+	// draw this and 5 previous frames
 	for(var i = 0; i < 6; i++){
 		var idx = (current - i);
 		if(idx < 0){idx += frames;}
@@ -57,7 +57,6 @@ setInterval(function(){
 
 
 function start(e){
-	// alert(e.x);
 	mousePos = [e.x,e.y];
 }
 function update(e){
@@ -70,6 +69,7 @@ function end(){
 }
 
 function t(fn){
+	// crap polyfill for touch events
 	return function(e){
 		e.preventDefault();
 		var touches = e.touches;
