@@ -1,6 +1,5 @@
 ---
 layout: post
-published: false
 ---
 
 <p class="lead">A browser based last.fm streamgraph using canvas.</p>
