@@ -46,7 +46,7 @@ img {
   -moz-border-radius: 6px;
   border-radius: 6px;
 
-  padding: 8px;
+  padding: 0;
   background-color: #fff;
   border: 1px solid #ccc;
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -56,3 +56,19 @@ img {
 
   margin-bottom:10px;
 }
+
+
+/* components */
+.thumb-gallery{
+  min-height:100px;
+  display: block;
+  /*cursor: ew-resize; looks odd*/
+}
+.thumb-gallery img{
+  display:none;
+}
+.thumb-gallery img:first-child{
+  display:block;
+}
+
+
