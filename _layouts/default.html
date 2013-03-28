@@ -1,5 +1,5 @@
 <!doctype html public "✰">
-<html>
+<html class="no-js">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge;chrome=1" >
@@ -8,6 +8,10 @@
 	<link rel="stylesheet" href="/style/main.css">
 	<link rel="stylesheet" href="/style/pygments.css">
 	<meta name="author" content="@benjaminbenben">
+
+	<!-- mini-modernizr -->
+	<script type="text/javascript">document.getElementsByTagName('html')[0].className = 'js';</script>
+
 </head>
 <body>
 <div class="page">
@@ -17,6 +21,9 @@
 </header>
 {{ content }}
 </div>
+
+
+<script data-main="/js/main" src="/js/require.js"></script>
 
 <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
 <script type="text/javascript">var _gaq = [['_setAccount', 'UA-35774866-1'],['_trackPageview']];(function(c,d,a){var b=c.createElement(a);b.type="text/java"+a;b.async=!0;b.src=d+(d+"s:"==c.location.protocol?"s://ssl":"://www")+".google-analytics.com/ga.js";a=c.getElementsByTagName(a)[0];a.parentNode.insertBefore(b,a)})(document,"http","script");
