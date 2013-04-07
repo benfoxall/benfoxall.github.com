@@ -22,9 +22,10 @@ define(['jquery'],function($){
 			
 			// 0 -> 1
 			var prop = (e.pageX - offset) / width;
-			console.log(prop);
 
 			var next = Math.floor(prop * n);
+
+			next = Math.min(next, n-1);
 			if(next != i){
 				var $c = $self.children();
 
