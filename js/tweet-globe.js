@@ -1,6 +1,9 @@
-// drawing the globe thing, requires Sylvester and `data` (the lng/lat list)
-;(function(data){
+// This is a slightly modified version of the tweet globe code to 
+// make use of require.js and the CR being used on this site
+//
+// for a nicer version check https://gist.github.com/benfoxall/5332944
 
+define(['tweet-globe-data', 'lib/sylvester'],function(data){
 
 	// The transform matrix for rotating the ball
 	var M = Matrix.I(3), 
@@ -62,7 +65,7 @@
 
 
 	// shim layer with setTimeout fallback
-	window.requestAnimFrame = (function(){
+	var requestAnimFrame = (function(){
 	  return  window.requestAnimationFrame       || 
 	          window.webkitRequestAnimationFrame || 
 	          window.mozRequestAnimationFrame    || 
@@ -74,42 +77,49 @@
 	})();
 
 
-	// set up the drawing/animation
-	var canvas = document.getElementById('canvas');
-	var context = canvas.getContext('2d');
+	// the cr init
+	return function(canvas){
+
+		if(!canvas.getContext) return;
+
+		// set up the drawing/animation
+		// var canvas = document.getElementById('canvas');
+		var context = canvas.getContext('2d');
 
 
-	(function animloop(){
-		requestAnimFrame(animloop);
+		(function animloop(){
+			requestAnimFrame(animloop);
 
-		// only draw if the transform matrix has changed
-		if(drawn) return;
-		drawn = true;
+			// only draw if the transform matrix has changed
+			if(drawn) return;
+			drawn = true;
 
 
-		// clear / setup the canvas
-		canvas.width = canvas.width;
-		context.translate(300,300);
-		context.strokeStyle = 'rgba(0,0,0,0.3);';
-		context.beginPath();
+			// clear / setup the canvas
+			canvas.width = canvas.width;
+			context.translate(300,300);
+			context.strokeStyle = 'rgba(0,0,0,0.3);';
+			context.beginPath();
 
-		vectors.forEach(function(vector, i){
+			vectors.forEach(function(vector, i){
 
-			// transform to the current view
-			var v = M.x(vector.v);
+				// transform to the current view
+				var v = M.x(vector.v);
 
-			// skip backface points
-			if(v.elements[2] < 0) return;
+				// skip backface points
+				if(v.elements[2] < 0) return;
 
-			var v2 = M.x(vector.v2);
+				var v2 = M.x(vector.v2);
 
-			context.moveTo(v.elements[0],v.elements[1]);
-			context.lineTo(v2.elements[0],v2.elements[1]);
+				context.moveTo(v.elements[0],v.elements[1]);
+				context.lineTo(v2.elements[0],v2.elements[1]);
 
-		});
+			});
 
-		context.closePath();
-		context.stroke();
-	})();
+			context.closePath();
+			context.stroke();
+		})();
 
-})(data);
+	}
+
+})

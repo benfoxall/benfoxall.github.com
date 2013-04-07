@@ -1,4 +1,4 @@
-var data = [ { lat: -28, lng: -55, count: 38 },
+define(function(){return [ { lat: -28, lng: -55, count: 38 },
 	{ lat: 29, lng: 38, count: 2 },
 	{ lat: 36, lng: 117, count: 2 },
 	{ lat: -22, lng: -48, count: 511 },
@@ -5532,3 +5532,4 @@ var data = [ { lat: -28, lng: -55, count: 38 },
 	{ lat: 30, lng: -86, count: 385 },
 	{ lat: 54, lng: -110, count: 38 },
 	{ lat: 8, lng: 7, count: 97 } ];
+});
