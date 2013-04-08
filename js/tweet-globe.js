@@ -21,7 +21,7 @@ define(['tweet-globe-data', 'lib/sylvester'],function(data){
 
 	var handlers = {
 		touch:function(e){
-			e.preventDefault();
+			//e.preventDefault();
 
 			var x = e.touches[0].pageX;
 			var y = e.touches[0].pageY;
