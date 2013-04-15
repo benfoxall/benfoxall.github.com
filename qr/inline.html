@@ -32,7 +32,7 @@
 
 	    <h2>Without web worker</h2>
 	    <h3 id="message">- none found -</h3>
-	    <video></video>
+        <video autoplay="autoplay"></video>
 
 	</div>
 
@@ -112,7 +112,7 @@
 
             navigator.webkitGetUserMedia({video:true}, function(stream){
                 video.src = webkitURL.createObjectURL(stream);
-                video.play();
+                // video.play();
 
                 // start looking for qrcodes
                 monitor(video, function(message){
