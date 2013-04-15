@@ -17,7 +17,7 @@ importScripts(
     'gf256poly.js',
     'gf256.js',
     'decoder.js',
-    'qrcode.js',
+    'QRCode.js',
     'findpat.js',
     'alignpat.js',
     'databr.js'
