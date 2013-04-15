@@ -11,7 +11,7 @@ title: Reading QR codes from getUserMedia with web workers
     <a href="javascript:window.open('/qr/web-worker.html','scanner','width=700,height=600');">&gt;with web worker</a> <small>(should be smoother)</small>
 
 <br />
-    <a href="javascript:window.open('/qr/inline.html','scanner','width=700,height=600');">&gt;web worker</a>
+    <a href="javascript:window.open('/qr/inline.html','scanner','width=700,height=600');">&gt;without web worker</a>
 
 </h3>
 
@@ -71,10 +71,7 @@ worker.postMessage(imagedata, [imagedata.data.buffer]);
 {% endhighlight %}
 
 
-
-
-
-
+Jsqrcode is on [github](https://github.com/LazarSoft/jsqrcode), as is [my fork](https://github.com/benfoxall/jsqrcode) with the starts of the worker interface. You can either view source on the examples above, or view them on [github](https://github.com/benfoxall/benfoxall.github.com/tree/master/qr).
 
 
 
