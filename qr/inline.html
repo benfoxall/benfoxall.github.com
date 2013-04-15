@@ -1,0 +1,130 @@
+<html>
+<head>
+    <title>jsqrcode - getUserMedia + WITHOUT Web worker</title>
+
+	<link rel="stylesheet" href="/style/bootstrap.css">
+	<link rel="stylesheet" href="/style/main.css">
+
+	<script type="text/javascript" src="jsqrcode/grid.js"></script>
+	<script type="text/javascript" src="jsqrcode/version.js"></script>
+	<script type="text/javascript" src="jsqrcode/detector.js"></script>
+	<script type="text/javascript" src="jsqrcode/formatinf.js"></script>
+	<script type="text/javascript" src="jsqrcode/errorlevel.js"></script>
+	<script type="text/javascript" src="jsqrcode/bitmat.js"></script>
+	<script type="text/javascript" src="jsqrcode/datablock.js"></script>
+	<script type="text/javascript" src="jsqrcode/bmparser.js"></script>
+	<script type="text/javascript" src="jsqrcode/datamask.js"></script>
+	<script type="text/javascript" src="jsqrcode/rsdecoder.js"></script>
+	<script type="text/javascript" src="jsqrcode/gf256poly.js"></script>
+	<script type="text/javascript" src="jsqrcode/gf256.js"></script>
+	<script type="text/javascript" src="jsqrcode/decoder.js"></script>
+	<script type="text/javascript" src="jsqrcode/qrcode.js"></script>
+	<script type="text/javascript" src="jsqrcode/findpat.js"></script>
+	<script type="text/javascript" src="jsqrcode/alignpat.js"></script>
+	<script type="text/javascript" src="jsqrcode/databr.js"></script>
+
+
+</head>
+<body>
+
+
+	<div class="page">
+
+	    <h2>Without web worker</h2>
+	    <h3 id="message">- none found -</h3>
+	    <video></video>
+
+	</div>
+
+
+    <script type="text/javascript">
+
+        if( typeof navigator.webkitGetUserMedia === 'function' && 
+            typeof window.requestAnimationFrame === 'function'){
+
+        	var scan = function(imagedata){
+
+			    qrcode.imagedata = imagedata;
+			    qrcode.width = imagedata.width;
+			    qrcode.height = imagedata.height;
+
+
+			    var resp;
+			    try{
+			        resp = qrcode.process();
+			    } catch(e){
+			        resp = '';
+			    }
+			    return resp;
+        	}
+
+
+
+            // continously monitor a video element for qr codes
+            // using jsqrcode in a web worker
+            function monitor(video, callback){
+
+                // offscreen canvas for drawing the video to
+                var canvas = document.createElement('canvas');
+
+                function process(){
+
+                    // only start when the video is running
+                    if(!video.videoWidth){
+                        return requestAnimationFrame(process);
+                    }
+
+                    var width = video.videoWidth,
+                        height = video.videoHeight;
+
+                    if(!ctx){
+                        var canvas = document.createElement('canvas');
+                        canvas.width = width;
+                        canvas.height = height;
+                        ctx = canvas.getContext('2d');
+                    }
+
+                    // 
+                    ctx.drawImage(video, 0, 0, width, height);
+                    var data = ctx.getImageData(0, 0, width, height);
+
+                    // worker.postMessage(data, [data.data.buffer]);
+
+                    var text = scan(data);
+                    if(callback){
+                        callback(text);
+                    }
+
+                    requestAnimationFrame(process);
+
+                }
+
+
+                process()
+
+            }
+
+
+
+            var video = document.getElementsByTagName('video')[0],
+                // canvas = document.getElementsByTagName('canvas')[0],
+                ctx;
+
+            navigator.webkitGetUserMedia({video:true}, function(stream){
+                video.src = webkitURL.createObjectURL(stream);
+                video.play();
+
+                // start looking for qrcodes
+                monitor(video, function(message){
+                    if(message)
+                        document.getElementById('message').innerText = message;
+                    console.log(">>>", message)
+                });
+
+            });
+
+        }
+    </script>
+
+</body>
+</html>
