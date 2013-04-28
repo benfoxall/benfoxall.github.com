@@ -1,0 +1,544 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Win-win messages</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/sky.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+
+		<div class="reveal">
+
+			<div class="slides">
+
+				<section>
+					<h1>win win</h1>
+					<h2>communication</h2>
+				</section>
+
+				<section>
+					<h1>Ben Foxall</h1>
+					<h2>@benjaminbenben</h2>
+					<h3>benjaminbenben.com</h3>
+					<p><img src="img/white-october.png" style="border:none;box-shadow:none" /></p>
+				</section>
+
+				<section class="summary">
+					<h2>window</h2>
+					<!-- <hr/><h2>.postMessage</h2>
+					<hr/><h2>storage events</h2>
+					<hr/><h2>websockets (+binary)</h2>
+					<hr/><h2>webrtc</h2> -->
+				</section>
+
+				<section>
+					<section>
+						<h2>postMessage</h2>
+					</section>
+
+					<section>
+
+<pre><code>
+// listener (iframe.html)
+$(window).on('message', function(e){
+	alert(e.data + "!!1!one!");
+})
+
+
+
+// parent (main.html)
+$('#my-frame').get(0).postMessage('Howdy', '*');
+
+
+</code></pre>
+					</section>
+				</section>
+
+				<section class="summary">
+					<h2>window</h2>
+					<hr/><h2>.postMessage</h2>
+					<!-- <hr/><h2>storage events</h2>
+					<hr/><h2>websockets (+binary)</h2>
+					<hr/><h2>webrtc</h2> -->
+				</section>
+
+
+
+				<section>
+					<section>
+						<h2>LocalStorage</h2>
+						<h3>+ storage events</h3>
+					</section>
+
+					<section>
+
+<pre><code>
+localStorage.setItem('my-key','the data');
+
+window.addEventListener("storage", function(e){
+
+ if(e.key == 'my-key')
+  console.log(e.newValue); // 'the data'
+
+}, false);
+
+</code></pre>
+
+					</section>
+
+          <section>
+
+<pre><code>if(window.top === window){
+
+// store the new slide index
+Reveal.addEventListener('slidechanged', function(e) {
+  var send = e.indexh + ',' + e.indexv;
+  localStorage.setItem('rslide',send);
+});
+
+// restore 
+window.addEventListener("storage", function(e){
+  if(e.key == 'rslide'){
+    var vals = e.newValue.split(',').map(parseFloat);
+    Reveal.slide(vals[0],vals[1]);
+  }
+}, false);
+
+}</code></pre>
+
+          </section>  
+
+
+				</section>
+
+				<section class="summary">
+					<h2>window</h2>
+					<hr/><h2>.postMessage</h2>
+					<hr/><h2>storage events</h2>
+					<!-- <hr/><h2>websockets (+binary)</h2>
+					<hr/><h2>webrtc</h2> -->
+				</section>
+
+
+        <section>
+          <section>
+            <h2>WebSockets</h2>
+          </section>
+
+
+          <section>
+            <h2>"How the internet works"</h2>
+          </section>
+
+          <section>
+
+<pre><code>
+var ws = new WebSocket('ws://example.com/');
+
+ws.onmessage = function(event){
+  console.log(event.data + '!!')
+};
+
+ws.send("Hello")
+
+</code></pre>
+          </section>
+
+
+          <section data-state="demo-1">
+            <h2>Demo</h2>
+          </section>
+
+        </section>
+
+        <section class="summary">
+          <h2>window</h2>
+          <hr/><h2>.postMessage</h2>
+          <hr/><h2>storage events</h2>
+          <hr/><h2>WebSockets</h2>
+          <!--hr/><h2>webrtc</h2> -->
+        </section>
+
+
+
+
+
+        <section>
+          <section>
+            <h2>ws.send(&lt;Blob&gt;)</h2>
+          </section>
+
+          <section>
+
+<pre><code>&lt;input id="photo" type="file" accept="image/*" capture="camera" /&gt;</code></pre>
+
+<pre><code>var client = new BinaryClient('ws://localhost:9000');
+
+$('#photo').on('change', function(event){
+    var file = event.target.files[0];
+    client.send(file);
+});</code></pre>
+
+<p><small>(BinaryClient - <a href="http://binaryjs.com/">binaryjs.com</a>)</small></p>
+
+          </section>
+
+          <section data-state="demo-2">
+            <h2>Demo</h2>
+          </section>
+
+        </section>
+
+
+        <section class="summary">
+          <h2>window</h2>
+          <hr/><h2>.postMessage</h2>
+          <hr/><h2>storage events</h2>
+          <hr/><h2>WebSockets + binaryjs</h2>
+          <!--hr/><h2>webRTC</h2> -->
+        </section>
+
+
+
+
+
+
+
+				<section>
+					<section>
+						<h1>webRTC</h1>
+					</section>
+
+					<section>
+			            <ul>
+			              <li>MediaStream</li>
+			              <li>RTCPeerConnection</li>
+			              <li>RTCDataChannel</li>
+			            </ul>
+					</section>
+
+		          <section data-state="demo-3">
+		            <h2>Demo</h2>
+		          </section>
+				</section>
+
+
+
+
+
+        <section class="summary">
+          <h2>window</h2>
+          <hr/><h2>.postMessage</h2>
+          <hr/><h2>storage events</h2>
+          <hr/><h2>WebSockets + binaryjs</h2>
+          <hr/><h2>webRTC</h2>
+        </section>
+
+
+
+		<section>
+			<h1>Ben Foxall</h1>
+			<h2>@benjaminbenben</h2>
+			<h3>benjaminbenben.com</h3>
+			<p><img src="img/white-october.png" style="border:none;box-shadow:none" /></p>
+		</section>
+
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					// { src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					// { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					// { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+
+
+
+
+
+<!--- 
+
+	I WAS GOING TO REMOVE THIS,  BUT SINCE YOU'VE READ THIS FAR...
+	... THIS IS THE DEMO PART,  IT'S BEEN REMOVED BECAUSE IT DEPENDS
+	ON A COMPLEXISH SERVER TO BE RUNNING THAT I DIDN'T REALLY TRUST 
+	FOR THE DURATION OF MY TALK LET ALONE BEING GENERALLY AVAILABLE
+
+
+
+
+
+		<style type="text/css">
+		#connection-status-socketio,
+		#connection-status-binary,
+		#connection-status-rtc{
+			height:2px; width:30%; position: fixed;
+			background: #c00; top:0; z-index: 10; }
+		#connection-status-binary{right:0;}
+		#connection-status-rtc{left:30%; width:40%;}
+		#connection-status-socketio.ok,
+		#connection-status-binary.ok,
+		#connection-status-rtc.ok{background: #3b759e;}
+
+		#rtc-video{
+			/*background-color:#f08;*/
+			height:100%;
+			width:100%;
+			position: fixed;
+			left:0;top:0;
+			z-index: 10;
+			opacity: 0;
+
+			-webkit-transition: opacity 2s ease;
+		}
+		#rtc-video.active{
+			opacity: 1;
+		}
+
+		</style>
+		<div id="connection-status-socketio"></div><div id="connection-status-rtc"></div><div id="connection-status-binary"></div>
+
+		<video id="rtc-video" autoplay="autoplay"></video>
+
+	    <script type="text/javascript" src="http://localhost:3000/libs.js"></script>
+	    <script type="text/javascript">
+	        var shoutHostname = 'localhost';
+
+	        rtc.connect('ws://'+shoutHostname+':3003','my-room');
+
+	        var streams = {
+	            socketio:io.connect('http://' + shoutHostname + ':3001'),
+	            binary:BinaryClient('ws://'+shoutHostname+':3002'),
+	            rtc: rtc
+	        };
+
+			// show status	        
+			var statusses = {
+	            socketio:document.getElementById('connection-status-socketio'),
+	            binary:document.getElementById('connection-status-binary'),
+	            rtc:document.getElementById('connection-status-rtc')
+	        };
+
+	        streams.binary.on('close', function(){
+	        	statusses.binary.className='';
+	        });
+	        streams.binary.on('open', function(){
+	        	statusses.binary.className='ok';
+	        });
+
+	        streams.socketio.on('disconnect', function(){
+	        	statusses.socketio.className='';
+	        });
+	        streams.socketio.on('connect', function(){
+	        	statusses.socketio.className='ok';
+	        });
+
+
+	        streams.rtc.on('close_stream', function(e, i){
+	        	console.log(e, i);
+	        	statusses.rtc.className='';
+	        });
+
+	        streams.rtc.on('connect', function(){
+	        	statusses.rtc.className='ok';
+	        });
+
+	    </script>
+
+
+
+		<script src="js/jquery.js"></script>
+
+
+	    <div id="image-show"></div>
+		<div id="n4"><canvas width="216" height="362"></canvas></div>
+
+	    <script type="text/javascript">
+	    	// display content things
+
+	    	function activeSlide(key){
+	    		// .contains, but whatever
+	    		return document.getElementsByTagName('html')[0].className.indexOf(key) != -1;
+	    	}
+
+
+
+	    	var ishow = document.getElementById('image-show');
+	    	var n4 = document.getElementById('n4');
+			var canvas = n4.childNodes[0];
+			var ctx = canvas.getContext('2d');
+
+	    	streams.socketio.on('message', function (message, callback) {
+
+		    	if(activeSlide('demo-1')){
+
+
+
+		    		// console.log("OKAYE", message);
+
+
+					var js = JSON.parse(message);
+
+					if(typeof(js.x) === 'undefined'){
+
+						n4.className = 'active';
+						ctx.fillStyle = '#f5f5f5';
+						ctx.fillRect(0,0,canvas.width,canvas.height)
+
+					} else {
+
+		    			// console.log("OKAYE", message);
+
+						ctx.fillStyle = '#000000';
+						ctx.beginPath();
+						ctx.arc(js.x/4.5,js.y/4,10,0,6)
+						ctx.fill();
+
+					}
+
+
+		    	}
+
+	    	});
+
+	    	var video = document.getElementById('rtc-video');
+
+	    	streams.rtc.on('add remote stream', function(stream, socketId) {
+	    		console.log("|NEW STREAM");
+	    		// if(activeSlide('demo-3')){
+    			rtc.attachStream(stream, 'rtc-video');
+
+    			// setTimeout(function(){
+				video.className = 'active';	
+    			// },1500);
+    			
+	    		// }
+			});
+
+
+			rtc.on('new_peer_connected', function(data) {
+				console.log("->OPEN");
+
+			});
+
+			rtc.on('remove_peer_connected', function(data) {
+				console.log("->CLOSE");
+				video.className = ''
+
+			})
+
+
+		// 	  rtc.on('add remote stream', function(stream, socketId) {
+  //   rtc.attachStream(stream, 'there');
+  // });
+
+
+
+
+
+			streams.binary.on('stream', function(e){
+
+
+				var parts = [];
+				e.on('data', function(d){
+						parts.push(d);
+				});
+				e.on('end', function(d){
+					var src = (window.URL || window.webkitURL).createObjectURL(new Blob(parts));
+					ishow.style.backgroundImage = 'url(' + src + ')';
+					ishow.className = 'active'
+				});
+
+
+				// console.log("STREAM");
+	        });
+
+
+	    	// clean up our stuff
+	    	Reveal.addEventListener( 'slidechanged', function() {
+	    		// remove the classname
+	    		n4.className = '';
+	    		ishow.className = ''
+	    		ishow.style.backgroundImage = '';
+			});
+
+-->
+
+
+<!-- THIS PART STILL WORKS THOUGH -->
+
+	<script type="text/javascript">
+
+			// only for top level windows
+			if(window.top === window){
+
+				// store the new slide index
+				Reveal.addEventListener('slidechanged', function(e) {
+					var send = e.indexh + ',' + e.indexv;
+					localStorage.setItem('rslide',send);
+				});
+
+				// restore 
+				window.addEventListener("storage", function(e){
+					if(e.key == 'rslide'){
+						var vals = e.newValue.split(',').map(parseFloat);
+						Reveal.slide(vals[0],vals[1]);
+					}
+				}, false);
+
+			}
+
+
+	</script>
+
+
+	</body>
+</html>
