@@ -8,4 +8,6 @@ layout: default
 		<small class="date">{{ page.date | date: "%d %B %Y" }}</small>
 	</a>
 </h1>
+<div {% if page.cr %}class="cr" data-cr="{{page.cr}}"{% endif %}>
 {{ content }}
+</div>

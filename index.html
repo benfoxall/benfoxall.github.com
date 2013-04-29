@@ -10,7 +10,9 @@ layout: default
   </a>
 </h1>
 
+<div {% if post.cr %}class="cr" data-cr="{{post.cr}}"{% endif %}>
 {{ post.content}}
+</div>
 
 <hr class="inter-post" />
 {% endfor %}
