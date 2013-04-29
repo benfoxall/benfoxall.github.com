@@ -89,3 +89,11 @@ canvas, iframe{
   width:10px;
   height:10px;
 }
+
+
+/* win win post */
+#demo2{
+  height:80px;
+  background-color:#eee;
+  border-radius: 4px;
+}
