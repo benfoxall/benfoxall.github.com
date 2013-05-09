@@ -97,3 +97,7 @@ canvas, iframe{
   background-color:#eee;
   border-radius: 4px;
 }
+
+.pull-right{
+  float:right;
+}
