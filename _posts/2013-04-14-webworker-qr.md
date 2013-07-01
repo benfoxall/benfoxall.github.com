@@ -3,17 +3,11 @@ layout: post
 title: Reading QR codes from getUserMedia with web workers
 ---
 
-<h3>
-    <!-- todo: Moz support, better displaying of info here -->
-    [tl;dr] examples - (currently requires chrome):
+### tl;dr - examples (currently requires chrome):
 
-<br />
-    <a href="javascript:window.open('/qr/web-worker.html','scanner','width=700,height=600');">&gt;with web worker</a> <small>(should be smoother)</small>
+<h3><a href="javascript:window.open('/qr/web-worker.html','scanner','width=700,height=600');">&gt;with web worker</a> <small>(should be smoother)</small></h3>
 
-<br />
-    <a href="javascript:window.open('/qr/inline.html','scanner','width=700,height=600');">&gt;without web worker</a>
-
-</h3>
+<h3><a href="javascript:window.open('/qr/inline.html','scanner','width=700,height=600');">&gt;without web worker</a></h3>
 
 
 <hr />
