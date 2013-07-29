@@ -9,7 +9,7 @@ title: PhantomJS webserver
 
 (tl;dr - deployed example [here](http://quiet-lowlands-5118.herokuapp.com/) &amp; more involved app [here](http://phantomjs-webserver-example.herokuapp.com/))
 
-Starting with a base PhantomJS script - this loads the Oxfordshire [lanyrd page](http://lanyrd.com/places/oxfordshire/) and outputs the names of any upcoming events.
+Let's start with a base PhantomJS script - this loads the Oxfordshire [lanyrd page](http://lanyrd.com/places/oxfordshire/) and outputs the names of any upcoming events:
 
 {% highlight javascript %}
 var page = new WebPage();
@@ -28,7 +28,7 @@ page.open("http://lanyrd.com/places/oxfordshire/", function(){
 });
 {% endhighlight %}
 
-This script can be run with `phantomjs example.js` and it will print the names of all upcoming events in the terminal, something like this:
+This script can be run with `phantomjs example.js` and it will print the names of all upcoming events in the terminal - something like this:
 
 <pre>Upcoming Events in Oxfordshire:
 * Oxford Geek Night 32
@@ -43,7 +43,7 @@ This script can be run with `phantomjs example.js` and it will print the names o
 
 ### Using the webserver module
 
-To expose this script with the [webserver module](https://github.com/ariya/phantomjs/wiki/API-Reference-WebServer) - you have to add a few things:
+To expose this script with the [webserver module](https://github.com/ariya/phantomjs/wiki/API-Reference-WebServer), you have to add a few things:
 
 {% highlight javascript %}
 // import the webserver module, and create a server
@@ -72,9 +72,9 @@ server.listen(8080, function(request, response) {
     response.write(events);
     response.close();
 
-    // We want to keep phantom open for more requests, so 
-    // instead of exiting - we close the webpage and we're
-    // ready for more requests.
+    // We want to keep phantom open for more requests, so we
+    // don't exit the process. Instead we close the page to
+    // free the associated memory heap
     //
     // phantom.exit();
 
@@ -88,7 +88,7 @@ This can be run in the same way as the previous script - `phantomjs example.js` 
 
 ![localhost:8080 - list of events from lanyrd](/img/phantomjs-lanyrd.png)
 
-With phantomjs - you're not limited to sending plain text back to the client, you can [render images](https://github.com/ariya/phantomjs/wiki/API-Reference-WebPage#wiki-webpage-render) of the webpage and send that back (either by reading the file back with the [File System Module](https://github.com/ariya/phantomjs/wiki/API-Reference-FileSystem), or using [base 64](https://github.com/ariya/phantomjs/wiki/API-Reference-WebPage#renderbase64format) to send back an embeddable data-uri).
+With phantomjs, you're not limited to sending plain text back to the client - you can [render images](https://github.com/ariya/phantomjs/wiki/API-Reference-WebPage#wiki-webpage-render) of the webpage and send that back (either by reading the file back with the [File System Module](https://github.com/ariya/phantomjs/wiki/API-Reference-FileSystem), or using [base 64](https://github.com/ariya/phantomjs/wiki/API-Reference-WebPage#renderbase64format) to send back an embeddable data-uri).
 
 ### Deploying
 
@@ -140,7 +140,7 @@ To git@heroku.com:quiet-lowlands-5118.git
  * [new branch]      master -> master</div>
 </pre>
 
-The example app should now be available on the reported url (in this case - [http://quiet-lowlands-5118.herokuapp.com](http://quiet-lowlands-5118.herokuapp.com)).
+The example app should now be available on the reported url (in this case: [http://quiet-lowlands-5118.herokuapp.com](http://quiet-lowlands-5118.herokuapp.com)).
 
 The example code is up on [github (benfoxall/phantomjs-oxfordshire-events)](https://github.com/benfoxall/phantomjs-oxfordshire-events).
 
@@ -159,7 +159,7 @@ I've tried to make it an easy project to modify for your own use - so fork away 
 
 ### A few issues / gotchas
 
-* Mongoose (the embedded server) doesn't parse the POST parameters with the default jQuery `contentType` header 'application/x-www-form-urlencoded; charset=UTF-8',  I had to [drop the charset](https://github.com/benfoxall/phantomjs-webserver-example/blob/master/index.html#L52) and it seemed to work okay.
+* Mongoose (the embedded server) doesn't parse the POST parameters with the default jQuery `contentType` header 'application/x-www-form-urlencoded; charset=UTF-8';  I had to [drop the charset](https://github.com/benfoxall/phantomjs-webserver-example/blob/master/index.html#L52) and it seemed to work okay.
 * Firefox has trouble parsing large data-uri strings in json objects, so I've split the image and json on separate lines and decode them when the request comes back (unfortunately Firefox fails to add the xhr header that fixes the mongoose error)
 * GET parameters aren't parsed.  I'd much sooner use a GET request for this app, as there's not any state change and it would allow the responses to be cached.  In [wtcss](http://css.benjaminbenben.com) I [fudged](https://github.com/benfoxall/wtcss/blob/master/app.js#L59-L61) this parsing.
 * Sometimes the page render returns a blank image, especially when on heroku and under stress. This is a [known issue](https://groups.google.com/forum/#!searchin/phantomjs/blank/phantomjs/7XIaNEELuuo/b2jH1B_DJP0J) - a work around is to [wrap the .render in a setTimeout](https://github.com/benfoxall/phantomjs-webserver-example/blob/master/server.js#L61-L67).
