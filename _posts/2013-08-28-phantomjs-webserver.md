@@ -1,9 +1,9 @@
 ---
 layout: post
-title: PhantomJS webserver
+title: Using PhantomJS WebServer
 ---
 
-<p class="lead">The <a href="http://phantomjs.org/">PhantomJS</a> webserver module lets you create self contained web applications that are easy to deploy to heroku using the PhantomJS build pack.</p>
+<p class="lead">The <a href="http://phantomjs.org/">PhantomJS</a> WebServer module lets you create self contained web applications that are easy to deploy to heroku using the PhantomJS build pack.</p>
 
 **I'll be talking about this at [Oxford geek nights](http://oxford.geeknights.net) on the [7th of August](http://lanyrd.com/2013/ogn32/) - come along if you're in the area.**
 
