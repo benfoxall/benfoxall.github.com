@@ -3,7 +3,7 @@
 //
 // for a nicer version check https://gist.github.com/benfoxall/5332944
 
-define(['tweet-globe-data', 'lib/sylvester'],function(data){
+define(['tweet-globe-data', 'lib/sylvester', 'jquery.inview'],function(data,_s,$){
 
 	// The transform matrix for rotating the ball
 	var M = Matrix.I(3), 
@@ -80,6 +80,12 @@ define(['tweet-globe-data', 'lib/sylvester'],function(data){
 	// the cr init
 	return function(canvas){
 
+		var visible = false;
+		$(canvas).on('inview', function(event, isInView){
+			visible = isInView;
+		})
+
+
 		if(!canvas.getContext) return;
 
 		// set up the drawing/animation
@@ -91,7 +97,7 @@ define(['tweet-globe-data', 'lib/sylvester'],function(data){
 			requestAnimFrame(animloop);
 
 			// only draw if the transform matrix has changed
-			if(drawn) return;
+			if(drawn || !visible) return;
 			drawn = true;
 
 
