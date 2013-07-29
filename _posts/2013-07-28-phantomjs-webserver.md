@@ -142,7 +142,7 @@ To git@heroku.com:quiet-lowlands-5118.git
 
 The example app should now be available on the reported url (in this case: [http://quiet-lowlands-5118.herokuapp.com](http://quiet-lowlands-5118.herokuapp.com)).
 
-The example code is up on [github (benfoxall/phantomjs-oxfordshire-events)](https://github.com/benfoxall/phantomjs-oxfordshire-events).
+<p><a class="btn btn-primary btn" href="http://quiet-lowlands-5118.herokuapp.com">View Deployed Example Site</a> <a class="btn btn-default" href="https://github.com/benfoxall/phantomjs-oxfordshire-events">GitHub Source</a></p>
 
 ----
 
@@ -155,6 +155,8 @@ It also serves a static page with a form to submit the requests to the app.  It'
 I've tried to make it an easy project to modify for your own use - so fork away and have a hack!
 
 [![screenshot of example code](/img/phantomjs-more.png)](http://phantomjs-webserver-example.herokuapp.com/)
+
+<p><a class="btn btn-primary btn" href="http://phantomjs-webserver-example.herokuapp.com">View Demo</a> <a class="btn btn-default" href="https://github.com/benfoxall/phantomjs-webserver-example">GitHub Source</a></p>
 
 
 ### A few issues / gotchas
