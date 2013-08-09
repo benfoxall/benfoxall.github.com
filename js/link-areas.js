@@ -30,13 +30,16 @@ define(['jquery','d3'],function($,d3){
 			.attr("width", width)
 			.attr("height", height);
 
+		var tooltip = d3.select($vis.get(0)).append("div")   
+			.attr("class", "tooltip");
+
 		var graph = {
 			nodes:[],
 			links:[]
 		}
 
 
-		var link, node;
+		var link, node, ttinterval;
 
 		force.on("tick", function() {
 			link.attr("x1", function(d) { return d.source.x; })
@@ -105,29 +108,41 @@ define(['jquery','d3'],function($,d3){
 				.data(graph.nodes, function(n){return n.name});
 
 			node
-			  .enter().append("circle")
+				.enter().append("circle")
 				.attr("class", "node")
 				.attr("r", function(d){return 2 + (Math.sqrt(d.area/Math.PI)/10)})
 				.call(force.drag)
-				.on("mouseover", function(d){
-					$tip.html($('<a>',{
-						href:d.name,
-						text:d.name
-					}))
-				})
-				.on("click", function(d){
+				.on("dblclick", function(d){
+					
+					d.requested = true;
 					var url = d.name;
 					$.getJSON($form.prop('action'), {url:url})
 					.then(function(data){
+						d.requested = false;
 						populate(url, data);
 					})
 
+					node
+						.transition()
+						.attr("fill", function(n){return n.requested ? '#08f' : (n.score > 1 ? 'red' : 'black')});
+				})
+				.on('mouseover', function(d){
+					if(ttinterval) clearTimeout(ttinterval);
+					tooltip.text(d.name);
+				})
+				.on('mouseout', function(d){
+					ttinterval = setInterval(function(){
+						tooltip.text('')
+					},300)
 				})
 
 			node
 				.transition()
 				.attr("r", function(d){return 2 + (Math.sqrt(d.area/Math.PI)/10)})
-				.attr("fill", function(n){return n.score > 1 ? 'red' : 'black'});
+				.attr("fill", function(n){return n.requested ? '#08f' : (n.score > 1 ? 'red' : 'black')});
+
+			node.append("title")
+      .text(function(d) { return d.name; });
 
 			node
 				.exit().remove();
@@ -174,6 +189,12 @@ define(['jquery','d3'],function($,d3){
 			});
 
 		})
+
+		var blogpost = "http://benjaminbenben.com/2013/08/08/link-areas/";
+		$.getJSON($form.prop('action'), {url:blogpost})
+		.then(function(data){
+			populate(blogpost, data);
+		});
 
 	}
 })

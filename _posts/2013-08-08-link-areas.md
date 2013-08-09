@@ -3,7 +3,7 @@ layout: post
 title: Plotting links
 ---
 
-<p class="lead">This shows how you can pull in data from PhantomJS into another page and display it there.</p>
+<p class="lead">This is an example of displaying content pulled from a PhantomJS webservice</p>
 
 I used this example when I talked about "serving websites to websites with PhantomJS" at this months Oxford Geek Nights
 
@@ -46,7 +46,8 @@ We can now pull in this data with AJAX and render it on the page using d3 (the f
 		<button class="btn btn-default">clear</button>
 	</form>
 	<div class="vis"><!----></div>
-	<p class="tip"></p>
+	<p><small>initially populated with this blog post, double click to check one of the urls.</small></p>
+
 
 	<h4>examples</h4>
 	<ul class="examples unstyled">
