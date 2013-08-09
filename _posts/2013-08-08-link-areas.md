@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Plotting links
+title: Graphing links
 ---
 
 <p class="lead">This is an example of displaying content pulled from a PhantomJS webservice</p>
