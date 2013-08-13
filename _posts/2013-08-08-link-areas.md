@@ -39,7 +39,7 @@ Using this script we can get a map of the links to the element areas, which look
 We can now pull in this data with AJAX and render it on the page using d3 (the force directed graph layout)
 
 
-<div class="cr" data-cr="link-areas">
+<div class="cr" data-cr="link-areas" data-cr-defer="">
 	<form class="form-inline" action="http://ogn32-link-areas.herokuapp.com">
 		<input type="url" name="url" class="visurl form-control" placeholder="Enter a URL" required="required"/>
 		<input type="submit" class="btn btn-primary" value="add" />

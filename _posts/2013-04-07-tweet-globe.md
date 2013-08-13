@@ -4,7 +4,7 @@ layout: post
 
 <p class="lead">Plotting geocoded tweets on a globe with canvas</p>
 
-<canvas height="550" width="600" class="cr" data-cr="tweet-globe">Requires Canvas Support</canvas>
+<canvas height="550" width="600" class="cr" data-cr="tweet-globe" data-cr-defer="">Requires Canvas Support</canvas>
 
 I gathered a few hours of geocoded tweets from the [twitter streaming api](https://dev.twitter.com/docs/streaming-apis) (using the [maptime](http://benjaminbenben.com/2012/12/05/maptime/) code as a base).  This was to explore some ideas that we'd been talking about at [White October](http://whiteoctober.co.uk).
 
