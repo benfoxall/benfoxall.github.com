@@ -39,7 +39,7 @@ like underscore, but with fewer things and more underscores
 	};
 
 	___.prototype.first = function(){
-		this._obj[0];
+		return this._obj[0];
 	};
 
 
