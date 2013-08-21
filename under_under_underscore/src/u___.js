@@ -35,7 +35,7 @@ like underscore, but with fewer things and more underscores
 	};
 
 	___.prototype.contains = function(val){
-		return this.any(function(n){return n == val});
+		return this.any(function(n){return n === val});
 	};
 
 	___.prototype.first = function(){
