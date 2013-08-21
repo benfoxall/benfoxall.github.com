@@ -12,12 +12,29 @@
 		<img style="display:none" id="win"  src="win.gif" />
 		<img style="display:none" id="fail" src="fail.jpg" />
 
-		<ul style="font-size:5em; list-style:none; color:#f08; padding:0"></ul>
+		<ul style="font-size:1em; list-style:none; color:#f08; padding:0"></ul>
 	</div>
 
 	<script type="text/javascript" src="//code.jquery.com/jquery-git2.js"></script>
 	<script type="text/javascript">
-		// do some stuff here
+		$.getJSON('http://aqueous-savannah-6337.herokuapp.com/').then(function(data){
+
+
+	var passed = true;
+	$.each(data, function(i, val){
+		if(!val.pass){
+			passed = false;
+		}
+	});
+
+	$(passed? '#win' : '#fail').show()
+
+
+
+	$.each(data, function(i,val){$('<li>',{text:val.title, css:{color:val.pass?'hotpink':'grey'}}).appendTo('ul')
+
+
+})})
 	</script>
 </body>
 </html>
