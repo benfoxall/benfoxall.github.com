@@ -94,16 +94,16 @@ describe("___.contains", function() {
 });
 
 
-describe("___.first", function() {
+// describe("___.first", function() {
 
-	it('gives the first item', function(){
+// 	it('gives the first item', function(){
 
-		var match = ___(['JS', 'Oxford']).first();
+// 		var match = ___(['JS', 'Oxford']).first();
 
-		expect(match).toBe('JS');
-	});
+// 		expect(match).toBe('JS');
+// 	});
 	
-});
+// });
 
 /* we don't have time to go through this part
 describe("stress", function(){
