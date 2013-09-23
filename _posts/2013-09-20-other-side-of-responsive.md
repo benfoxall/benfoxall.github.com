@@ -5,7 +5,7 @@ title: The other side of responsive
 
 <p class="lead">Yesterday I gave a talk "The other side of responsive" which was about how responsive web development gives us a great platform for creating interfaces that combine multiple devices. This post explains some of the tech/approaches that I used for it.</p>
 
-<p><strong>I'm writing this in a car, with the limit of a half charged laptop, so appologies for any mistakes or over-wordyness. <small>Also - for reference - my mother (who is driving) is playing Mozart Clarinet Concerto in A really loud, which is awesome.</small></strong></p>
+<p><strong>I'm writing this in a car, with the limit of a half charged laptop, so apologies for any mistakes or over-wordyness. <small>Also - for reference - my mother (who is driving) is playing Mozart Clarinet Concerto in A really loud, which is awesome.</small></strong></p>
 
 ## The setup
 
@@ -74,7 +74,7 @@ Once the image is in the slide deck, this sequence of things happens:
 
 So, at this point - the the last slide is rendered (on the devices as well). Also, the devices are displaying the picture on screen (I forgot to say that).
 
-The next slide is the interactive slide of circles representing each device, this is an svg generated with d3. There is a basic animation loop which applys and dampens the speed of a circle and repels it from any nearby circles, this was running for the last couple of slides - so they've kind of organised themselves into a nice pattern.
+The next slide is the interactive slide of circles representing each device, this is an svg generated with d3. There is a basic animation loop which applies and dampens the speed of a circle and repels it from any nearby circles, this was running for the last couple of slides - so they've kind of organised themselves into a nice pattern.
 
 D3 is fantastic, the enter/exit/transition approach is so intuitive for dynamic data, if someone joined at this point - a circle would pop onto the page and everything would just carry on.
 
