@@ -3,6 +3,8 @@ layout: post
 title: The other side of responsive
 ---
 
+<iframe width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=http%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F112467729&amp;color=0088cc&amp;auto_play=false&amp;show_artwork=true"><!-- --></iframe>
+
 <p class="lead">Yesterday I gave a talk "The other side of responsive" which was about how responsive web development gives us a great platform for creating interfaces that combine multiple devices. This post explains some of the tech/approaches that I used for it.</p>
 
 <p><strong>I'm writing this in a car, with the limit of a half charged laptop, so apologies for any mistakes or over-wordiness. <small>Also - for context - my mother (who is driving) is playing Mozart Clarinet Concerto in A really loud, which is awesome.</small></strong></p>
@@ -25,8 +27,6 @@ I used <a href="http://www.pubnub.com/">PubNub</a> to communicate with the devic
 3. backfill - if you were to refresh a device, all the 'hot' messages would be sent down, so the browser would be able to replay them all and catch up with all the other devices; this also allows people to join in half way through.
 
 ## The talk
-
-<iframe width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=http%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F112467729"><!----></iframe>
 
 My first slide was the short url for the [benjaminbenben.com/party](http://benjaminbenben.com/party) with a counter below it.  When someone loads the page, there is a script that:
 
