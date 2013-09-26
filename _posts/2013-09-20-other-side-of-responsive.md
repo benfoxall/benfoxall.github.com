@@ -26,6 +26,8 @@ I used <a href="http://www.pubnub.com/">PubNub</a> to communicate with the devic
 
 ## The talk
 
+<iframe width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=http%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F112467729"><!----></iframe>
+
 My first slide was the short url for the [benjaminbenben.com/party](http://benjaminbenben.com/party) with a counter below it.  When someone loads the page, there is a script that:
 
 1. Generates and locks down a uuid for the user, so that reloading the page won't create more devices
