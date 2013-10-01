@@ -3,6 +3,8 @@ layout: post
 ---
 <p class="lead">This is how I organise JavaScript assets on this site.</p>
 
+<p><a class="btn btn-default" href="https://github.com/benfoxall/context-require">view code on github</a></p>
+
 ### Motivation
 
 When I started this blog, I knew that I wanted to include specific and varied scripts on each post.
