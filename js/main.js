@@ -16,7 +16,7 @@ require.config(
 		// use cdn jq
 			"jquery": "https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min",
 			"d3": "http://d3js.org/d3.v3.min",
-			"ko": "http://cdnjs.cloudflare.com/ajax/libs/knockout/2.3.0/knockout-min.js"
+			"ko": "http://cdnjs.cloudflare.com/ajax/libs/knockout/2.3.0/knockout-min"
 		},
 		shim: { d3: { exports: 'd3' } }
 	}
