@@ -16,6 +16,9 @@
 
 </head>
 <body>
+<ul id="cr-debug" class="cr" data-cr="cr-debug" data-bind="foreach: modules, style:{display:'block'}" style="display:none">
+	<li><span data-bind="text: $data[0]"></span><span class="url" data-bind="text: $data[1]"></span></li>
+</ul>
 <div class="page">
 <header>
 	<a href="/">BenjaminBenBen</a>

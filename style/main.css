@@ -133,3 +133,27 @@ canvas, iframe{
 .examples li{
   margin-bottom:1em;
 }
+#cr-debug{
+  position: fixed;
+  z-index: 100;
+  background:#428bca;
+  color:#fff;
+  list-style:none;
+  margin:0;
+  left:0;
+  bottom:0;
+  padding:.5em;
+  max-height: 100%;
+  max-width: 40%;
+  overflow: scroll;
+}
+#cr-debug span{
+  display:block;
+  margin:0;
+  line-height: 1em;
+}
+#cr-debug span.url{
+  color:#ddd;
+  margin-bottom:.75em;
+  font-size:.75em;
+}
