@@ -37,7 +37,7 @@ Then, in the markup - I specify which module I want to apply to a particular pie
 </div>
 {% endhighlight %}
 
-I then stitch this together with another require.js module which looks through the page, loads any modules and applies them appropriately.  It looks something like this (I've used jQuery here for succintity):
+I then stitch this together with another require.js module which looks through the page, loads any modules and applies them appropriately.  It looks something like this (I've used jQuery here for succinctness):
 
 {% highlight javascript %}
 $('.cr').each(function(){
@@ -61,13 +61,13 @@ Now I can load only the necessary scripts to display a page; which vary across p
 
 I've enjoyed using this approach - it's made it really easy to add new posts. I've felt like I've been writing code rather than tweaking and maintaining it.
 
-It also feel that it helps keep a distintion of concerns - by starting with the html/dom I've focussed on what I'm trying to enhance with javascript.
+It also feels like a good distinction of concerns - by starting with the html/dom I've focussed on what I'm trying to enhance with javascript.
 
 ### Only loading scripts for on-screen elements
 
 This approach kind of sucked for my homepage though - I've got all my posts in full, so every single script would be loaded.
 
-So I rewrote my script to defer the loading of a module until the related element is on-screen.  It looks something like this (again, jQuery here for berevity):
+So I rewrote my script to defer the loading of a module until the related element is on-screen.  It looks something like this (again, jQuery here for brevity):
 
 {% highlight javascript %}
 // using jquery.inview
@@ -94,7 +94,7 @@ as you scroll down the page, you should see more modules loading in as you go pa
 
 ### Limitations / solutions
 
-I can use this approach because I've got independant bits of content.  Creating larger scale interconnected sites requires a lot more thought and planning. [Addy Osami](https://twitter.com/intent/user?screen_name=addyosmani) did a [great talk](http://vimeo.com/40866386) on building large scale JS applications at last years jQueryUK. He also has an online book - [Learning JavaScript Design Patterns](http://addyosmani.com/resources/essentialjsdesignpatterns/book/) which is worth a read.
+I can use this approach because I've got independent bits of content.  Creating larger scale interconnected sites requires a lot more thought and planning. [Addy Osami](https://twitter.com/intent/user?screen_name=addyosmani) did a [great talk](http://vimeo.com/40866386) on building large scale JS applications at last years jQueryUK. He also has an online book - [Learning JavaScript Design Patterns](http://addyosmani.com/resources/essentialjsdesignpatterns/book/) which is worth a read.
 
 The other limitation of this approach is performance.  Require.js has a great build tool which lets you compile your components into a single file - though this would defeat the purpose of what I was trying to do in the first place.
 
