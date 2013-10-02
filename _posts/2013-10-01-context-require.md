@@ -102,4 +102,4 @@ The issue isn't with the size of download, but the waterfall effect that happens
 
 Also, if you're interested in this kind of stuff - have a read of [Alex Sexton](https://twitter.com/intent/user?screen_name=SlexAxton)'s blog post about [deploying javascript applications](http://alexsexton.com/blog/2013/03/deploying-javascript-applications/).
 
-I have a feeling that this is the kind of problem that people have dealt with or have ideas about before.  I'd really love to hear from you if you have.
+I have a feeling that this is the kind of problem that people have dealt with or have had ideas about before.  I'd really love to hear what you think - ping me on twitter or [comment on hacker news](https://news.ycombinator.com/item?id=6483160).
