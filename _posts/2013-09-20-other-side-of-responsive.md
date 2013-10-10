@@ -62,7 +62,7 @@ The capture attribute means that it fires up the camera on my phone rather than 
 
 When I take and accept the picture of the geek night, it is streamed with binary.js to all other connected slide decks - it's based on [this binary.js example](https://github.com/binaryjs/binaryjs/tree/master/examples/imageshare).
 
-![mkgn](/img/mkgn.png)
+<p><img class="img-responsive" alt="MKGN" src="/img/mkgn.png"/></p>
 
 Once the image is in the slide deck, this sequence of things happens:
 

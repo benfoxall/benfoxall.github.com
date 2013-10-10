@@ -19,7 +19,7 @@ I came across a javascript [qr-code reader](https://github.com/LazarSoft/jsqrcod
 
 I thought it was a pretty good candidate for taking the processing off to a web worker;  which turned out pretty well.
 
-![Scanning QR code with getUserMedia](/img/gum-ww.png)
+<p><img class="img-responsive" src="/img/gum-ww.png" alt="Scanning QR code with getUserMedia" /></p>
 
 Once you've got the [imageData](https://developer.mozilla.org/en-US/docs/HTML/Canvas/Pixel_manipulation_with_canvas) from your canvas,  you can run it through [jsqrcode](https://github.com/LazarSoft/jsqrcode) by setting attributes of the qrcode object, then call .render():
 

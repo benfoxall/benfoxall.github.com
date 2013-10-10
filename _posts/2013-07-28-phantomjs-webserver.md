@@ -86,7 +86,7 @@ server.listen(8080, function(request, response) {
 
 This can be run in the same way as the previous script - `phantomjs example.js` - then when you visit [localhost:8080](http://localhost:8080), you should see the list of events in your browser.
 
-![localhost:8080 - list of events from lanyrd](/img/phantomjs-lanyrd.png)
+<p><img class="img-responsive" src="/img/phantomjs-lanyrd.png" alt="localhost:8080 - list of events from lanyrd"></p>
 
 With phantomjs, you're not limited to sending plain text back to the client - you can [render images](https://github.com/ariya/phantomjs/wiki/API-Reference-WebPage#wiki-webpage-render) of the webpage and send that back (either by reading the file back with the [File System Module](https://github.com/ariya/phantomjs/wiki/API-Reference-FileSystem), or using [base 64](https://github.com/ariya/phantomjs/wiki/API-Reference-WebPage#renderbase64format) to send back an embeddable data-uri).
 
@@ -154,7 +154,7 @@ It also serves a static page with a form to submit the requests to the app.  It'
 
 I've tried to make it an easy project to modify for your own use - so fork away and have a hack!
 
-[![screenshot of example code](/img/phantomjs-more.png)](http://phantomjs-webserver-example.herokuapp.com/)
+<p><a href="http://phantomjs-webserver-example.herokuapp.com/"><img class="img-responsive" src="/img/phantomjs-more.png" alt="screenshot of example code" /></a></p>
 
 <p><a class="btn btn-primary btn" href="http://phantomjs-webserver-example.herokuapp.com">View Demo</a> <a class="btn btn-default" href="https://github.com/benfoxall/phantomjs-webserver-example">GitHub Source</a></p>
 
