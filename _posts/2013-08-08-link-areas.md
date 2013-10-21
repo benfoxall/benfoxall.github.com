@@ -11,7 +11,7 @@ I used this example when I talked about "serving websites to websites with Phant
 
 With phantomjs you are able to access more than just the HTML/DOM of a page - how the page is eventually rendered in a browser.  In this example - we can pull out all the links of a page and find out what area (in pixels) they consume.
 
-![link areas on oxford geek nights](/img/link-areas.png)
+<p><img class="img-responsive" alt="link areas on oxford geek nights" src="/img/link-areas.png"/></p>
 
 Using this script we can get a map of the links to the element areas, which looks something like this:
 

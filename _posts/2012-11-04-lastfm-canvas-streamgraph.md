@@ -5,7 +5,7 @@ layout: post
 <p class="lead">A browser based last.fm streamgraph using canvas.</p>
 
 <a href="/projects/lgraph/?user=benjaminf">
-	<img src="/img/lgraph.png" width="843" height="620" />
+	<img class="img-responsive" src="/img/lgraph.png" width="843" height="620" />
 </a>
 
 This is based on Lee Byrons [listening histories][listHist] project.  I love this project - it's a really interesting and engaging visualisation, and the last.fm data makes it really personal (I can't think of any other services that give as much personalised data as last.fm).

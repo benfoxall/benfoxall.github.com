@@ -9,7 +9,7 @@ This new one is built with [Jekyll][jkl] and put it online with [GitHub Pages][g
 It seems that a lot of Jekyll sites start with a post about the interesting way that they have been deployed.  So, for the record, I kept it simple and went for the [github jekyll generator][gh-pages-jkl].
 
 <a href="http://bfoxall.com">
-	<img src="/img/bfoxall.png" width="766" height="619" />
+	<img class="img-responsive" src="/img/bfoxall.png" width="766" height="619" />
 </a>
 
 [bfoxall]: http://bfoxall.com
