@@ -5,6 +5,9 @@ layout: default
 	<a href="/" class="home">&larr;</a>
   	<a href="{{ page.url }}">
 	  	{{ page.title }}
+      {% unless post.published == "draft" %}
+      <small>DRAFT</small>
+      {% endunless %}
 		<small class="date">{{ page.date | date: "%d %B %Y" }}</small>
 	</a>
 </h1>
