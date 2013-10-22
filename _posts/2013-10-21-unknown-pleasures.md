@@ -24,11 +24,13 @@ published: "draft"
 
 ## Origins of the Joy Division artwork
 
-Stephen Morris (the Joy Division drummer) found this image in the Cambridge Encyclopedia of Astronomy.  It's a graph showing the regularity of the pulses of [CP 1919 (PSR B1919+21)](http://en.wikipedia.org/wiki/PSR_B1919%2B21) - the first radio pulsar discovered (in 1967).
+Stephen Morris (the Joy Division drummer) found this image in the Cambridge Encyclopedia of Astronomy.  It's a graph showing the regularity of the pulses of [CP 1919 (PSR B1919+21)](http://en.wikipedia.org/wiki/PSR_B1919%2B21) - the first radio pulsar discovered (1967).
 
-The original image had a light background and dark lines, Peter Saville inverted this image for the cover of Unknown Pleasures.
+Peter Saville took this image and inverted it for the for the cover of the Unknown Pleasures, there's more information in the video below.
 
-Check out [this blog post](http://adamcap.com/2011/05/19/history-of-joy-division-unknown-pleasures-album-art/) for more information about when the image appeared.
+<iframe src="//player.vimeo.com/video/51365288?byline=0&amp;portrait=0" width="550" height="309" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen="true"><!----></iframe>
+
+[This blog post](http://adamcap.com/2011/05/19/history-of-joy-division-unknown-pleasures-album-art/) gives some information about when the graph appeared.
 
 ## Data
 
