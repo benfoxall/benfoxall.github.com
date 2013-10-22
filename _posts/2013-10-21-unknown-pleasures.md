@@ -2,7 +2,7 @@
 layout: post
 published: "draft"
 ---
-<p class="lead">The album artwork for Joy Division's <a href="http://en.wikipedia.org/wiki/Unknown_Pleasures">Unknown Pleasures</a> album is based on a graph of radio waves from the first identified pulsar - this is a graph of radio waves from the same pulsar, but recorded in 2012.</p>
+<p class="lead">The artwork for Joy Division's <a href="http://en.wikipedia.org/wiki/Unknown_Pleasures">Unknown Pleasures</a> album is based on a graph of radio waves from the first identified pulsar - this is a graph of radio waves from the same pulsar, but recorded in 2012.</p>
 
 <div id="pulsar" class="cr" data-cr="pulsar" data-cr-defer="">
   <div id="pulsar-graph"><!-- --></div>
