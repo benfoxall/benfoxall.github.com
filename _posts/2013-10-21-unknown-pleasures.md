@@ -46,7 +46,7 @@ I took that wav file and had a look at the data with [sox](http://sox.sourceforg
 
 <p><a href="/img/un-pl-spectrogram.png"><img alt="Spectogram of CP1919 (PSR B1919+21)" src="/img/un-pl-spectrogram.png" class="img-responsive" /></a></p>
 
-There was a lot of blank space in the data. I'm not sure if this is because of the way that I extracted it, or the way that it had been pre-processed.  Also, when I managed to plot it, it's no-where as pretty as the original one, I'm not sure if this is because the equiptment is all fancy digital now or what.
+There was a lot of blank space in the data. I'm not sure if this is because of the way that I extracted it, or the way that it had been pre-processed.  Also, when I managed to plot it, it's no-where as pretty as the original one, I'm not sure if this is because the equipment is all fancy digital now or what.
 
 ## Visualisation
 
