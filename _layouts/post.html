@@ -12,5 +12,10 @@ layout: default
 	</a>
 </h1>
 <div {% if page.cr %}class="cr" data-cr="{{page.cr}}" data-cr-defer=""{% endif %}>
+
+{% unless post.published == "draft" %}
+<p class="alert alert-warning">this is a draft post - there are probably errors and the url may change</p>
+{% endunless %}
+
 {{ content }}
 </div>
