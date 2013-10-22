@@ -42,7 +42,9 @@ The data for the graph above comes from [Pulsar Group CSIRO Astronomy and Space 
 
 You can listen to it [here](http://www.atnf.csiro.au/research/pulsar/audio/CP1919.wav) - you're listening to a star which is pretty mental.
 
-I took that wav file and pulled out the data by hacking about with [sox](http://sox.sourceforge.net/), then [canvas_waveform](https://github.com/aalin/canvas_waveform).
+I took that wav file and had a look at the data with [sox](http://sox.sourceforge.net/) (I eventually pulled out numbers with [canvas_waveform](https://github.com/aalin/canvas_waveform)).
+
+<p><a href="/img/un-pl-spectrogram.png"><img alt="Spectogram of CP1919 (PSR B1919+21)" src="/img/un-pl-spectrogram.png" class="img-responsive" /></a></p>
 
 There was a lot of blank space in the data. I'm not sure if this is because of the way that I extracted it, or the way that it had been pre-processed.  Also, when I managed to plot it, it's no-where as pretty as the original one, I'm not sure if this is because the equiptment is all fancy digital now or what.
 
