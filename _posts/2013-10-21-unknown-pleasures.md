@@ -48,7 +48,9 @@ I took that wav file and had a look at the data with [sox](http://sox.sourceforg
 
 <p><a href="/img/un-pl-spectrogram.png"><img alt="Spectogram of CP1919 (PSR B1919+21)" src="/img/un-pl-spectrogram.png" class="img-responsive" /></a></p>
 
-There was a lot of blank space in the data. I'm not sure if this is because of the way that I extracted it, or the way that it had been pre-processed.  Also, when I managed to plot it, it's no-where as pretty as the original one; I'm not sure if this is because the equipment is all fancy digital now or what.
+There was a lot of blank space in the data. I'm not sure if this is because of the way that I extracted it, or the way that it had been pre-processed, or maybe that equiptment has changed over the last 40 years.
+
+When I managed to plot it, it's no-where as pretty as the original one.  I've just been talking to [@olorton](https://twitter.com/intent/user?screen_name=olorton) about why this might be the case - we think it might be because I'm plotting amplitude rather than frequency, he's going to have a hack tonight to see if he can get something better.  If you have any ideas, please do get in touch.
 
 ## Visualisation
 
