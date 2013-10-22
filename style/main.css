@@ -165,3 +165,18 @@ pre {
   border: none;
   border-left: 5px solid #eee
 }
+
+#pulsar{
+  visibility: hidden;
+}
+#pulsar-graph{
+  height:600px;
+  width:550px;
+  max-width: 100%;
+}
+#pulsar form{
+  margin:2em 0;
+}
+#pulsar label{
+  padding-right:2em;
+}
