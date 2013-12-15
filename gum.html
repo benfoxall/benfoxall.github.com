@@ -1,0 +1,374 @@
+<html>
+<head>
+  <title>gUM Objects</title>
+</head>
+<body>
+
+  <video autoplay="true" style="display:none"></video>
+  <canvas></canvas>
+
+  <canvas id="hist" width="255" height="300"></canvas>
+
+  <br />
+  <label>
+    <input type="checkbox" checked="checked" id="calibrate">
+    calibrate
+  </label>
+
+
+  <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+
+  <script type="text/javascript">
+
+    var calibrating = true;
+    document.getElementById('calibrate').onchange = function(){
+      calibrating = this.checked;
+      console.log(calibrating);
+    }
+
+    navigator.getMedia = ( navigator.getUserMedia ||
+                           navigator.webkitGetUserMedia ||
+                           navigator.mozGetUserMedia ||
+                           navigator.msGetUserMedia);
+
+    var video = document.querySelector('video'),
+        canvas = document.querySelector('canvas'),
+        ctx = canvas.getContext('2d'), witdh, height;
+
+
+    navigator.getMedia (
+
+       // constraints
+       {
+          video: true
+       },
+
+       // successCallback
+       function(localMediaStream) {
+          video.src = window.URL.createObjectURL(localMediaStream);
+          
+          waitForVideo();
+       },
+
+       // errorCallback
+       function(err) {
+        console.log("The following error occured: " + err);
+       }
+
+    );
+
+    function waitForVideo(){
+      if(video.videoWidth){
+        width = canvas.width = video.videoWidth;
+        height = canvas.height = video.videoHeight;
+        ctx.setStrokeColor('rgba(0,255,0,0.9)');
+        ctx.translate(width, 0);
+        ctx.scale(-1, 1);
+      }
+      requestAnimationFrame(video.videoWidth ? (calibrating ? calibrate : recognise) : waitForVideo);
+    }
+
+
+    // windows (edit in console)
+    var wh, ws, wv;
+
+    wh = 10;
+    ws = 10;
+    wv = 30;
+
+    // calibration outpu
+    var maxh, minh, maxs, mins, maxv, minv;
+
+    function calibrate(){
+      requestAnimationFrame(calibrating ? calibrate : recognise);
+      ctx.drawImage(video, 0, 0);
+      var image = ctx.getImageData(0,0,canvas.width, canvas.height);
+
+      // for drawing over later
+      var image_rgb = ctx.getImageData(0,0,canvas.width, canvas.height);
+    
+
+      // calibration window
+      var cSize = Math.min(height,width) / 5,
+          xmin = (width-cSize)/2,
+          xmax = ((width-cSize)/2) + cSize,
+          ymin = (height-cSize)/2,
+          ymax = ((height-cSize)/2) + cSize;
+
+      // console.time("computing hsv");
+
+      // buckets for the h,s,v values
+      var buckets = new Uint16Array(255*6);
+
+      var x, y, i, r, g, b, h, s, v, cmax, cmin, delta, inbound;
+      for (var x = image.width - 1; x >= 0; x--) {
+        for (var y = image.height - 1; y >= 0; y--) {
+            i = ((x) + (y * image.width))*4;
+
+            r = image.data[i];
+            g = image.data[i+1];
+            b = image.data[i+2];
+
+            // Cmax = max(R', G', B')
+            // Cmin = min(R', G', B')
+            cmax = Math.max(r,g,b);
+            cmin = Math.min(r,g,b);
+
+            // console.log(cmax, cmin)
+
+            // Δ = Cmax - Cmin
+            delta = cmax - cmin;
+
+            // Hue calculation:
+            if(cmax == r){
+              h = 60 * (((g - b) / delta) % 6)
+            } else if(cmax == g){
+              h = 60 * (((b - r) / delta) + 2)
+            } else if(cmax == b){
+              h = 60 * (((r - g) / delta) + 4)
+            }
+
+            // Saturation calculation:
+
+            if(delta == 0){
+              s = 0;
+            } else {
+              s = (delta*255)/cmax;
+            }
+
+            // Value calculation:
+            // V = Cmax
+            v = cmax;
+
+            h = (((h || 0)+360) % 360 ) / 1.411764
+
+            image.data[i] = h;
+            image.data[i+1] = s;
+            image.data[i+2] = v;
+
+            bucketOffset = x > xmin && x < xmax && y > ymin && y < ymax ? 0 : 3 * 255;
+
+            buckets[image.data[i] + bucketOffset]++
+            buckets[image.data[i+1] + 255 + bucketOffset]++
+            buckets[image.data[i+2] + 255 + 255 + bucketOffset]++
+
+        }
+      }
+
+      // console.time("drawing hist");
+
+      // ctx.putImageData(image, 0,0);
+
+      var cSize = Math.min(height,width) / 5;
+      ctx.fillStyle = 'rgba(255,0,0,0.8)';
+      ctx.strokeRect((width-cSize)/2,(height-cSize)/2,cSize,cSize);
+
+      // draw histograms
+      var hist = document.getElementById('hist'),
+          hctx = hist.getContext('2d');
+
+      hist.width = hist.width;
+
+      hctx.fillStyle = 'rgba(0,0,0,0.5)';
+
+      // scale them into view
+      var max = Math.max.apply(Math,buckets)/100;
+
+      // and more
+      max /= 2;
+
+      var inner, hist_i, c; 
+
+      for (var i = buckets.length - 1; i >= 0; i--) {
+
+        inner = i < (3 * 255);
+
+        hist_i = Math.floor((i / 255) % 3);
+        hctx.fillStyle = 
+            hist_i == 0 ? 'rgba(200,150,0,0.6)' : 
+            hist_i == 1 ? 'rgba(0,200,150,0.6)' : 
+            hist_i == 2 ? 'rgba(0,150,200,0.6)' : 
+            'rgba(1,1,1,0.6)';
+
+
+        c = buckets[i] / max;
+        hctx.fillRect(i % 255, (hist_i* 100) + 100 - c, 1, c);
+      };
+
+      console.timeEnd("drawing hist");
+
+      // find the peaks of the bounded histograms
+      var ah, as, av;
+
+      // the index of the maximum value of an array
+      function max_index(arr){
+        var ind = -1, max = -1;
+        for (var i = arr.length - 1; i >= 0; i--) {
+          if(arr[i] > max) ind = i, max = arr[i];
+        };
+        return ind;
+      }
+
+      ah = max_index(buckets.subarray(0,255))
+      as = max_index(buckets.subarray(256, 510))
+      av = max_index(buckets.subarray(511, 765))
+
+      hctx.fillStyle = 'red';
+      hctx.fillRect(ah, 0, 1, 100);
+      hctx.fillRect(as, 100, 1, 100);
+      hctx.fillRect(av, 200, 1, 100);
+
+      maxh = ah + wh;
+      minh = ah - wh;
+      maxs = as + ws;
+      mins = as - ws;
+      maxv = av + wv;
+      minv = av - wv;
+
+      hctx.fillStyle = 'rgba(255,0,0,0.3)';
+      hctx.fillRect(ah - wh, 0, wh*2, 100);
+      hctx.fillRect(as - ws, 100, ws*2, 100);
+      hctx.fillRect(av - wv, 200, wv*2, 100);
+
+
+
+      var hx,sx,vx;
+      for (var x = image.width - 1; x >= 0; x--) {
+        for (var y = image.height - 1; y >= 0; y--) {
+            i = ((x) + (y * image.width))*4;
+
+            hx = image.data[i];
+            sx = image.data[i+1];
+            vx = image.data[i+2];
+
+            if(hx > minh && hx < maxh
+              && sx > mins && sx < maxs
+              && vx > minv && vx < maxv){
+              image_rgb.data[i] = 0;
+              image_rgb.data[i+1] = 0;
+              image_rgb.data[i+2] = 0;
+              
+            }
+        }
+      }
+
+
+
+
+      ctx.putImageData(image_rgb, 0,0);
+      ctx.strokeRect((width-cSize)/2,(height-cSize)/2,cSize,cSize);
+
+
+    }
+
+    
+
+    function recognise(){
+      requestAnimationFrame(calibrating ? calibrate : recognise);
+
+      ctx.drawImage(video, 0, 0);
+      var image = ctx.getImageData(0,0,canvas.width, canvas.height);
+
+      var xbucket = new Uint16Array(canvas.width),
+          ybucket = new Uint16Array(canvas.height);
+
+      var x, y, i, r, g, b, h, s, v, cmax, cmin, delta, inbound;
+      for (var x = image.width - 1; x >= 0; x--) {
+        for (var y = image.height - 1; y >= 0; y--) {
+            i = ((x) + (y * image.width))*4;
+
+            r = image.data[i];
+            g = image.data[i+1];
+            b = image.data[i+2];
+
+            // Cmax = max(R', G', B')
+            // Cmin = min(R', G', B')
+            cmax = Math.max(r,g,b);
+            cmin = Math.min(r,g,b);
+
+            // console.log(cmax, cmin)
+
+            // Δ = Cmax - Cmin
+            delta = cmax - cmin;
+
+            // Hue calculation:
+            if(cmax == r){
+              h = 60 * (((g - b) / delta) % 6)
+            } else if(cmax == g){
+              h = 60 * (((b - r) / delta) + 2)
+            } else if(cmax == b){
+              h = 60 * (((r - g) / delta) + 4)
+            }
+
+            // Saturation calculation:
+
+            if(delta == 0){
+              s = 0;
+            } else {
+              s = (delta*255)/cmax;
+            }
+
+            // Value calculation:
+            // V = Cmax
+            v = cmax;
+
+            h = (((h || 0)+360) % 360 ) / 1.411764
+
+            if(h > minh && h < maxh
+              && s > mins && s < maxs
+              && v > minv && v < maxv){
+              image.data[i] = 0;
+              image.data[i+1] = 0;
+              image.data[i+2] = 0;
+              xbucket[x] ++;
+              ybucket[y] ++;
+            }
+        }
+      }
+
+      // ctx.putImageData(image,0,0);
+
+      // get rough bounding box of area
+      var xmatch = Math.max.apply(Math, xbucket) / 10; // 10% 
+      var i;
+
+      var bb = {};
+      for(i = 0; i < xbucket.length; i++){
+        if(xbucket[i] > xmatch){
+          bb.left = width - i;
+          break;
+        }
+      }
+      for(i = 0; i < ybucket.length; i++){
+        if(ybucket[i] > xmatch){
+          bb.top = i;
+          break;
+        }
+      }
+
+      for(i = xbucket.length - 1; i > 0; i--){
+        if(xbucket[i] > xmatch){
+          bb.right = width - i;
+          break;
+        }
+      }
+      for(i = ybucket.length - 1; i > 0; i--){
+        if(ybucket[i] > xmatch){
+          bb.bottom = i;
+          break;
+        }
+      }
+
+      ctx.fillStyle = 'rgba(255,0,0,0.3)';
+      ctx.fillRect(bb.left, bb.top, bb.right - bb.left, bb.bottom - bb.top);
+
+    }
+
+
+
+  </script>
+</body>
+</html>
