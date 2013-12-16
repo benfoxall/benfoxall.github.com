@@ -35,11 +35,7 @@
 
 
 
-
-  <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
-  <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
-  <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-
+  <script src="http://cdn.pubnub.com/pubnub.min.js" ></script>
 
   <script type="text/javascript">
 
@@ -390,14 +386,20 @@
       var cx = (bb.left + bb.right)/2;
       var cy = (bb.top + bb.bottom)/2;
 
+
+
       // ctx.fillRect(bb.left, bb.top, bb.right - bb.left, bb.bottom - bb.top);
 
       var pctx = persistantCanvas.getContext('2d');
 
       drawfn(pctx, last, [cx,cy]);
-      last = [cx,cy];
 
       ctx.drawImage(persistantCanvas, 0, 0);
+
+      if(pub_callback && cx){
+        pub_callback(last, [cx,cy])
+      }
+      last = [cx,cy];
 
     }
 
@@ -524,7 +526,26 @@
       canvas.webkitRequestFullScreen()
     }
 
+
+var pub_callback;
+
     
+if(sessionStorage.getItem('pubkey')){
+   var pubnub = PUBNUB.init({
+     publish_key: sessionStorage.getItem('pubkey'),
+     subscribe_key: 'sub-c172f475-b21b-11e1-832b-bd42eaf713d5'
+   });
+
+   pub_callback = function(current, last){
+    console.log("pub");
+
+       pubnub.publish({
+         channel: 'draw',
+         message: {current:current, last:last}
+       });     
+    
+   }
+}
 
 /*
 change width (console)
