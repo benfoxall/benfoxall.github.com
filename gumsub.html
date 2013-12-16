@@ -1,0 +1,50 @@
+<html>
+<head>
+  <title>gUM Objects</title>
+</head>
+<body>
+  <button id="start">Start</button>
+  <canvas width="500" height="500"></canvas>
+
+
+  <script src="http://cdn.pubnub.com/pubnub.min.js" ></script>
+
+  <script type="text/javascript">
+
+    var canvas = document.querySelector('canvas'),
+        ctx = canvas.getContext('2d');
+    
+    ctx.translate(500, 0);
+    ctx.scale(-1, 1);
+
+
+   var pubnub = PUBNUB.init({
+     subscribe_key: 'sub-c172f475-b21b-11e1-832b-bd42eaf713d5'
+   });
+
+   start.onclick = function(){
+
+     pubnub.subscribe({
+       channel: 'draw',
+       message: function(data){
+
+        console.log(data)
+
+        ctx.strokeStyle = '#08f';
+        ctx.beginPath();
+        
+        if(data.last){
+          ctx.moveTo(data.current[0], data.current[1])
+          ctx.lineTo(data.last[0],data.last[1])
+        }
+        
+        ctx.stroke();
+      }
+     });   
+   }
+ 
+
+
+  </script>
+</body>
+</html>
