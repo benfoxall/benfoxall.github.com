@@ -1,0 +1,388 @@
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+body {
+    background: #222 url('../img/snowflake.png') top right no-repeat;
+    border-top: solid 6px #0084ad;
+    color: #fff;
+    font-family: 'Lato', sans-serif;
+    margin: 0;
+    padding: 0 15px 0 15px;
+    position: relative;
+}
+
+@font-face {
+  font-family: 'Bree Serif';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Bree Serif'), local('BreeSerif-Regular'), url(../fonts/bree.woff) format('woff');
+}
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Lato Light'), local('Lato-Light'), url(../fonts/lato-light.woff) format('woff');
+}
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Lato Regular'), local('Lato-Regular'), url(../fonts/lato.woff) format('woff');
+}
+@font-face {
+  font-family: 'Cookie';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Cookie-Regular'), url(../fonts/cookie.woff) format('woff');
+}
+
+ul, ol {
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3 {
+    font-family: 'Bree Serif', serif;
+}
+
+h1 {
+    color: #fff;
+    font-family: 'Cookie';
+    font-size: 38px;
+    font-weight: 300;
+    line-height: 1.4em;
+    margin: 50px 0 40px 0;
+    text-align: center;
+}
+
+h2 {
+    border-bottom: dashed 1px #3f3f3f;
+    color: #ddd;
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    font-size: 26px;
+    margin-top: 0;
+    padding-bottom: 10px;
+}
+
+h3 {
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    text-align: center;
+}
+
+.wo-leaf {
+    background-size: 40px 40px;
+    margin-right: 10px;
+    vertical-align: middle;
+    width: 40px;
+}
+
+/* Main screen */
+
+iframe {
+    max-width: 100%;
+}
+
+.left {
+    float: left;
+    margin-right: 2%;
+    position: relative;
+    width: 76%;
+}
+
+.right {
+    float: left;
+    width: 22%;
+}
+
+.clear {
+    clear: both;
+}
+
+#hist {
+    display: none;
+}
+
+.iframe-bg {
+    background: rgba(0,0,0,.5);
+    border-radius: 4px;
+    padding: 20px;
+    width: 100%;
+}
+
+.action {
+    bottom: 20px;
+    height: 10%;
+    width: 7.8125%;
+    position: absolute;
+}
+
+.action div {
+    position: relative;
+}
+
+.action-erase {
+    background: #bf2222;
+    left: 20px;
+}
+
+.action-save {
+    background: #29d02d;
+    right: 20px;
+}
+
+.action-icon {
+    background-image: url('../img/clear.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    display: block;
+    width: 27px;
+    height: 27px;
+    margin: 0 auto;
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    margin-left: -13.5px;
+    top: -13.5px;
+    margin-top: 50%;
+}
+
+.save-icon {
+    background-image: url('../img/save.png');
+    margin-left: -15px;
+    top: -12px;
+    height: 24px;
+    width: 30px;
+}
+
+
+/* Guesses on main screen */
+
+#messages {
+
+}
+
+#messages li {
+    background: #0084ad; /* Old browsers */
+    background: -moz-linear-gradient(top, #0084ad 0%, #2989d8 50%, #207cca 51%, #0084ad 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#0084ad), color-stop(50%,#2989d8), color-stop(51%,#207cca), color-stop(100%,#0084ad)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #0084ad 0%,#2989d8 50%,#207cca 51%,#0084ad 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #0084ad 0%,#2989d8 50%,#207cca 51%,#0084ad 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #0084ad 0%,#2989d8 50%,#207cca 51%,#0084ad 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #0084ad 0%,#2989d8 50%,#207cca 51%,#0084ad 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0084ad', endColorstr='#0084ad',GradientType=0 ); /* IE6-9 */
+    border: solid 1px #00629b;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    padding: 5px 10px;
+    margin: 0 10px 15px 0;
+    float: left;
+    font-weight: 300;
+    position: relative;
+}
+
+#messages li:after {
+    content: " ";
+    display: block;
+    width: 0;
+    height: 0;
+    border-right: 6px solid transparent;
+    border-left: 6px solid transparent;
+    border-top: 5px solid #00517a;
+    position: absolute;
+    left: 60%;
+    bottom: -6px;
+    z-index: 2;
+}
+
+#messages li:nth-child(2n):after {
+    left: 20%;
+}
+
+#messages li:nth-child(3n):after {
+    left: 35%;
+}
+
+/* Tech area: calibrarion, clear, draw */
+
+.tech-area {
+    background: rgba(0,0,0,.5);
+    border-radius: 4px;
+    padding: 20px;
+    margin-top: 15px;
+    width: 50%;
+}
+
+/* Content editable status */
+
+.info {
+    background: rgba(0,0,0,.3);
+    border-radius: 4px;
+    font-size: 24px;
+    font-weight: 300;
+    padding: 5px;
+}
+
+/* User guess */
+
+.user-guess-form {
+    background: rgba(0,0,0,.5);
+    border: solid 1px #000;
+    border-radius: 4px;
+    padding: 15px;
+}
+
+input {
+    display: inline-block;
+    font-size: 24px;
+    padding: 10px;
+    font-family: 'Cookie', 'Bree Serif', sans-serif;
+}
+
+.guess-viewport {
+    background: #fff;
+    border: solid 20px rgba(0,0,0,.92);
+    margin-bottom: 10px;
+    text-align: center;
+}
+.guess-viewport canvas{
+    background: #fff;
+    margin:auto;
+    max-width: 100%;
+    width: 100%;
+}
+
+.user-guess-input {
+    border: solid 2px #fff;
+    float: left;
+    width: 75%;
+}
+
+.user-guess-submit {
+    background: #c93a42;
+    border: solid 2px #c93a42;
+    color: #fff;
+    font-size: 18px;
+    text-rendering: optimizeLegibility;
+    padding: 10px;
+    width: 25%;
+    font-family: 'Bree Serif', serif;
+}
+
+.user-guess-submit:hover {
+    background: #b82931;
+    cursor: pointer;
+}
+
+/* Previous drawing listing */
+
+.previous-drawings li {
+    border: solid 10px rgba(0,0,0,.5);
+    float: left;
+    margin: 0 0 2% 2%;
+    width: 49%;
+}
+
+.previous-drawings canvas {
+    width: 100%;
+}
+
+.previous-drawings li:nth-child(odd) {
+    margin-left: 0;
+}
+
+.previous-drawings canvas{
+    background-color:#fff;
+    max-width: 100%;
+}
+
+@media screen and (max-width: 480px) {
+    .user-guess-input {
+        border-radius: 4px 4px 0 0;
+    }
+    .user-guess-submit,
+    .user-guess-input {
+        text-align: center;
+        width: 100%;
+    }
+    .user-guess-submit {
+        border-radius: 0 0 4px 4px;
+        margin-top: -5px;
+    }
+}
+
+/* Responsive */
+
+@media screen and (max-width: 480px) {
+    h1 {
+        font-size: 36px;
+        margin: 20px 0;
+    }
+    .wo-leaf {
+        margin-top: -10px;
+        width: 30px;
+    }
+}
+
+@media screen and (min-width: 980px) {
+.ribbon {
+  font-size: 34px;
+ /* This ribbon is based on a 16px font side and a 24px vertical rhythm. I've used em's to position each element for scalability. If you want to use a different font size you may have to play with the position of the ribbon elements */
+
+ width: 40%;
+    
+ position: relative;
+ background: #0084ad;
+ color: #fff;
+ text-align: center;
+ padding: .5em 1em; /* Adjust to suit */
+ margin: 1em auto 2em; /* Based on 24px vertical rhythm. 48px bottom margin - normally 24 but the ribbon 'graphics' take up 24px themselves so we double it. */
+}
+.ribbon:before, .ribbon:after {
+ content: "";
+ position: absolute;
+ display: block;
+ bottom: -1em;
+ border: 1.5em solid #00517a;
+ z-index: -1;
+}
+.ribbon:before {
+ left: -2em;
+ border-right-width: 1.5em;
+ border-left-color: transparent;
+}
+.ribbon:after {
+ right: -2em;
+ border-left-width: 1.5em;
+ border-right-color: transparent;
+}
+.ribbon .ribbon-content:before, .ribbon .ribbon-content:after {
+ content: "";
+ position: absolute;
+ display: block;
+ border-style: solid;
+ border-color: #00628b transparent transparent transparent;
+ bottom: -1em;
+}
+.ribbon .ribbon-content:before {
+ left: 0;
+ border-width: 1em 0 0 1em;
+}
+.ribbon .ribbon-content:after {
+ right: 0;
+ border-width: 1em 1em 0 0;
+}
+}
+
+.info{
+ padding:1em;
+ text-align: center;
+}
+.info:hover{
+    background-color:#000;
+}
