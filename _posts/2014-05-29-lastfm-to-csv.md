@@ -27,14 +27,12 @@ A few libraries that I found useful:
 * [async](https://github.com/caolan/async) - for organising the calls to the api and processing the results.
 * [Filesaver.js](https://github.com/eligrey/FileSaver.js/) - lets you download the resulting Blob objects as a file.
 
-### Conclusions
-
 Building the logic in the browser rather than server means a few things:
 
-* people have access to their data instantly
-* no servers to keep running
-* you don't have control over api limiting
-* credential issues. Lastfm is a great api, cors, and unauthenticated requests - lets you do this kind of stuff
+* people have access to their data instantly - no waiting around for a file to be generated on the server
+* no servers to keep running - all code runs in the browser
+* you don't have control over api limiting - it someone gathers data in several windows, they are likely to hit rate limiting issues
+* access issues. Last fm gives you a nice [cors][cors] endpoint, and also lets you access a lot of the methods with a simple public api-key auth.
 
 ## Other things
 
@@ -47,3 +45,4 @@ Andy blogged about his [last fm visualisations][andy-lastfm] - turns out that I'
 [api-call]: http://www.last.fm/api/show/user.getRecentTracks
 [andy-lastfm]: http://gravyanecdote.com/uncategorized/lastfmthesummary/
 [andy-lastfm-obsessive]: http://gravyanecdote.com/uncategorized/last-fm-part-3-obsessions/
+[cors]: https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS
