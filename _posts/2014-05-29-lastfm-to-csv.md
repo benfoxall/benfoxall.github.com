@@ -38,10 +38,12 @@ Building the logic in the browser rather than server means a few things:
 
 ## Other things
 
-Andy blogged about his last fm visualisations - turns out that I'm quite obsessive.
+Andy blogged about his [last fm visualisations][andy-lastfm] - turns out that I'm [quite obsessive][andy-lastfm-obsessive].
 
 [andy-twitter]: https://twitter.com/acotgreave
 [gist]: https://gist.github.com/benfoxall/7976631
 [www]: http://benjaminbenben.com/lastfm-to-csv/
 [github]: https://github.com/benfoxall/lastfm-to-csv
 [api-call]: http://www.last.fm/api/show/user.getRecentTracks
+[andy-lastfm]: http://gravyanecdote.com/uncategorized/lastfmthesummary/
+[andy-lastfm-obsessive]: http://gravyanecdote.com/uncategorized/last-fm-part-3-obsessions/
