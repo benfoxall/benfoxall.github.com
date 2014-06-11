@@ -3,7 +3,7 @@ layout: post
 title: LastFM to CSV
 ---
 
-I made [lastfm to csv](www) - a page for downloading lastfm listening data as a csv file.  API requests are made directly from the browser, avoiding the need for any server-side code.
+I made [lastfm to csv][www] - a page for downloading lastfm listening data as a csv file.  API requests are made directly from the browser, avoiding the need for any server-side code.
 {: .lead}
 
 [give it a shot now][www]{: .btn.btn-primary} (my username is benjaminf)
