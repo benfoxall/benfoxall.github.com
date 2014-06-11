@@ -33,9 +33,9 @@ A few things I noticed by doing it this way:
 * harder to avoid api limiting - it someone gathers data in several windows, they could get rate limited.
 * potential access issues. Last fm gives you access to a nice [cors][cors] endpoint, though that's not always the case with other apis.
 
-## Other things
+---
 
-Andy blogged about his awesome [last fm visualisations][andy-lastfm] - turns out that I'm [quite obsessive][andy-lastfm-obsessive].
+Andy blogged about his awesome [last fm visualisations][andy-lastfm], you should check them out - turns out that I'm [quite obsessive][andy-lastfm-obsessive].
 
 [andy-twitter]: https://twitter.com/acotgreave
 [gist]: https://gist.github.com/benfoxall/7976631
