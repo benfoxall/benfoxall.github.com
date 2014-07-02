@@ -223,3 +223,32 @@ for the future:
   box-shadow: none;
 }
 */
+.email-stats {
+  font: 10px sans-serif;
+}
+
+.email-stats text{
+  fill:#aaa;
+}
+
+.email-stats .axis path,
+.email-stats .axis line {
+  fill: none;
+  stroke: #666;
+  shape-rendering: crispEdges;
+}
+
+.email-stats .x.axis path {
+  stroke: #666;
+  stroke-width: 1px;
+}
+.email-stats .area {
+  fill: #ff5722;
+  stroke: none;
+  stroke-width: 0px;
+}
+
+.email-stats svg{
+  display:block;
+  margin-bottom:4em;
+}
