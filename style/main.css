@@ -225,6 +225,7 @@ for the future:
 */
 .email-stats {
   font: 10px sans-serif;
+  height:150px;
 }
 
 .email-stats text{
@@ -250,5 +251,5 @@ for the future:
 
 .email-stats svg{
   display:block;
-  margin-bottom:4em;
+  height:150px;
 }
