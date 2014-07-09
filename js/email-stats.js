@@ -5,7 +5,8 @@ define(['d3'], function(d3){
 
 		console.log("..", stat)
 		var key = 'inbox-work';
-		var root = 'http://email-stats.herokuapp.com'
+		var root = 'http://email.benjaminbenben.com'
+		// var root = 'http://email-stats.herokuapp.com'
 		// var root = 'http://localhost:3000'
 
 
