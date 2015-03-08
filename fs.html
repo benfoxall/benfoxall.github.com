@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Foxall Storage™</title>
+</head>
+<body>
+
+  <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  <script src="fs.data.js"></script>
+  <script type="text/javascript">
+
+  var width = 400,
+
+      svg = d3.select('body')
+              .append('svg')
+              .attr('width', width)
+              .attr('height', width),
+
+      actual   = compose(prop('actual'), decode),
+      expected = compose(prop('expected'), decode),
+      matches  = equal(prop('actual'), prop('expected'));
+
+  svg.selectAll('circle')
+     .data(data)
+     .enter()
+     .append('circle')
+     .attr('r', 4)
+     .attr('cx',   compose(actual, prop('x')))
+     .attr('cy',   compose(actual, prop('y')))
+     .attr('fill', condition(matches, 'rgba(0,0,255,0.3)', 'rgba(255,0,0,0.3)'));
+
+  svg.selectAll('line')
+     .data(data.filter(not(matches)))
+     .enter()
+     .append('line')
+     .attr('x1', compose(actual, prop('x')))
+     .attr('y1', compose(actual, prop('y')))
+     .attr('x2', compose(expected, prop('x')))
+     .attr('y2', compose(expected, prop('y')))
+     .attr('stroke', 'rgba(255,0,0,0.3)');
+
+
+  function decode(str){
+    return _decode(str, 5, 5, width-10)
+  }
+
+  function _decode(str, xmin, ymin, size){
+
+    if(str){
+      var n = parseInt(str.substr(0,1), 16);
+          s = size/4;
+
+      return _decode(
+        str.slice(1),
+        xmin + ((n&3) * s),
+        ymin + ((n>>2) * s),
+        s
+      )
+    }
+
+    return {
+      x: xmin + size/2,
+      y: ymin + size/2
+    }
+  }
+
+  // helper stuff
+  // (I don't usually code like this - this was just for fun)
+  function compose(){
+    var _arguments = [].slice.call(arguments,0);
+    return function(c){
+      return _arguments.reduce(function(value, fn){
+        return fn(value)
+      }, c)
+    }
+  }
+
+  function prop(p){
+    return function(ob){
+      return ob[p]
+    }
+  }
+
+  function not(fn){
+    return function(_){
+      return !fn(_)
+    }
+  }
+
+  function equal(a,b){
+    return function(_){
+      return a(_) === b(_)
+    }
+  }
+  function condition(test, positive, negative){
+    return function(_){
+      return test(_) ? positive : negative
+    }
+  }
+
+  </script>
+</body>
+</html>
