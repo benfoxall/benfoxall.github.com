@@ -1,9 +1,8 @@
 ---
-layout: nil
 ---
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
- 
+
  <title>BenjaminBenBen</title>
  <link href="http://benjaminbenben.com/atom.xml" rel="self"/>
  <link href="http://benjaminbenben.com/"/>
@@ -12,7 +11,7 @@ layout: nil
  <author>
    <name>Ben Foxall</name>
  </author>
- 
+
  {% for post in site.posts %}
  {% unless post.published == "draft" %}
  <entry>
@@ -24,5 +23,5 @@ layout: nil
  </entry>
  {% endunless %}
  {% endfor %}
- 
+
 </feed>
