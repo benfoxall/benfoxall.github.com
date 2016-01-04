@@ -3,7 +3,7 @@ layout: post
 title: In With the Old
 ---
 
-After more than a year of no posts - I'm going to try harder to blog again
+After more than a year of no posts - I'm still here
 {:.lead}
 
 It’s been a really busy year; a lot of my spare time has been spent hacking on, or preparing for, talks. In the last year I’ve spoken at:

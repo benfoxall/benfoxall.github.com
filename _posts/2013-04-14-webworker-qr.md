@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Reading QR codes from getUserMedia with web workers
+title: Image processing &amp; web workers
 ---
 
 ### tl;dr - examples (currently requires chrome):
@@ -66,8 +66,3 @@ worker.postMessage(imagedata, [imagedata.data.buffer]);
 
 
 Jsqrcode is on [github](https://github.com/LazarSoft/jsqrcode), as is [my fork](https://github.com/benfoxall/jsqrcode) with the starts of the worker interface. You can either view source on the examples above, or view them on [github](https://github.com/benfoxall/benfoxall.github.com/tree/master/qr).
-
-
-
-
-

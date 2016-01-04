@@ -7,17 +7,36 @@ layout: default
 <h1>
   <a href="{{ post.url }}">
   	{{ post.title }}
-	<small class="date">{{ post.date | date: "%d %B %Y" }}</small>
+	  {% comment %}
+      <small class="date">{{ post.date | date: "%d %B %Y" }}</small>
+    {% endcomment %}
   </a>
 </h1>
-
-<div {% if post.cr %}class="cr" data-cr="{{post.cr}}" data-cr-defer=""{% endif %}>
-{{ post.content}}
-</div>
-
-<hr class="inter-post" />
 {% endunless %}
 {% endfor %}
 
-
-
+<hr />
+<footer>
+  <ul class="icon-">
+    <li>
+      <a href="https://twitter.com/benjaminbenben">
+        @benjaminbenben
+      </a>
+    </li>
+    <li>
+      <a href="https://github.com/benfoxall/">
+        github/benfoxall
+      </a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com//benfoxall/">
+        facebook/benfoxall
+      </a>
+    </li>
+    <li>
+      <a href="https://www.instagram.com/benfoxall/">
+        instagram/benfoxall
+      </a>
+    </li>
+  </ul>
+</footer>

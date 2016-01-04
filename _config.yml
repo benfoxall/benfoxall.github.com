@@ -3,3 +3,6 @@ lsi: false
 highlighter: pygments
 permalink: pretty
 markdown: kramdown
+
+sass:
+  sass_dir: style
