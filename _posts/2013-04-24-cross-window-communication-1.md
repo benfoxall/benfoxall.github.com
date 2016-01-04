@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Cross window communication <small>part&nbsp;1</small>"
+title: "Cross window communication"
 cr: xwindow1
 ---
 
@@ -8,7 +8,7 @@ cr: xwindow1
 
 <!-- _note, I've not taken much care to make these cross-browser._ -->
 
-My slides are now [online](/winwin), though they are more prompts for me to talk, rather than being full of information.  The demos wouldn't really work with it being publically accessible, so I'm going to cover each of the techniques I mentioned on this blog.
+My slides are now [online](/winwin), though they are more prompts for me to talk, rather than being full of information.  The demos wouldn't really work with it being publicly accessible, so I'm going to cover each of the techniques I mentioned on this blog.
 
 The websockets/binaryJS/webRTC things are on the way - just working on getting the server side part hosted nicely.
 
@@ -23,7 +23,7 @@ document.onselectionchange = function(e){
 	win.postMessage(document.getSelection().toString(), '*' );
 }
 
-// (on the target window) listen for messages 
+// (on the target window) listen for messages
 window.addEventListener('message', function(e){
 	echo.textContent = e.data;
 });
@@ -60,4 +60,3 @@ This approach can become particularly interesting when the data being synced is 
 #### demo <small>move your mouse over the area below, any other windows open on this page will update</small>
 
 <div id="demo2"><!----></div>
-

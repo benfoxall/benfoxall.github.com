@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Using PhantomJS WebServer
+title: PhantomJS WebServer
 ---
 
 <p class="lead">The <a href="http://phantomjs.org/">PhantomJS</a> WebServer module lets you create self contained web applications that are easy to deploy to heroku using the PhantomJS build pack.</p>
@@ -16,7 +16,7 @@ var page = new WebPage();
 
 page.open("http://lanyrd.com/places/oxfordshire/", function(){
   var events = page.evaluate(function(){
-    return $('.vevent .summary').map(function(e){ 
+    return $('.vevent .summary').map(function(e){
       return '* ' + this.innerText
     }).toArray().join('\n');
   });
@@ -56,12 +56,12 @@ server.listen(8080, function(request, response) {
 
   page.open("http://lanyrd.com/places/oxfordshire/", function(){
     var events = page.evaluate(function(){
-      return $('.vevent .summary').map(function(e){ 
+      return $('.vevent .summary').map(function(e){
         return '* ' + this.innerText
       }).toArray().join('\n');
     });
 
-    // Rather than console logging, write the data back as a 
+    // Rather than console logging, write the data back as a
     // response to the user
     //
     // console.log('Upcoming Events in Oxfordshire:');
