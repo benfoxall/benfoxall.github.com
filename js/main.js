@@ -18,7 +18,10 @@ require.config(
 			"d3": "http://d3js.org/d3.v3.min",
 			"ko": "http://cdnjs.cloudflare.com/ajax/libs/knockout/2.3.0/knockout-min"
 		},
-		shim: { d3: { exports: 'd3' } }
+		shim: {
+			d3: { exports: 'd3' },
+			THREE: { exports: 'THREE' }
+		}
 	}
 );
 
