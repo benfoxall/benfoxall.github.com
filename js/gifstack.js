@@ -34,7 +34,12 @@ define([
   var stack = new THREE.Object3D();
   scene.add(stack);
 
-  camera.position.z = 2.5;
+  stack.rotation.x = 1
+  camera.position.z = 1.5;
+
+  // hacky debug
+  // window.stack = stack
+  // window.camera = camera
 
   function renderStack() {
     requested = false
