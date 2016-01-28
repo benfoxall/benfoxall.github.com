@@ -1,17 +1,34 @@
-define(['lib-gif', 'THREE'], function(libgif, THREE){
+define([
+  'lib-gif', 'THREE',
+
+  'extras/DeviceOrientationControls',
+  'extras/OrbitControls',
+  'extras/StereoEffect'
+], function(libgif, THREE){
   // todo: es6
 
 
   // threejs rendering
   var threeCanvas = document.getElementById('gs-three')
   var scene = new THREE.Scene();
-  var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+  var camera = new THREE.PerspectiveCamera( 75, threeCanvas.width / threeCanvas.height, 0.1, 1000 );
 
   var renderer = new THREE.WebGLRenderer({
     canvas: threeCanvas,
     alpha: true,
   });
   renderer.setClearColor(0xffffff, 0)
+  renderer.setPixelRatio( window.devicePixelRatio );
+	renderer.devicePixelRatio = window.devicePixelRatio;
+
+
+  controls = new THREE.OrbitControls( camera, renderer.domElement );
+  //controls.addEventListener( 'change', render ); // add this only if there is no animation loop (requestAnimationFrame)
+  controls.addEventListener( 'change', requestRenderStack )
+  controls.enableZoom = false;
+  controls.enablePan = false;
+  controls.enableKeys = false;
+
   renderer.setSize( threeCanvas.width, threeCanvas.height );
 
   var stack = new THREE.Object3D();
@@ -19,32 +36,8 @@ define(['lib-gif', 'THREE'], function(libgif, THREE){
 
   camera.position.z = 2.5;
 
-  var mx = 0, my = 0, zoom = 0;
-
-
-  renderer.domElement.addEventListener('mousemove', function(e){
-    mx = e.x - (threeCanvas.width/1.5);
-    my = e.y - (threeCanvas.height/1.5);
-    zoom = Math.sqrt((my*my) + (mx*mx))
-
-    requestRenderStack();
-
-  }, false)
-
-
-
-
   function renderStack() {
     requested = false
-
-    stack.rotation.x = my/200;
-    stack.rotation.y = mx/200;
-
-    var l = stack.children.length;
-
-    for (var i = 0; i < l; i++) {
-      stack.children[i].position.z = ((i/l) - 0.5) * 4
-    }
 
     renderer.render( scene, camera );
 
@@ -57,8 +50,6 @@ define(['lib-gif', 'THREE'], function(libgif, THREE){
       requestAnimationFrame( renderStack )
     }
   }
-
-
 
 
 
@@ -169,10 +160,17 @@ define(['lib-gif', 'THREE'], function(libgif, THREE){
     });
     var slice = new THREE.Mesh( geometry, material );
 
+    slice.rotation.x = Math.PI/2
+
     stack.add( slice );
 
-    renderStack()
+    // space our the items in the stack
+    var l = stack.children.length;
+    for (var i = 0; i < l; i++) {
+      stack.children[i].position.y = ((i/l) - 0.5) * 2
+    }
 
+    renderStack()
 
   }
 

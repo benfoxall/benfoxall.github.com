@@ -1,3 +1,7 @@
+// require bumf
+define(['THREE'], function(THREE){
+
+
 /**
  * @author alteredq / http://alteredqualia.com/
  * @authod mrdoob / http://mrdoob.com/
@@ -71,7 +75,7 @@ THREE.StereoEffect = function ( renderer ) {
 		scene.updateMatrixWorld();
 
 		if ( camera.parent === undefined ) camera.updateMatrixWorld();
-	
+
 		camera.matrixWorld.decompose( _position, _quaternion, _scale );
 
 		// Effective fov of the camera
@@ -138,3 +142,7 @@ THREE.StereoEffect = function ( renderer ) {
 	};
 
 };
+
+
+// require bumf
+})
