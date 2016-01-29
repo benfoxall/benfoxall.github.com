@@ -38,8 +38,8 @@ define([
   camera.position.z = 1.5;
 
   // hacky debug
-  // window.stack = stack
-  // window.camera = camera
+  window.stack = stack
+  window.camera = camera
 
   function renderStack() {
     requested = false
@@ -57,11 +57,19 @@ define([
   }
 
 
+  var prior
 
   function Handler (name) {
     this.name = name || 'gif'
 
     this.frame = 0
+
+    if(prior) prior.aborted = true
+    prior = this
+
+    ctx.clearRect(0,0,500,500)
+    while(stack.children.length) {stack.remove(stack.children[0])}
+
   }
 
 
@@ -69,7 +77,8 @@ define([
   var paletteLabel = document.getElementById('gs-palette-label')
 
   Handler.prototype.hdr = function(data) {
-    console.log(data)
+    if(this.aborted) return
+
     this.gct = data.gct || []
     paletteLabel.innerText = 'Global colour table for ' + this.name
 
@@ -121,6 +130,7 @@ define([
 
 
   Handler.prototype.img = function(_) {
+    if(this.aborted) return
 
     var image = new ImageData(_.width, _.height)
     var ct = _.lctFlag ? _.lct : this.gct
