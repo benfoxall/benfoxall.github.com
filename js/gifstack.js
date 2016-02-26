@@ -43,9 +43,20 @@ define([
   // hacky debug
   window.stack = stack
   window.camera = camera
+  window.renderStack = renderStack
 
   function renderStack() {
     requested = false
+
+
+    // set the render order based on the centre of the frame position
+    // (might not actually be the position of the frame geom)
+    for (var v = new THREE.Vector3(0,0,0),
+             l = stack.children.length,
+             i = 0; i < l; i++) {
+      v.z = ((i/(l-1)) - 0.5) * 2
+      stack.children[i].renderOrder = -camera.position.distanceToSquared(v)
+    }
 
     renderer.render( scene, camera );
 
