@@ -1,7 +1,6 @@
 // require bumf
 define(['THREE'], function(THREE){
 
-
 /**
  * @author richt / http://richt.me
  * @author WestLangley / http://github.com/WestLangley

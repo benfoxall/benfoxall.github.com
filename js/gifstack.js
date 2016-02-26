@@ -1,9 +1,9 @@
 define([
   'lib-gif', 'THREE',
 
-  'extras/DeviceOrientationControls',
-  'extras/OrbitControls',
-  'extras/StereoEffect'
+  'THREE.DeviceOrientationControls',
+  'THREE.OrbitControls',
+  'THREE.StereoEffect'
 ], function(libgif, THREE){
   // todo: es6
 
