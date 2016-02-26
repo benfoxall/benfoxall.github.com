@@ -164,6 +164,7 @@ define([
     t.minFilter = THREE.NearestFilter;
     t.needsUpdate = true;
     t.transparent = true;
+    t.flipY = false
 
     var geometry = new THREE.PlaneBufferGeometry(1, 1, 1, 1)
 
