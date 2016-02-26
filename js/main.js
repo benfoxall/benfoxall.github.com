@@ -8,7 +8,10 @@ require.config(
 		paths: {
 			ko: 'lib/ko'
 		},
-	    shim: { d3: { exports: 'd3' } }
+    shim: {
+			d3: { exports: 'd3' },
+			THREE: { exports: 'THREE' }
+		}
 	} :
 	{
 		// production
