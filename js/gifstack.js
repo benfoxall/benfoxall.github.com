@@ -34,8 +34,11 @@ define([
   var stack = new THREE.Object3D();
   scene.add(stack);
 
-  stack.rotation.x = 1
-  camera.position.z = 1.5;
+  // stack.rotation.x = 1.2
+  // stack.rotation.y = 1
+  // stack.rotation.z = 1.3
+
+  camera.position.z = 1.5
 
   // hacky debug
   window.stack = stack
@@ -78,6 +81,9 @@ define([
 
   Handler.prototype.hdr = function(data) {
     if(this.aborted) return
+
+    this.width = data.width
+    this.height = data.height
 
     this.gct = data.gct || []
     paletteLabel.innerText = 'Global colour table for ' + this.name
@@ -160,13 +166,18 @@ define([
 
     // stack
 
+    var sw = _.width/this.width,
+        sh = _.height/this.height,
+        sx = (_.leftPos/this.width) - ((1 - sw)/2)
+        sy = (_.topPos/this.height) - ((1 - sh)/2)
+
     var t = new THREE.Texture( image );
     t.minFilter = THREE.NearestFilter;
     t.needsUpdate = true;
     t.transparent = true;
     t.flipY = false
 
-    var geometry = new THREE.PlaneBufferGeometry(1, 1, 1, 1)
+    var geometry = new THREE.PlaneBufferGeometry(sw, sh, 1, 1)
 
     var material = new THREE.MeshBasicMaterial( {
       side: THREE.DoubleSide,
@@ -176,14 +187,15 @@ define([
     });
     var slice = new THREE.Mesh( geometry, material );
 
-    slice.rotation.x = Math.PI/2
+    slice.position.x = sx
+    slice.position.y = sy
 
     stack.add( slice );
 
     // space our the items in the stack
     var l = stack.children.length;
     for (var i = 0; i < l; i++) {
-      stack.children[i].position.y = ((i/l) - 0.5) * 2
+      stack.children[i].position.z = ((i/(l-1)) - 0.5) * 2
     }
 
     renderStack()
