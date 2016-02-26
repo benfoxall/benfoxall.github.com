@@ -213,58 +213,69 @@ define([
 
   }
 
+  var preview = document.getElementById('gs-file-preview')
+
+  var loaders = {
+    xhr: function(path, name) {
+      var xhr = new XMLHttpRequest();
+      xhr.overrideMimeType('text/plain; charset=x-user-defined');
+      xhr.onload = function(e) {
+        var stream = new libgif.Stream(xhr.responseText);
+
+        libgif.parseGIF(stream, new Handler(name || 'example.gif'))
+
+        preview.src = path
+      };
+      xhr.open('GET', path || '/img/example.gif', true);
+      xhr.send();
+    },
+
+    file: function(file) {
+      // populate the image
+      var previewReader = new FileReader();
+      previewReader.onloadend = function () {
+        preview.src = previewReader.result;
+      }
+
+      if (file) {
+        previewReader.readAsDataURL(file);
+      } else {
+        preview.src = "";
+      }
+
+
+      // other stuff
+
+      var gifReader = new FileReader();
+      gifReader.onloadend = function () {
+        var stream = new libgif.Stream(gifReader.result);
+        libgif.parseGIF(stream, new Handler(file.name))
+      }
+
+      if (file) {
+        gifReader.readAsBinaryString(file);
+      } else {
+      }
+
+    }
+  }
+
 
 
 
   // populate the example gif
 
-  var xhr = new XMLHttpRequest();
-  xhr.overrideMimeType('text/plain; charset=x-user-defined');
-  xhr.onload = function(e) {
-    var stream = new libgif.Stream(xhr.responseText);
 
-    libgif.parseGIF(stream, new Handler('example.gif'))
-  };
-  xhr.open('GET', '/img/example.gif', true);
-  xhr.send();
-
+  loaders.xhr('/img/example.gif', 'example.gif')
+  // loaders.xhr('/img/example-bees+bombs.gif', 'example-bees+bombs.gif')
 
 
 
   // handle uploads from user
 
-  var preview = document.getElementById('gs-file-preview')
   var fileInput = document.getElementById('gs-choose-file')
   fileInput.addEventListener('change', function(){
-
-    var file = fileInput.files[0]
-
-    // populate the image
-    var previewReader = new FileReader();
-    previewReader.onloadend = function () {
-      preview.src = previewReader.result;
-    }
-
-    if (file) {
-      previewReader.readAsDataURL(file);
-    } else {
-      preview.src = "";
-    }
-
-
-    // other stuff
-
-    var gifReader = new FileReader();
-    gifReader.onloadend = function () {
-      var stream = new libgif.Stream(gifReader.result);
-      libgif.parseGIF(stream, new Handler(file.name))
-    }
-
-    if (file) {
-      gifReader.readAsBinaryString(file);
-    } else {
-    }
-
+    loaders.file(fileInput.files[0])
   })
 
 
