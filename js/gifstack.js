@@ -186,7 +186,7 @@ define([
     t.minFilter = THREE.NearestFilter;
     t.needsUpdate = true;
     t.transparent = true;
-    t.flipY = false
+    t.flipY = true
 
     var geometry = new THREE.PlaneBufferGeometry(sw, sh, 1, 1)
 
@@ -268,6 +268,15 @@ define([
 
   loaders.xhr('/img/example.gif', 'example.gif')
   // loaders.xhr('/img/example-bees+bombs.gif', 'example-bees+bombs.gif')
+
+
+  ;[].forEach.call(document.getElementsByClassName('gif-link'),
+    function(el){
+      el.addEventListener('click', function(e){
+        e.preventDefault();
+        loaders.xhr(el.href, el.textContent)
+      })
+  })
 
 
 
