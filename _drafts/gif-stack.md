@@ -3,29 +3,29 @@ layout: post
 cr: gifstack
 ---
 
-Animated gifs are pretty cool.
-{: .lead}
-
 <div id="gs-choose">
 <img src="/img/example.gif" id="gs-file-preview" />
-<input type="file" accept=".gif" id="gs-choose-file"/>
 </div>
 
-They’re also kind of rubbish. We can’t pause a gif, skip to a particular frame, or grab individual stills from the image element.
 
-One way to get this information is to manually read the image file with javascript.
+Animated gifs are cool…
+{: .lead}
 
-There are a bunch of different libraries that can decode gifs (check out [omggif](omggif), [gify](gify) & [gif-stream](gif-stream)). I’m a fan of the decoder in [jsgif](jsgif): it’s a bit awkward to install, pretty inefficient, and a bit dated, but has a nice api:
+…But they’re also kind of limited. We can’t pause a gif, skip to a particular point, or grab an individual frames from the image element.
+
+One way around this limitation is to load the file contents with JavaScript, and parse it manually.
+
+There are a bunch of different libraries that can decode gif (check out [omggif](omggif), [gify](gify) & [gif-stream](gif-stream)). I’m a fan of the decoder in [jsgif](jsgif); it’s awkward to use, pretty inefficient, a bit dated, but feels nice.
 
 {% highlight javascript %}
-parse(stream, {
+parse(file, {
   hdr: (data) => {
     // handle header data
   }
 })
 {% endhighlight %}
 
-You give an object with a set of callbacks for the different parts of the gif.  Callbacks are called as the parts of the gif are parsed and we can choose what we do with the data.
+You provide an object with a set of callbacks for the different parts of the gif.  Callbacks are fired as soon as that part of the gif is parsed and we can choose what we do with the data.
 
 For example, we can get the global colour table from the header data by adding a callback for `hdr`.
 
@@ -33,23 +33,32 @@ For example, we can get the global colour table from the header data by adding a
 Global colour table for example.gif
 {: #gs-palette-label.gs-label}
 
-Each frame of the animated gif starts with a `Graphics Control Extension` which contains information about the section being drawn, followed by the actual (LZW encoded) image data.
+Coming to actually pull out image data; each frame of the animated gif starts with a `Graphics Control Extension` which contains information about the section being drawn, followed by the actual (LZW encoded) pixel data.
 
 _I've skimmed over a lot of really interesting stuff here - for a really in-depth look at gif encoding, check out [this blog post](bytebybyte)._
 
-Once we've got the decoded pixel values back, we can map them through our colour table to get the RGB values for each pixel, and now we've got something we can draw to a canvas with `putImageData`.
+Once we've got those decoded pixel values back, we can map them through our colour table to get the RGB values for each pixel, and now we've got something that we can draw to a canvas.
 
 <canvas id="gs-canvas" width="500" height="500"></canvas>
 Exported frame data
 {: .gs-label}
 
-Which is cool.
+We've got access to each of the individual frames - so now we can play/pause/scrub through the gif if we want (for a fuller example of this (based on the same gif parser) have a look at [libgif-js](buzzfeed-libgif)).
 
-We can also use this image data elsewhere.
-
-And we're not just limited to the canvas api.  Using threejs
+Also - we're not constrained to canvas `drawImage`, we can load the our image data into a `WebGL` texture, which makes more powerful visualisations possible:
 
 <canvas id="gs-three" width="500" height="500"></canvas>
+
+
+<hr />
+
+Have a look at some other gifs:
+
+* [An awesome Bees + Bombs Hexagon thing](/img/example-bees+bombs.gif){: .gif-link}
+* [An awesome Bees + Bombs Cube thing](/img/example-iso.gif){: .gif-link}
+* Your own - <input type="file" accept=".gif" id="gs-choose-file"/>
+
+
 
 
 ## Stuff
@@ -82,6 +91,7 @@ From the gif spec
 [gif-stream]: https://github.com/devongovett/gif-stream
 [gifuct]: https://github.com/matt-way/gifuct-js
 [gif.js]: https://github.com/jnordberg/gif.js
+[buzzfeed-libgif]: https://github.com/buzzfeed/libgif-js
 
 
 <!--
