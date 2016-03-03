@@ -1,21 +1,21 @@
 ---
 layout: post
 cr: gifstack
+title: GIF
 ---
 
 <div id="gs-choose">
 <img src="/img/example.gif" id="gs-file-preview" />
 </div>
 
-
-Animated gifs are cool…
+Animated gifs are _brilliant_…
 {: .lead}
 
-…But they’re also kind of limited. We can’t pause a gif, skip to a particular point, or grab an individual frames from the image element.
+…But they’re also kind of rubbish. We can’t pause a gif, skip to a particular point, or grab individual frames from the image element.
 
-One way around this limitation is to load the file contents with JavaScript, and parse it manually.
+One way around these problems is to load the file content with JavaScript and decode it manually.
 
-There are a bunch of different libraries that can decode gif (check out [omggif](omggif), [gify](gify) & [gif-stream](gif-stream)). I’m a fan of the decoder in [jsgif](jsgif); it’s awkward to use, pretty inefficient, a bit dated, but feels nice.
+There are a bunch of different libraries that can decode gif (check out [omggif][omggif], [gify][gify] & [gif-stream][gif-stream]). I’m a fan of the decoder in [jsgif][jsgif]; it’s awkward to use, pretty inefficient, a bit dated, and feels nice.
 
 {% highlight javascript %}
 parse(file, {
@@ -27,64 +27,59 @@ parse(file, {
 
 You provide an object with a set of callbacks for the different parts of the gif.  Callbacks are fired as soon as that part of the gif is parsed and we can choose what we do with the data.
 
-For example, we can get the global colour table from the header data by adding a callback for `hdr`.
+For example, we can listen out for the `hdr` (header) block, and pull out the global colour table for the gif.
 
 <canvas id="gs-palette"></canvas>
 Global colour table for example.gif
 {: #gs-palette-label.gs-label}
 
-Coming to actually pull out image data; each frame of the animated gif starts with a `Graphics Control Extension` which contains information about the section being drawn, followed by the actual (LZW encoded) pixel data.
+With the actual image data; each frame of the animated gif starts with a Graphics Control Extension (GCE) block which contains information about the section being drawn, followed by the actual (LZW encoded) pixel data.
 
 _I've skimmed over a lot of really interesting stuff here - for a really in-depth look at gif encoding, check out [this blog post](bytebybyte)._
 
-Once we've got those decoded pixel values back, we can map them through our colour table to get the RGB values for each pixel, and now we've got something that we can draw to a canvas.
+Once we've got those decoded pixel values back, we can map them through our colour tables to get the RGB values for each pixel, and now we've got something that can be drawn to a canvas.
 
 <canvas id="gs-canvas" width="500" height="500"></canvas>
 Exported frame data
 {: .gs-label}
 
-We've got access to each of the individual frames - so now we can play/pause/scrub through the gif if we want (for a fuller example of this (based on the same gif parser) have a look at [libgif-js](buzzfeed-libgif)).
+Each frame has an overwrite rule provided in its GCE block, which defines how the frame data is drawn to the existing graphic - either being appended to, or completely replacing it. This, combined with the transparency capabilities of the gif allow frames to update only the changed pixels of the image.
 
-Also - we're not constrained to canvas `drawImage`, we can load the our image data into a `WebGL` texture, which makes more powerful visualisations possible:
+
+By implementing overwrite rules, frame delays, and probably some other stuff, it's possible to play/pause/scrub through a gif file (see [libgif-js][buzzfeed-libgif]).
+
+Though, back to the frame data - we don't have to settle on canvas .drawImage. If we load our data into a WebGL context, we can stack up the frames to get an overall feel for the structure of the gif:
 
 <canvas id="gs-three" width="500" height="500"></canvas>
 
-
 <hr />
 
-Have a look at some other gifs:
+### Other gifs
 
-* [An awesome Bees + Bombs Hexagon thing](/img/example-bees+bombs.gif){: .gif-link}
-* [An awesome Bees + Bombs Cube thing](/img/example-iso.gif){: .gif-link}
-* Your own - <input type="file" accept=".gif" id="gs-choose-file"/>
+* [A spinning shape](/img/example-overwrite.gif){: .gif-link} - full re-draw each frame
+* [>256 colours](/img/example-colours.gif){: .gif-link} - a palette limitation workaround
+* [Iso cubes](/img/example-iso.gif){: .gif-link} by Bees&Bombs - looks awesome
+* [Hexagon Friends](/img/example-bb-hex-friends.gif){: .gif-link} also, Bees&Bombs - looks pretty
+* [Trefoil](/img/example-trefoil.gif){: .gif-link} yup, Bees&Bombs - nice angles
+* [Adventure time](/img/example-adventure.gif){: .gif-link} - a more _traditional_ animation
+* [Kitten](/img/example-kitten.gif){: .gif-link} - the majority of gifs
+* <input type="file" accept=".gif" id="gs-choose-file"/>
 
+### Recommendation
 
-
-
-## Stuff
-
-* Jamie's image format pres
-* mp4 in browser
-* mpeg tipoi
-
-
-## Also...
-
-From the gif spec
+Here's what the original gif spec has to say about animation:
 
 > **Animation** : The Graphics Interchange Format is not intended as a platform for animation, even though it can be done in a limited way.
 
+…I kind of feel for the person who wrote this; it must be hard to look around the web and see millions of people ignoring your advice<!--, and have the GIF become synonymous for the thing that it's worst at-->. Though I hope they see the positive side - animated gifs might be a terrible hack; but they're totally brilliant.
 
-> When the flag is set, indicating that user input is expected, the decoder may sound the bell (0x07, 7) to alert the user that input is being expected. In the absence of a specified Delay Time, the decoder should wait for user input indefinitely. It is recommended that the encoder not set the User Input Flag without a Delay Time specified.
+---
+
+<small>ps. check out [Bees & Bombs][bb]</small>
 
 
-[animate_spec]: #
-[jamie_pres]: #
-[wo]: https://whiteoctober.co.uk
-[tipoi]: #
-
+[bb]: http://beesandbombs.tumblr.com/
 [bytebybyte]: http://matthewflickinger.com/lab/whatsinagif/bits_and_bytes.asp
-
 [jsgif]: http://slbkbs.org/jsgif/
 [omggif]: https://github.com/deanm/omggif
 [gify]: https://github.com/rfrench/gify
