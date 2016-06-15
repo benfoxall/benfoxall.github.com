@@ -3,8 +3,44 @@
   <head>
     <meta charset="utf-8">
     <title>show+ask</title>
+    <style media="screen">
+      .nope{
+        text-decoration: line-through;
+      }
+      body {
+        font-size: 8vw;
+        background: #000;
+        color: #fff;
+      }
+      ul {
+        list-style: none;
+      }
+      li {
+        position: relative;
+        height: 100vh;
+        vertical-align: middle;
+      }
+      .v {
+        display: block;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    </style>
   </head>
   <body>
-
+    <ul>
+      <li><span class="v">Show + Tell</li>
+      <li><span class="v">Show + <span class="nope">Tell</span> ASK 💥</li>
+      <li><span class="v">phaser?</li>
+      <li><span class="v">WordPress REST API?</li>
+      <li><span class="v">Chrome Extensions?</li>
+      <li><span class="v">http2?</li>
+      <li><span class="v">http2 in production?</li>
+      <li><span class="v">interesting datastores?</li>
+      <li><span class="v">Anyone built anything with NFC?</li>
+      <li><span class="v">Erlang?</li>
+      <li><span class="v">This?</li>
+    </ul>
   </body>
 </html>
