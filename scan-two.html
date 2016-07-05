@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      body {margin:0}
+    </style>
+  </head>
+  <body>
+    <canvas></canvas>
+    <video autoplay="" ></video>
+    <script type="text/javascript">
+    var video = document.querySelector('video');
+    var canvas = document.querySelector('canvas');
+
+    canvas.height = window.innerHeight
+    canvas.width = window.innerWidth
+    var ctx = canvas.getContext('2d')
+
+    var vh, vw
+
+    var p = navigator.mediaDevices.getUserMedia({ audio: false, video: true });
+
+p.then(function(mediaStream) {
+
+video.src = window.URL.createObjectURL(mediaStream);
+video.onloadedmetadata = function(e) {
+  // Do something with the video here.
+  console.log(video.videoHeight)
+
+  vh = video.videoHeight
+  vw = video.videoHeight
+
+  video.style.display = 'none'
+
+
+  function renderer(t){
+      requestAnimationFrame(renderer)
+
+      var progress = (t/30000) % 1
+
+
+
+      ctx.drawImage(
+        video,
+
+        (1-progress) * vw,0,
+
+        1,vh,
+
+        progress * canvas.width ,0,
+
+        30, canvas.height
+      )
+
+
+
+
+  }
+
+  requestAnimationFrame(renderer)
+
+
+
+};
+});
+
+p.catch(function(err) { console.log(err.name); }); //
+
+
+
+    </script>
+  </body>
+</html>
