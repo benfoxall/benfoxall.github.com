@@ -11,6 +11,9 @@
     <canvas></canvas>
     <video autoplay="" ></video>
     <script type="text/javascript">
+    (function(){var a=function(a,e,f){var b=navigator.getUserMedia||navigator.webkitGetUserMedia||navigator.mozGetUserMedia||navigator.msGetUserMedia;return b?new Promise(function(c,d){b.call(navigator,a,c,d)}):Promise.reject(Error("getUserMedia is not implemented in this browser"))};void 0===navigator.mediaDevices&&(navigator.mediaDevices={});void 0===navigator.mediaDevices.getUserMedia&&(navigator.mediaDevices.getUserMedia=a)})();
+    
+    
     var video = document.querySelector('video');
     var canvas = document.querySelector('canvas');
 
