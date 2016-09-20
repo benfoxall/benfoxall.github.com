@@ -38,8 +38,8 @@ Peter Saville took this image and inverted it for the for the cover of the Unkno
 
 The data for the graph above comes from [Pulsar Group CSIRO Astronomy and Space Science](http://www.atnf.csiro.au/people/pulsar/index.html?n=Main.Audio).
 
-> Recording of the first-discovered pulsar CP1919 (PSR B1919+21) made at the Parkes radio telescope in April 2012. The observing frequency was 732 MHz and bandwidth 64 MHz. The audio is the detected and dedispersed signal modulating white noise. 
-> 
+> Recording of the first-discovered pulsar CP1919 (PSR B1919+21) made at the Parkes radio telescope in April 2012. The observing frequency was 732 MHz and bandwidth 64 MHz. The audio is the detected and dedispersed signal modulating white noise.
+>
 > Credit: R. N. Manchester, G. Hobbs and J. Khoo, CSIRO Astronomy and Space Science
 
 You can listen to it [here](http://www.atnf.csiro.au/research/pulsar/audio/CP1919.wav) - you're listening to a star which is pretty mental.

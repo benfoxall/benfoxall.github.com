@@ -1,6 +1,6 @@
 ---
 layout: post
-title: In With the Old
+title: In with the old
 ---
 
 After more than a year of no posts - I'm still here

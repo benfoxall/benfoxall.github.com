@@ -1,5 +1,6 @@
 ---
 layout: post
+title: Context require
 ---
 <p class="lead">This is how I organise JavaScript assets on this site.</p>
 
@@ -22,7 +23,7 @@ I use [require.js](http://requirejs.org/) to modularise my code.  If I want to m
 define(['jquery'], function($){
   return function(element){
     $(element).doFancyStuff()
-  } 
+  }
 })
 {% endhighlight %}
 
