@@ -40,9 +40,13 @@
 
 <script data-main="/js/main" src="/js/require.js"></script>
 
-<script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
-<script type="text/javascript">var _gaq = [['_setAccount', 'UA-35774866-1'],['_trackPageview'],['_setDomainName', 'benjaminbenben.com']];(function(c,d,a){var b=c.createElement(a);b.type="text/java"+a;b.async=!0;b.src=d+(d+"s:"==c.location.protocol?"s://ssl":"://www")+".google-analytics.com/ga.js";a=c.getElementsByTagName(a)[0];a.parentNode.insertBefore(b,a)})(document,"http","script");
-</script>
+<script type="text/javascript">
+	(function(){function e(b){b=b||window.event;for(var a=b.target||b.srcElement,c,d;a&&"a"!==a.nodeName.toLowerCase();)a=a.parentNode;a&&"a"===a.nodeName.toLowerCase()&&a.href&&(c=a.href.match(g))&&(c=Math.round(h/2-275),d=0,420<f&&(d=Math.round(f/2-210)),window.open(a.href,"intent","scrollbars=yes,resizable=yes,toolbar=no,location=yes,width=550,height=420,left="+c+",top="+d),b.returnValue=!1,b.preventDefault&&b.preventDefault())}if(!window.__twitterIntentHandler){var g=/twitter\.com\/intent\/(\w+)/,
+f=screen.height,h=screen.width;document.addEventListener?document.addEventListener("click",e,!1):document.attachEvent&&document.attachEvent("onclick",e);window.__twitterIntentHandler=!0}})()
 
+	if(document.location.hostname != 'localhost') {
+	var _gaq = [['_setAccount', 'UA-35774866-1'],['_trackPageview'],['_setDomainName', 'benjaminbenben.com']];(function(c,d,a){var b=c.createElement(a);b.type="text/java"+a;b.async=!0;b.src=d+(d+"s:"==c.location.protocol?"s://ssl":"://www")+".google-analytics.com/ga.js";a=c.getElementsByTagName(a)[0];a.parentNode.insertBefore(b,a)})(document,"http","script");
+	}
+</script>
 </body>
 </html>
