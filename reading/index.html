@@ -9,10 +9,27 @@
     <style media="screen">
       h1 {font-size: 20vw; margin:0;}
       h2 {font-size: 3vh; margin:0}
+      nav {float:right;margin:0}
+      button {width: 5vmin; height: 5vmin;display: inline-block; background-size: 100%; background-color: transparent; border:none;}
+      button span {display:none}
+      #contrast {background-image: url(contrast.svg)}
+      body {
+        transition: 1.4s;
+        background: #fff;
+      }
+      body.dark {
+        background: #000;
+        color: #fff;
+        -webkit-font-smoothing: antialiased;
+      }
     </style>
   </head>
-  <body>
+  <body class="dark">
     <heading>
+      <nav>
+        <button id="contrast"><span>contrast</span></button>
+      </nav>
+
       <h1>Fidelity</h1>
       <h2>DH Lawrence</h2>
     </heading>
@@ -47,6 +64,12 @@
     <p>And when, throughout all the wild orgasms of love, slowly a gem forms, in the ancient, once-more molten rocks of two human hearts, two ancient rocks, a man’s heart and a woman’s; that is the crystal of peace, the slow hard jewel of trust, the sapphire of fidelity.</p>
 
     <p>The gem of mutual peace emerging from the wild chaos of love.</p>
+
+    <script>
+      contrast.addEventListener('click', function(){
+        document.body.classList.toggle('dark')
+      })
+    </script>
 
   </body>
 </html>

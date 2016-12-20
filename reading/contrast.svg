@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="135px" height="135px" viewBox="0 0 135 135" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
+    <title>contrast</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="57.5" cy="57.5" r="57.5"></circle>
+        <mask id="mask-3" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="-10" y="-10" width="135" height="135">
+            <rect x="-10" y="-10" width="135" height="135" fill="white"></rect>
+            <use xlink:href="#path-1" fill="black"></use>
+        </mask>
+        <rect id="path-4" x="58" y="0" width="96" height="115"></rect>
+        <mask id="mask-5" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="96" height="115" fill="white">
+            <use xlink:href="#path-4"></use>
+        </mask>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="contrast" transform="translate(10.000000, 10.000000)">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <g id="Oval">
+                <use fill="#000000" fill-rule="evenodd" xlink:href="#path-1"></use>
+                <use stroke="#000000" mask="url(#mask-3)" stroke-width="20" xlink:href="#path-1"></use>
+            </g>
+            <g id="Rectangle" mask="url(#mask-2)" stroke-width="2" stroke="#979797" fill="#FFFFFF">
+                <use mask="url(#mask-5)" xlink:href="#path-4"></use>
+            </g>
+        </g>
+    </g>
+</svg>
