@@ -5,7 +5,7 @@ title: Cardboctober & hacks
 
 In October some friends and I started [_Cardboctober_][cardboctober] - our idea was to create a google cardboard project for every day of the month _(I managed to keep up for [2 weeks][repo], though [max][max] & [pete][pete] managed to make the full 31 days)_.
 
-[![cardboctober.xyz](/img/cardboctober-xyz.png)][cardboctober]
+[![cardboctober.xyz](/img/cardboctober-xyz.png){:.no-border}][cardboctober]
 
 Although we were all building stuff for cardboard, our hacks turned out very differently;  [Max][max] used his to demonstrate some principles and approaches for making VR interactions, [Pete][pete] did some really impressive stuff while putting cats and spiders and space.
 
@@ -33,7 +33,7 @@ This is slightly related to something that I was thinking about at Pusher
 I feel like this is a really effective way of learning something new or getting a feel for a new technology or tool, so I think I’m going to try it
 
 
-[![webgl hacks](/img/webgl-hacks.png)][webgl]
+[![webgl hacks](/img/webgl-hacks.png){:.no-border}][webgl]
 
 
 

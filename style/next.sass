@@ -80,17 +80,19 @@ h1, h2, h3, h4, h5, h6
 
 
 img
-  -webkit-border-radius: 6px
-  -moz-border-radius: 6px
   border-radius: 6px
-  padding: 0
-  background-color: #fff
-  border: 1px solid #ccc
+  background: #fff
   border: 1px solid rgba(0, 0, 0, 0.1)
-  -webkit-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1)
-  -moz-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1)
   box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1)
   margin-bottom: 10px
+
+img.no-border
+  border-radius: 0
+  background: transparent
+  border: none
+  box-shadow: none
+
+
 
 canvas, iframe
   max-width: 100%
