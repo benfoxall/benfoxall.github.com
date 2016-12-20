@@ -24,8 +24,8 @@ self.addEventListener('fetch', function(evt) {
 function precache() {
   return caches.open(CACHE).then(function (cache) {
     return cache.addAll([
-      '/reading/',
-      '/reading/contrast.svg',
+      '/fidelity/',
+      '/fidelity/contrast.svg',
       '/style/next.css'
     ]);
   });
