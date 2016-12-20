@@ -10,19 +10,12 @@
     <style media="screen">
       h1 {font-size: 20vw; margin:0;}
       h2 {font-size: 3vh; margin:0}
-      nav {float:right;margin:0}
-      button {width: 5vmin; height: 5vmin;display: inline-block; background-size: 100%; background-color: transparent; border:none;}
+      nav {position: absolute; right:0; float:right;top:0}
+      button {width: 10vmin; height: 10vmin;display: block; background-size: 100%; background-color: transparent; border:none; margin:2em;}
       button span {display:none}
       #contrast {background-image: url(contrast.svg)}
-      body {
-        transition: 1.4s;
-        background: #fff;
-      }
-      body.dark {
-        background: #000;
-        color: #fff;
-        -webkit-font-smoothing: antialiased;
-      }
+      body { transition: 1.4s; background: #fff; padding: .5em; font-size: 120%; max-width: 35em; }
+      body.dark { background: #000; color: #fff; -webkit-font-smoothing: antialiased; }
     </style>
   </head>
   <body>
