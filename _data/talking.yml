@@ -1,7 +1,19 @@
 --
+  date: 12/7/2017
+  event: Full Stack London
+  name: JS Browser Bits
+  link: https://skillsmatter.com/skillscasts/10346-javascript-browser-bits
+
+--
   date: 20/6/2017
   event: Fluent Conference
   name: Keeping it real with the web
+
+--
+  date: 15/6/2017
+  event: MK Geek Night
+  name: Drawing things that aren't there
+  link: https://mkgeeknight.co.uk/events/mkgn-21-june-8th-2017#Ben
 
 --
   date: 26/4/2017
@@ -14,6 +26,11 @@
   info: MC'ing with Sally!
 
 --
+  date: 15/2/2017
+  event: Mega Meetup
+  info: Organised and hosted a meetup of meetup groups
+
+--
   date: 8/3/2017
   event: A Day of REST
   name: Making simple things
@@ -24,6 +41,18 @@
   event: Frontier Conference 2016
   name: Live Coding Across Hundreds Of Devices
   link: https://www.youtube.com/watch?v=KVMDU6DKSBA
+
+--
+  date: 14/9/2016
+  event: SimpleWeb Hack - The Future of Chat
+  name: Simple things
+  info: About cassette tapes and simplicity
+
+--
+  date: 3/8/2016
+  event: Marlow[dev]
+  name: Building a collaborative JS environment
+  link: https://speakerdeck.com/benfoxall/collaborative-js
 
 --
   date: 9/6/2016
