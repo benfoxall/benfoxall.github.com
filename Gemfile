@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-version = 96
+version = 142
 
 gem 'github-pages', version
 
