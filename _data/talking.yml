@@ -1,0 +1,188 @@
+--
+  date: 20/6/2017
+  event: Fluent Conference
+  name: Keeping it real with the web
+
+--
+  date: 26/4/2017
+  event: Breaking Borders: Tinker's Toolbox
+  name: Web Sites and Fairy Lights
+
+--
+  date: 30/3/2017
+  event: Render
+  info: MC'ing with Sally!
+
+--
+  date: 8/3/2017
+  event: A Day of REST
+  name: Making simple things
+  link: https://adayofrest.hm/boston-2017/speakers/339/
+
+--
+  date: 16/11/2016
+  event: Frontier Conference 2016
+  name: Live Coding Across Hundreds Of Devices
+  link: https://www.youtube.com/watch?v=KVMDU6DKSBA
+
+--
+  date: 9/6/2016
+  event: MK Geek Night
+  info: Visualising running data with the web
+
+--
+  date: 26/6/2016
+  event: Talk Web Design
+  info: visualising running data with the web
+
+--
+  date: 3/5/2016
+  event: CSV,Conference,v2
+  info: Serving CSV from the browser
+  link: https://csvconf.com/2016/#bfoxall
+
+--
+  date: 26/4/2016
+  event: JSMontly London
+  info: Serving data from Service Workers
+
+--
+  date: 21/4/2016
+  event: Render
+  info: Talk curation & MC'ing with Addy
+
+--
+  date: 7/4/2016
+  event: AsyncJS
+  name: The internet of browers
+
+--
+  date: 5/10/2015
+  event: Future of Web Apps London
+  name: The internet of browers
+
+--
+  date: 7/9/2015
+  event: Reasons to
+  name: Your data and you
+  link: https://reasons.to/2015/brighton/speakers/ben-foxall
+
+--
+  date: 1/9/2015
+  event: Full Stack Fest
+  name: The internet of browers
+
+--
+  date: 11/6/2015
+  event: MK Geek Night
+  name: The internet of browers
+
+--
+  date: 21/5/2015
+  event: Talk Web Design
+  name: The internet of browers
+
+--
+  date: 19/5/2015
+  event: UpFrontConf
+  name: The internet of browers
+
+--
+  date: 6/3/2015
+  event: jQuery UK 2015
+  name: The internet of browers
+  info: MC'd with Dave
+
+--
+  date: 17/02/15
+  event: Breaking Borders: Bleeding Edge
+  name: The internet of Browers
+  link: http://breakingborde.rs/past-events/bleeding-edge/
+
+--
+  date: 26/11/2014
+  event: Oxford Geek Night
+  name: Getting Physical with The Web
+  link: http://oxford.geeknights.net/ogn38/
+
+--
+  date: 7/11/2014
+  event: ffconf
+  name: Getting Close with the Web
+  link: https://2014.ffconf.org/
+
+--
+  date: 17/10/2014
+  event: All Your Base Conference
+  info: Live demo of realtime data collection
+
+--
+  date: 18/9/2014
+  event: MK Geek Night
+  name: Jumbotrons
+
+--
+  date: 7/5/2014
+  event: Talk Web Design
+  name: Multi-Device interactions
+
+--
+  date: 1/5/2014
+  event: FutureJS
+  name: A conceptual future for the multi-device web
+  link: https://www.youtube.com/watch?v=1mkShXn_buA
+
+--
+  date: 13/2/2014
+  event: London JS Conf
+  info: Building Multi-Device Interfaces for the web
+
+--
+  date: 22/1/2014
+  event: Oxford Geek Night
+  name: ping-pong
+  info: Image tracking
+  link: http://oxford.geeknights.net/ogn34/
+
+--
+  date: 19/9/2013
+  event: MKGN
+  name: The Other Side of Responsive
+
+--
+  date: 21/8/2013
+  event: JSOxford
+  name: Twon
+  info: Kevin and I talked about websockets and twon
+
+--
+  date: 07/8/2013, 7:30pm
+  event: Oxford Geek Night
+  name: Serving websites to websites with PhantomJS
+
+--
+  date: 22/5/2013
+  event: JSOxford
+  name: Cross Window Communication
+  info: Talked about inter-window communication in a browser
+  link: http://lanyrd.com/2013/jsoxford-may/
+
+--
+  date: 18/4/2013
+  event: jQuery UK 2013
+  name: Win-win Communication
+  info: My first conference talk. I was super nervous, but not as much as everyone else.
+
+--
+  date: 15/11/2012
+  event: JSOxford
+  name: Maptime
+  info: I talked about plotting realtime twitter streams
+  link: https://benjaminbenben.com/2012/12/05/maptime/
+
+--
+  date: 9/2/2011
+  event: Oxford Geek Night 20
+  name: Pipe Share
+  info: My first ever public speaking – a 1 minute pitch (I lasted about 30 seconds)
+  link: http://lanyrd.com/2011/ogn20/
