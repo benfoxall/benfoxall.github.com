@@ -149,7 +149,7 @@ var lfm_api = (function(){
 	function request(method, params, processor){
 		
 		var key = window.config.api_key;
-		var endpoint = 'http://ws.audioscrobbler.com/2.0/?callback=?';
+		var endpoint = 'https://ws.audioscrobbler.com/2.0/?callback=?';
 
 		$.extend(params,{
 			method:method,
