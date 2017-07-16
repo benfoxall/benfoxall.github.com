@@ -1,0 +1,14 @@
+---
+layout: default
+---
+
+<h1>Talking / Events</h1>
+<ul id="events">
+{% for event in site.data.events %}
+  <li>
+    <h3>{{ event.event }} <small>{{ event.date |  date: "%B %Y" }}</small></h3>
+    <p>{{event.name}}</p>
+
+  </li>
+{% endfor %}
+</ul>
