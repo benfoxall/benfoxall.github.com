@@ -1,52 +1,67 @@
 -
   date: 12/7/2017
   event: Full Stack London
-  name: JS Browser Bits
   link: https://skillsmatter.com/skillscasts/10346-javascript-browser-bits
+  info: Using binary data in browsers; with practical demos of canvas, webaudio, webgl, websockets.
+  talk_name: JS Browser Bits
+  talk_link: https://benjaminbenben.com/js-browser-bits/
 
 -
   date: 20/6/2017
-  event: Fluent Conference
-  name: Keeping it real with the web
+  event: Fluent CA
   link: https://conferences.oreilly.com/fluent/fl-ca/public/schedule/detail/58612
+  info: WebVR, and how it fits with other web technologies giving a unique potential for interaction.
+  talk_name: Keeping it real with the web
+  talk_link: https://benjaminbenben.com/keeping-it-real/
 
 -
   date: 15/6/2017
   event: MK Geek Night
-  name: Drawing things that aren't there
   link: https://mkgeeknight.co.uk/events/mkgn-21-june-8th-2017#Ben
+  info: With realtime positional data from a Vive - I went through the WebGL pipeline, creating a live tilt-brush UI from scratch.
+  talk_name: Drawing things that aren't there
+  talk_link: https://twitter.com/benjaminbenben/status/873137012366352384
 
 -
   date: 26/4/2017
   event: Breaking Borders
   event_sub: Tinker's Toolbox
-  name: Web Sites and Fairy Lights
+
+  info: How to connect Fairy Lights to back & frontend web technologies; practical examples of MQTT, WebBluetooth & PWAs for interacting with hardware
   link: http://breakingborde.rs/past-events/tinkers-toolbox/
+
+  talk_name: Web Sites and Fairy Lights
 
 -
   date: 30/3/2017
   event: Render
-  info: Talk curation and MC'ing with Sally!
+  info: I curatied the talks, and had the pleasure of co-hosting the conference with the very wonderful [Sally Jenkinson](https://twitter.com/sjenkinson).
 
   # I'm kind of pissed my name isn't on this site
   link: http://2017.render-conf.com
 
 -
-  date: 15/2/2017
-  event: Mega Meetup
-  info: Organised and hosted a meetup of meetup groups
-
--
   date: 8/3/2017
   event: A Day of REST
-  name: Making simple things
   link: https://adayofrest.hm/boston-2017/speakers/339/
+  info: I [leveled](https://speakerdeck.com/benfoxall/making-simple-things?slide=16) with some HTTP API developers, then described the MQTT protocol to a byte level. Going on to show live demos of integrating WordPress with IoT devices
+  talk_name: Making simple things
+  talk_link: https://speakerdeck.com/benfoxall/making-simple-things
+
+
+-
+  date: 15/2/2017
+  event: Mega Meetup
+  info: I planned, coordinated an event combining 8 local meetup groups, 6 speakers and 100 attendees. It went great.
+  link: http://jsoxford.com/2017/The-Oxford-Mega-Super-Meetup-Meetup/
+
 
 -
   date: 16/11/2016
   event: Frontier Conference
-  name: Live Coding Across Hundreds Of Devices
+  info: I built/used a distributed live-coding tool to take attendees through audio & rendering
   link: https://www.youtube.com/watch?v=KVMDU6DKSBA
+  talk_name: Live Coding Across Hundreds Of Devices
 
 -
   date: 1/10/2016
@@ -66,11 +81,13 @@
   date: 9/6/2016
   event: MK Geek Night
   info: Visualising running data with the web
+  link: https://mkgeeknight.co.uk/
 
 -
   date: 26/6/2016
   event: Talk Web Design
   info: visualising running data with the web
+  link: http://talkwebdesign.co.uk/
 
 -
   date: 3/5/2016
@@ -80,18 +97,21 @@
 
 -
   date: 26/4/2016
-  event: JSMontly London
+  event: JSMonthly London
   info: Serving data from Service Workers
+  link: https://www.meetup.com/js-monthly/events/230071594/
 
 -
   date: 21/4/2016
   event: Render
   info: Talk curation & MC'ing with Addy
+  link: http://2016.render-conf.com/
 
 -
   date: 7/4/2016
   event: AsyncJS
   name: The internet of browers
+  link: https://asyncjs.com/building-things-with-lots-of-devices/
 
 -
   date: 5/10/2015
@@ -108,27 +128,32 @@
   date: 1/9/2015
   event: Full Stack Fest
   name: The internet of browers
+  link: http://2015.fullstackfest.com/
 
 -
   date: 11/6/2015
   event: MK Geek Night
   name: The internet of browers
+  link: http://mkgeeknight.co.uk
 
 -
   date: 21/5/2015
   event: Talk Web Design
   name: The internet of browers
+  link: http://talkwebdesign.co.uk/
 
 -
   date: 19/5/2015
   event: UpFrontConf
   name: The internet of browers
+  link: http://2015.upfrontconf.com/
 
 -
   date: 6/3/2015
   event: jQueryUK
   name: The internet of browers
   info: MC'd with Dave
+  link: https://www.jqueryuk.com/2015/
 
 -
   date: 17/02/15
@@ -158,11 +183,13 @@
   date: 18/9/2014
   event: MK Geek Night
   name: Jumbotrons
+  link: https://mkgeeknight.co.uk/
 
 -
   date: 7/5/2014
   event: Talk Web Design
   name: Multi-Device interactions
+  link: http://talkwebdesign.co.uk/
 
 -
   date: 1/5/2014
@@ -174,6 +201,7 @@
   date: 13/2/2014
   event: London JS Conf
   info: Building Multi-Device Interfaces for the web
+  link: https://twitter.com/londonjs
 
 -
   date: 22/1/2014
@@ -186,17 +214,20 @@
   date: 19/9/2013
   event: MKGN
   name: The Other Side of Responsive
+  link: https://mkgeeknight.co.uk/
 
 -
   date: 21/8/2013
   event: JSOxford
   name: Twon
   info: Kevin and I talked about websockets and twon
+  link: http://jsoxford.com/2013/february/
 
 -
   date: 07/8/2013, 7:30pm
   event: Oxford Geek Night
   name: Serving websites to websites with PhantomJS
+  link: http://oxford.geeknights.net/ogn32/
 
 -
   date: 22/5/2013
@@ -210,6 +241,7 @@
   event: jQuery UK
   name: Win-win Communication
   info: My first conference talk. I was super nervous, but not as much as everyone else.
+  link: https://www.jqueryuk.com/2013/
 
 -
   date: 15/11/2012
