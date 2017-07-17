@@ -6,9 +6,21 @@ layout: default
 <ul id="events">
 {% for event in site.data.events %}
   <li>
-    <h3>{{ event.event }} <small>{{ event.date |  date: "%B %Y" }}</small></h3>
-    <p>{{event.name}}</p>
+    <h3>
+      {% if event.link %}
+        <a href="{{event.link}}">{{ event.event }}</a>
+      {% else %}
+        {{ event.event }}
+      {% endif %}
 
+       <!-- &mdash; <small>{{ event.date |  date: "%B %Y" }}</small> -->
+   </h3>
+    <div class="detail">
+      <h4>{{event.name}}</h4>
+      {% if event.info %}
+        <p>{{event.info}}</p>
+      {% endif %}
+    </div>
   </li>
 {% endfor %}
 </ul>

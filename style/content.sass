@@ -137,11 +137,35 @@ pre
 // events page
 
 ul#events
+  display: grid
+  grid-template-columns: repeat(3, 1fr)
+  grid-gap: 20px
+
+  @media (max-width: 800px)
+    grid-template-columns: repeat(2, 1fr)
+
+  @media (max-width: 450px)
+    grid-template-columns: 1fr
+
+
   list-style: none
   padding: 0
   .detail
-    border-left: 2px solid aquamarine
+    font-size: .75em
+    font-style: italic
+    color: #777
+    border-left: 3px solid aquamarine
     margin-left: 1em
     padding: 0.5em 1em
     h4, p
-      margin: 0
+      margin: .25em
+  li
+    margin: 1em 0
+
+  a
+    color: #000
+    text-decoration: underline
+    transition: .2s
+    padding: .3em
+  a:hover
+    background: aquamarine
