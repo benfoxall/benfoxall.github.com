@@ -8,6 +8,7 @@
   date: 20/6/2017
   event: Fluent Conference
   name: Keeping it real with the web
+  link: https://conferences.oreilly.com/fluent/fl-ca/public/schedule/detail/58612
 
 -
   date: 15/6/2017
@@ -17,13 +18,18 @@
 
 -
   date: 26/4/2017
-  event: "Breaking Borders: Tinker's Toolbox"
+  event: Breaking Borders
+  event_sub: Tinker's Toolbox
   name: Web Sites and Fairy Lights
+  link: http://breakingborde.rs/past-events/tinkers-toolbox/
 
 -
   date: 30/3/2017
   event: Render
-  info: MC'ing with Sally!
+  info: Talk curation and MC'ing with Sally!
+
+  # I'm kind of pissed my name isn't on this site
+  link: http://2017.render-conf.com
 
 -
   date: 15/2/2017
@@ -38,15 +44,17 @@
 
 -
   date: 16/11/2016
-  event: Frontier Conference 2016
+  event: Frontier Conference
   name: Live Coding Across Hundreds Of Devices
   link: https://www.youtube.com/watch?v=KVMDU6DKSBA
 
 -
-  date: 14/9/2016
-  event: SimpleWeb Hack - The Future of Chat
-  name: Simple things
+  date: 1/10/2016
+  event: SimpleWeb Hack
+  event_sub: The Future of Chat
+  name: Simpler Things
   info: About cassette tapes and simplicity
+  link: https://speakerdeck.com/benfoxall/simpler-things
 
 -
   date: 3/8/2016
@@ -87,12 +95,12 @@
 
 -
   date: 5/10/2015
-  event: Future of Web Apps London
+  event: Future of Web Apps
   name: The internet of browers
 
 -
   date: 7/9/2015
-  event: Reasons to
+  event: Reasons.to
   name: Your data and you
   link: https://reasons.to/2015/brighton/speakers/ben-foxall
 
@@ -118,13 +126,14 @@
 
 -
   date: 6/3/2015
-  event: jQuery UK 2015
+  event: jQueryUK
   name: The internet of browers
   info: MC'd with Dave
 
 -
   date: 17/02/15
-  event: "Breaking Borders: Bleeding Edge"
+  event: Breaking Borders
+  event_sub: Bleeding Edge
   name: The internet of Browers
   link: http://breakingborde.rs/past-events/bleeding-edge/
 
@@ -198,7 +207,7 @@
 
 -
   date: 18/4/2013
-  event: jQuery UK 2013
+  event: jQuery UK
   name: Win-win Communication
   info: My first conference talk. I was super nervous, but not as much as everyone else.
 
@@ -211,7 +220,7 @@
 
 -
   date: 9/2/2011
-  event: Oxford Geek Night 20
+  event: Oxford Geek Night
   name: Pipe Share
   info: My first ever public speaking – a 1 minute pitch (I lasted about 30 seconds)
   link: http://lanyrd.com/2011/ogn20/
