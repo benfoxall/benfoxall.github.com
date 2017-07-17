@@ -3,6 +3,12 @@ layout: default
 ---
 
 <h1>Talking / Events</h1>
+
+<p>I've been lucky enough to speak at a number of conferences and meetups on a variety of topics.</p>
+
+<!-- I don't know how to word this -->
+<!-- <p>I spend a <strong>lot</strong> of time and effort putting together talks and being involved in the tech community.</p> -->
+
 <ul id="events">
 {% for event in site.data.events %}
   <li>
@@ -18,7 +24,7 @@ layout: default
     <div class="detail">
       <h4>{{event.name}}</h4>
       {% if event.info %}
-        <p>{{event.info}}</p>
+        <p>{{event.info | markdownify}}</p>
       {% endif %}
     </div>
   </li>
