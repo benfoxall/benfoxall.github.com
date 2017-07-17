@@ -7,7 +7,7 @@ title: The other side of responsive
 
 <p class="lead">Yesterday I gave a talk "The other side of responsive" which was about how responsive web development gives us a great platform for creating interfaces that combine multiple devices. This post explains some of the tech/approaches that I used for it.</p>
 
-<p><strong>I'm writing this in a car, with the limit of a half charged laptop, so apologies for any mistakes or over-wordiness. <small>Also - for context - my mother (who is driving) is playing Mozart Clarinet Concerto in A really loud, which is awesome.</small></strong></p>
+_I'm writing this in a car, with the limit of a half charged laptop, so apologies for any mistakes or over-wordiness. Also - for context - my mother (who is driving) is playing Mozart Clarinet Concerto in A really loud, which is awesome._
 
 ## The setup
 
@@ -38,13 +38,13 @@ My first slide was the short url for the [benjaminbenben.com/party](http://benja
 The hello message looks something like this:
 
 {% highlight javascript %}
-{
-	uuid: 'some-long-random-id',
-	type: 'hello',
-	features: 'appcache webgl webrtc ...',
-	pixels: 1234567,
-	innerC: 'red', // random colours
-	outerC: 'blue' // for the circles
+message = {
+  uuid: 'some-long-random-id',
+  type: 'hello',
+  features: 'appcache webgl webrtc ...',
+  pixels: 1234567,
+  innerC: 'red', // random colours
+  outerC: 'blue' // for the circles
 }
 {% endhighlight %}
 
