@@ -4,7 +4,7 @@ layout: post
 
 <p class="lead">A browser based last.fm streamgraph using canvas.</p>
 
-<a href="/projects/lgraph/?user=benjaminf">
+<a href="/archive/projects/lgraph/?user=benjaminf">
 	<img class="img-responsive" src="/img/lgraph.png" width="843" height="620" />
 </a>
 
