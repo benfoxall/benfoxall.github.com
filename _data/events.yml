@@ -1,4 +1,12 @@
 -
+  date: 8/9/2017
+  event: Full Stack Fest
+  link: https://2017.fullstackfest.com/speakers/benfoxall/
+  info: I gave the final talk of the conference about how we could take an exploritory approach to writing JavaScript, and why we should be proud of the things we make
+  talk_name: Making a lot of things
+  talk_link: https://benjaminbenben.com/making-a-lot-of-things/
+
+-
   date: 12/7/2017
   event: Full Stack London
   link: https://skillsmatter.com/skillscasts/10346-javascript-browser-bits
@@ -97,7 +105,7 @@
 -
   date: 3/5/2016
   event: CSV,Conference,v2
-  info: Serving CSV from the browser - how we can move our content generation from a backend server to a browser transparently with service workers.
+  info: Serving CSV from the browser - how we can move our content generation from a backend server to a browser transparently with service workers
   link: https://csvconf.com/2016/#bfoxall
 
 -
