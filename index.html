@@ -2,18 +2,23 @@
 layout: default
 ---
 
-{% for post in site.posts %}
-{% unless post.published == "draft" %}
-<h1>
-  <a href="{{ post.url }}">
-  	{{ post.title }}
-	  {% comment %}
-      <small class="date">{{ post.date | date: "%d %B %Y" }}</small>
-    {% endcomment %}
-  </a>
-</h1>
-{% endunless %}
-{% endfor %}
+<h1 class="title"><a href="/">/</a>BenjaminBenBen</h1>
+
+<ul class="posts">
+  {% for post in site.posts %}
+  {% unless post.published == "draft" %}
+  <li>
+    <a href="{{ post.url }}">
+      {{ post.title }}
+    </a>
+
+    <time class="date" datetime="{{post.date | date_to_xmlschema}}">
+      {{ post.date | date: "%d %B %Y" }}
+    </time>
+  </li>
+  {% endunless %}
+  {% endfor %}
+</ul>
 
 <hr />
 <footer>
@@ -36,6 +41,11 @@ layout: default
     <li>
       <a href="https://www.instagram.com/benfoxall/">
         instagram/benfoxall
+      </a>
+    </li>
+    <li>
+      <a href="/atom.xml">
+        /atom.xml
       </a>
     </li>
   </ul>
