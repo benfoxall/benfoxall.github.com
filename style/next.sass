@@ -132,3 +132,36 @@ footer
 
   a:hover
     color: #49B737
+
+// Over the top css animations!!
+.social
+  perspective: 1000px
+  a
+    span
+      display: none
+    img
+
+      transition: transform 2s, filter 5s
+      transform: scale(0.8)
+      filter: hue-rotate(90deg)
+
+      box-shadow: none
+      width: 2.5em
+      height: 2.5em
+      border-radius: 0
+      background: none
+      border: none
+      box-shadow: none
+      margin-bottom: 0
+
+.social:hover
+  a
+    img
+      transition: transform 1s, filter .5s
+      transform: scale(1)
+      filter: none
+
+  a:hover
+    img
+      transition: transform .1s,  filter .2s
+      transform: scale(1.2) translateY(-5px)
