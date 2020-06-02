@@ -3,24 +3,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
- <title>BenjaminBenBen</title>
- <link href="http://benjaminbenben.com/atom.xml" rel="self"/>
- <link href="http://benjaminbenben.com/"/>
- <updated>{{ site.time | date_to_xmlschema }}</updated>
- <id>http://benjaminbenben.com/</id>
- <author>
-   <name>Ben Foxall</name>
- </author>
+  <title>BenjaminBenBen</title>
+  <link href="https://benjaminbenben.com/atom.xml" rel="self"/>
+  <link href="https://benjaminbenben.com/"/>
+  <updated>{{ site.time | date_to_xmlschema }}</updated>
+  <id>http://benjaminbenben.com/</id>
+  <author>
+    <name>Ben Foxall</name>
+  </author>
 
  {% for post in site.posts %}
  {% unless post.published == "draft" %}
- <entry>
-   <title>{{ post.title | xml_escape }}</title>
-   <link href="http://benjaminbenben.com{{ post.url }}"/>
-   <updated>{{ post.date | date_to_xmlschema }}</updated>
-   <id>http://benjaminbenben.com{{ post.id }}</id>
-   <content type="html">{{ post.content | xml_escape }}</content>
- </entry>
+  <entry>
+    <title>{{ post.title | xml_escape }}</title>
+    <link href="https://benjaminbenben.com{{ post.url }}"/>
+    <updated>{{ post.date | date_to_xmlschema }}</updated>
+    <id>http://benjaminbenben.com{{ post.id }}</id>
+    <content type="html">{{ post.content | xml_escape }}</content>
+  </entry>
  {% endunless %}
  {% endfor %}
 
