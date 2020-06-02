@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Image processing &amp; web workers
+title: Image processing + web workers
 ---
 
 ### tl;dr - examples (currently requires chrome):
