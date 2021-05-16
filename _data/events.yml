@@ -3,13 +3,15 @@
   date: 8/3/2021
   event: CambridgeJS
   link: https://www.meetup.com/JavaScript-Cambridge/events/275679649/
-  talk_name: Visualising LIDAR data in the browser
+  info: Visualising LIDAR data in the browser
+  # talk_name: Visualising LIDAR data in the browser
   talk_link: https://www.youtube.com/watch?v=VtfsB9GJPBU
 
 - 
   date: 11/3/2021
   event: Fusion Hub
   link: https://youtu.be/_QI6qqGDRLY?t=5209
+  # info: Changing the way we build the web with gRPC and P2P
   talk_name: Changing the way we build the web with gRPC and P2P
   
 -
