@@ -1,3 +1,17 @@
+
+- 
+  date: 8/3/2021
+  event: CambridgeJS
+  link: https://www.meetup.com/JavaScript-Cambridge/events/275679649/
+  talk_name: Visualising LIDAR data in the browser
+  talk_link: https://www.youtube.com/watch?v=VtfsB9GJPBU
+
+- 
+  date: 11/3/2021
+  event: Fusion Hub
+  link: https://youtu.be/_QI6qqGDRLY?t=5209
+  talk_name: Changing the way we build the web with gRPC and P2P
+  
 -
   date: 8/9/2017
   event: Full Stack Fest
@@ -17,7 +31,7 @@
 -
   date: 20/6/2017
   event: Fluent CA
-  link: https://conferences.oreilly.com/fluent/fl-ca/public/schedule/detail/58612
+  link: https://www.oreilly.com/library/view/fluent-conference-2017/9781491985298/video311482.html
   info: WebVR, and how it fits with other web technologies giving a unique potential for interaction.
   talk_name: Keeping it real with the web
   talk_link: https://benjaminbenben.com/keeping-it-real/
@@ -36,7 +50,7 @@
   event_sub: Tinker's Toolbox
 
   info: How to connect Fairy Lights to back & frontend web technologies; practical examples of MQTT, WebBluetooth & PWAs for interacting with hardware
-  link: http://breakingborde.rs/past-events/tinkers-toolbox/
+  link: https://twitter.com/drewm/status/857323838136356864
 
   talk_name: Web Sites and Fairy Lights
 
@@ -46,7 +60,7 @@
   info: I curated the conference talks in the lead up to Render, and had the pleasure of co-hosting the conference with the very wonderful [Sally Jenkinson](https://twitter.com/sjenkinson).
 
   # I'm kind of pissed my name isn't on this site
-  link: http://2017.render-conf.com
+  link: http://render-conf.com
 
 -
   date: 9/3/2017
@@ -72,7 +86,7 @@
   date: 16/11/2016
   event: Frontier Conference
   info: Built/used a distributed live-coding tool which allowed attendees to get hands-on experience of web audio, midi and 2d canvas.
-  link: https://www.youtube.com/watch?v=KVMDU6DKSBA
+  link: https://skillsmatter.com/skillscasts/7288-live-reloading-device-based-goodness
   talk_name: Live Coding Across Hundreds Of Devices
 
 -
