@@ -1,28 +1,28 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <title>👋</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
       body {
-        font-family: 'IBM Plex Mono', monospace;
+        font-family: "IBM Plex Mono", monospace;
         background: #000;
-        color: #eee; 
+        color: #eee;
         font-size: 5vmin;
-        padding: 3em
+        padding: 3vw;
       }
       li {
-        margin: .5em
+        margin: 0.5em;
       }
 
       /* 🌈 I don't know why 🤷 */
       * {
-        transition: all .2s;
-        text-shadow: aquamarine 0px 0px 0, #BD10E0 0 0 0;
+        transition: all 0.2s;
+        text-shadow: aquamarine 0px 0px 0, #bd10e0 0 0 0;
       }
       *:hover {
-        text-shadow: #f080 .2em .2em 10px, #BD10E066 .04em -0.02em 0;
-        transform: scale(0.99) translate(.1em);
+        text-shadow: #f080 0.2em 0.2em 10px, #bd10e066 0.04em -0.02em 0;
+        transform: scale(0.99) translate(0.1em);
         transform-origin: 0 0;
       }
       *::selection {
@@ -30,12 +30,20 @@
         color: aquamarine;
       }
       a {
-        color: inherit
+        color: inherit;
       }
-      .🧦 .🌈 {display: initial}
-      .🧦 .😬 {display: none}
-      .🧦:hover .🌈 {display: none}
-      .🧦:hover .😬 {display: initial}
+      .🧦 .🌈 {
+        display: initial;
+      }
+      .🧦 .😬 {
+        display: none;
+      }
+      .🧦:hover .🌈 {
+        display: none;
+      }
+      .🧦:hover .😬 {
+        display: initial;
+      }
 
       .🧪 {
         opacity: 0;
@@ -53,44 +61,70 @@
       li::before {
         content: "→ ";
       }
-      </style>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-
     <h2 class="🧦">
-      &rarr; 
+      &rarr;
       <span class="🌈">I'm Ben Foxall</span>
-      <span class="😬"><a href="https://twitter.com/benjaminbenben"  target="_blank">@benjaminbenben</a></span>
+      <span class="😬"
+        ><a href="https://twitter.com/benjaminbenben" target="_blank"
+          >@benjaminbenben</a
+        ></span
+      >
     </h2>
     <div class="🧦">
       <h1 class="🌈">Future of Code</h1>
       <h2 class="😬">Slicing videos with WebCodecs</h2>
     </div>
-    
+
     <div class="🧪">
       <ol>
         <li>I built this a while ago, but want to build more</li>
         <li>
-          Inspiration: 
-          <a href="https://www.apple.com/uk/airpods-pro/" target="_blank">Scroll linked video 🎧👀</a>
-          
+          Inspiration:
+          <a href="https://www.apple.com/uk/airpods-pro/" target="_blank"
+            >Scroll linked video 🎧👀</a
+          >
         </li>
         <li>
           First steps:
-          <a href="https://benjaminbenben.com/scrub/?scroll">Scroll linked video🛹</a> <br /><small>(using <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebCodecs_API">WebCodecs</a>)</small>
+          <a href="https://benjaminbenben.com/scrub/?scroll"
+            >Scroll linked video🛹</a
+          >
+          <br /><small
+            >(using
+            <a
+              href="https://developer.mozilla.org/en-US/docs/Web/API/WebCodecs_API"
+              >WebCodecs</a
+            >)</small
+          >
         </li>
         <li>
-          Then: <a href="https://benjaminbenben.com/scrub/?cube">Populating a 3D Texture 📦</a> <br /><small>(using <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Tutorial/Using_textures_in_WebGL">gl.TEXTURE_3D</a>)</small>
+          Then:
+          <a href="https://benjaminbenben.com/scrub/?cube"
+            >Populating a 3D Texture 📦</a
+          >
+          <br /><small
+            >(using
+            <a
+              href="https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Tutorial/Using_textures_in_WebGL"
+              >gl.TEXTURE_3D</a
+            >)</small
+          >
         </li>
 
         <li>
-          🤷: video edit & sharing, playback authoring, XR, live, a name other than "the cube thing"?
+          🤷: video edit & sharing, playback editing, XR, live, a name other
+          than "the cube thing"?
         </li>
       </ol>
     </div>
-
   </body>
 </html>
