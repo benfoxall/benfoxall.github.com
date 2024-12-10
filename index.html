@@ -5,25 +5,26 @@ layout: default
 <h1 class="title"><a href="/">/</a>BenjaminBenBen</h1>
 
 <ul class="posts">
-  {% for post in site.posts %}
-  {% unless post.published == "draft" %}
+  {% for post in site.posts %} {% unless post.published == "draft" %}
   <li>
-    <a href="{{ post.url }}">
-      {{ post.title }}
-    </a>
+    <a href="{{ post.url }}"> {{ post.title }} </a>
 
     <time class="date" datetime="{{post.date | date_to_xmlschema}}">
       {{ post.date | date: "%d %B %Y" }}
     </time>
   </li>
-  {% endunless %}
-  {% endfor %}
+  {% endunless %} {% endfor %}
 </ul>
 
 <hr />
 <footer>
   <ul class="social">
-
+    <li>
+      <a href="https://bsky.app/profile/benfoxall.bsky.social" rel="me">
+        <img src="/img/icon/bluesky.svg" alt="bluesky icon" />
+        <span>@benfoxall.bsky.social</span>
+      </a>
+    </li>
     <li>
       <a href="https://twitter.com/benjaminbenben" rel="me">
         <img src="/img/icon/twitter.svg" alt="twitter icon" />
