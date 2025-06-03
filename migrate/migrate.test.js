@@ -8,7 +8,7 @@ import { JSDOM } from 'jsdom'
 const reference = join(import.meta.dirname, '_site')
 const target = join(import.meta.dirname, '../_site')
 
-const ignore = [/404/, /README.md/, /.*\.css/]
+const ignore = [/404/, /README.md/, /.*\.css/, /.*\.sass/]
 
 for await (const file of walk(reference)) {
 
