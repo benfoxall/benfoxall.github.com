@@ -13,8 +13,8 @@ layout: default.njk
 		{{ title }}
 	</a>
 
-	<time class="date" datetime="{{ date | date('YYYY-MM-DD') }}">
-		{{ date | date("DD MMMM YYYY") }}
+	<time class="date" datetime="{{ page.date | date_to_xmlschema }}">
+		{{ page.date | date("DD MMMM YYYY") }}
 	</time>
 </h1>
 
