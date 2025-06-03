@@ -1,8 +1,0 @@
-safe: true
-lsi: false
-highlighter: rouge
-permalink: pretty
-markdown: kramdown
-
-sass:
-  sass_dir: style
