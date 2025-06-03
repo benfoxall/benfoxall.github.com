@@ -1,0 +1,4 @@
+Sitemap: https://benjaminbenben.com/sitemap.xml
+
+User-agent: *
+Disallow:
