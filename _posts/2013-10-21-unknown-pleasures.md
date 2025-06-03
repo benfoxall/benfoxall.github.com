@@ -1,6 +1,8 @@
 ---
 layout: post
+permalink: 2013/10/21/unknown-pleasures/
 published: true
+title: Unknown Pleasures
 ---
 <p class="lead">The artwork for Joy Division's <a href="http://en.wikipedia.org/wiki/Unknown_Pleasures">Unknown Pleasures</a> album is based on a graph of radio waves from the first identified pulsar - this is a graph of radio waves from the same pulsar, but recorded in 2012.</p>
 

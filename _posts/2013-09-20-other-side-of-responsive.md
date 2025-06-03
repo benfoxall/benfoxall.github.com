@@ -1,5 +1,6 @@
 ---
 layout: post
+permalink: 2013/09/20/other-side-of-responsive/
 title: The other side of responsive
 ---
 

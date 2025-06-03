@@ -1,5 +1,6 @@
 ---
 layout: post
+permalink: 2013/04/24/cross-window-communication-1/
 title: "Cross window communication"
 cr: xwindow1
 ---

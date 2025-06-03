@@ -1,5 +1,6 @@
 ---
 layout: post
+permalink: 2013/07/28/phantomjs-webserver/
 title: PhantomJS WebServer
 ---
 

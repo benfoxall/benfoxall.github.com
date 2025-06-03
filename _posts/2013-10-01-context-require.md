@@ -1,5 +1,6 @@
 ---
-layout: post
+layout: post.njk
+permalink: 2013/10/01/context-require/
 title: Context require
 ---
 <p class="lead">This is how I organise JavaScript assets on this site.</p>
@@ -54,9 +55,9 @@ $('.cr').each(function(){
 
 Now I can load only the necessary scripts to display a page; which vary across pages on my blog:
 
-* [lllocal]({% post_url 2013-04-05-lllocal %}) - only loads jQuery and a plugin to thumb between images
-* [tweet-globe]({% post_url 2013-04-07-tweet-globe %}) - will load in a datafile and a vector manipulation library
-* [wtcss]({% post_url 2013-05-09-wtcss %}) - won't load any extra libraries
+* [lllocal]({% postUrl "2013-04-05-lllocal" %}) - only loads jQuery and a plugin to thumb between images
+* [tweet-globe]({% postUrl "2013-04-07-tweet-globe" %}) - will load in a datafile and a vector manipulation library
+* [wtcss]({% postUrl "2013-05-09-wtcss" %}) - won't load any extra libraries
 
 ### Dogfooding
 

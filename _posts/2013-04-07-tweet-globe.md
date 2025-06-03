@@ -1,5 +1,7 @@
 ---
 layout: post
+permalink: 2013/04/07/tweet-globe/
+title: Tweet Globe
 ---
 
 <p class="lead">Plotting geocoded tweets on a globe with canvas</p>

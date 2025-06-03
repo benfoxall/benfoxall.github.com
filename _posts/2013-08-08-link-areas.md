@@ -1,5 +1,6 @@
 ---
 layout: post
+permalink: 2013/08/08/link-areas/
 title: Graphing links
 ---
 

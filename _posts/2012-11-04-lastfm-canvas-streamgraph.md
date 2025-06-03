@@ -1,5 +1,7 @@
 ---
 layout: post
+permalink: 2012/11/04/lastfm-canvas-streamgraph/
+title: Lastfm Canvas Streamgraph 
 ---
 
 <p class="lead">A browser based last.fm streamgraph using canvas.</p>

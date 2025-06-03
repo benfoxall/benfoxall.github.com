@@ -1,5 +1,6 @@
 ---
 layout: post
+permalink: 2014/05/29/lastfm-to-csv/
 title: LastFM to CSV
 ---
 

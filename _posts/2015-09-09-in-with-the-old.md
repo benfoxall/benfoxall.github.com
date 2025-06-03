@@ -1,5 +1,6 @@
 ---
 layout: post
+permalink: 2015/09/09/in-with-the-old/
 title: In with the old
 ---
 

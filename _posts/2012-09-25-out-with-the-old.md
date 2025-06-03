@@ -1,5 +1,7 @@
 ---
 layout: post
+permalink: 2012/09/25/out-with-the-old/
+title: Out With The Old
 ---
 
 <p class="lead">After more than a year of no posts - I've left my old blog behind.</p>

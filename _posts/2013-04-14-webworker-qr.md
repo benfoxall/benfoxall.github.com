@@ -1,5 +1,6 @@
 ---
 layout: post
+permalink: 2013/04/14/webworker-qr/
 title: Image processing + web workers
 ---
 
