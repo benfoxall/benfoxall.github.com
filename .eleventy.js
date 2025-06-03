@@ -17,10 +17,18 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("details.html");
   eleventyConfig.addPassthroughCopy("foc.html");
   eleventyConfig.addPassthroughCopy("d3-wall-force.html");
+  eleventyConfig.addPassthroughCopy("world");
+  eleventyConfig.addPassthroughCopy("qr");
+  eleventyConfig.addPassthroughCopy("scan*");
+  eleventyConfig.addPassthroughCopy("max.html");
+  eleventyConfig.addPassthroughCopy("fidelity");
+  eleventyConfig.addPassthroughCopy("CNAME");
+  eleventyConfig.addPassthroughCopy("card");
+  eleventyConfig.addPassthroughCopy("show+ask.html");
 
   // Ignore directories and files for template processing
   eleventyConfig.ignores.add("archive/**/*");
-  eleventyConfig.ignores.add("test/**/*");
+  eleventyConfig.ignores.add("migrate/**/*");
   eleventyConfig.ignores.add("full.html");  // Ignore full.html for processing
   eleventyConfig.ignores.add("atom.xml");
   eleventyConfig.ignores.add("atom.xsl");
@@ -29,6 +37,7 @@ export default function (eleventyConfig) {
   eleventyConfig.ignores.add("details.html");
   eleventyConfig.ignores.add("foc.html");
   eleventyConfig.ignores.add("d3-wall-force.html");
+
 
   // Configure markdown with syntax highlighting and Kramdown-like attributes
   eleventyConfig.amendLibrary("md", mdLib => {

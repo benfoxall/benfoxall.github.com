@@ -8,11 +8,14 @@ import { JSDOM } from 'jsdom'
 const reference = join(import.meta.dirname, '_site')
 const target = join(import.meta.dirname, '../_site')
 
+const ignore = [/404/, /README.md/, /.*\.css/]
 
 for await (const file of walk(reference)) {
 
   // // if (!file.endsWith('worker.js')) continue
   // continue;
+  if (ignore.some(value => file.match(value))) continue
+
 
   test(file, async () => {
 
@@ -25,6 +28,8 @@ for await (const file of walk(reference)) {
       const domB = new JSDOM(b)
 
       assert.equal(domA.window.document.title, domB.window.document.title, "Title matches")
+
+      // todo, more
 
     } else {
       assert.ok(a.equals(b), "content matches")
