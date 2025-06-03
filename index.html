@@ -8,7 +8,7 @@ layout: default.njk
   {% for post in collections.posts | reverse %}
   <li>
     <a href="{{ post.url }}"> {{ post.data.title }} </a>
-    <time class="date" datetime="{{page.date | date_to_xmlschema }}">
+    <time class="date" datetime="{{post.date | date_to_xmlschema }}">
       {{ post.date | date }}
     </time>
   </li>
