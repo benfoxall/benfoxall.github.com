@@ -11,6 +11,9 @@ const target = join(import.meta.dirname, '../_site')
 
 for await (const file of walk(reference)) {
 
+  // // if (!file.endsWith('worker.js')) continue
+  // continue;
+
   test(file, async () => {
 
     const a = await readFile(join(reference, file))
