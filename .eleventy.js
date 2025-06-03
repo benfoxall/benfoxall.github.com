@@ -1,4 +1,5 @@
 import mdAttrs from 'markdown-it-attrs'
+import syntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
 
 export default function (eleventyConfig) {
   // Copy static files directly to output
@@ -29,14 +30,23 @@ export default function (eleventyConfig) {
   eleventyConfig.ignores.add("foc.html");
   eleventyConfig.ignores.add("d3-wall-force.html");
 
-  // Configure markdown with Kramdown-like attributes
+  // Configure markdown with syntax highlighting and Kramdown-like attributes
   eleventyConfig.amendLibrary("md", mdLib => {
     mdLib.use(mdAttrs, {
       leftDelimiter: '{:',
       rightDelimiter: '}',
-      allowedAttributes: ['id', 'class', 'rel'] // extend this list as needed
+      allowedAttributes: ['id', 'class', 'rel']
+    });
+
+    mdLib.set({
+      html: true,
+      breaks: false,
+      linkify: true
     });
   });
+
+  eleventyConfig.addPlugin(syntaxHighlight);
+
 
   // Add shortcode for post URLs (replacing Jekyll's post_url tag)
   eleventyConfig.addShortcode("postUrl", function (postName) {
