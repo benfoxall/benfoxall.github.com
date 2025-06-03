@@ -1,3 +1,4 @@
+import mdAttrs from 'markdown-it-attrs'
 
 export default function (eleventyConfig) {
   // Copy static files directly to output
@@ -27,6 +28,15 @@ export default function (eleventyConfig) {
   eleventyConfig.ignores.add("details.html");
   eleventyConfig.ignores.add("foc.html");
   eleventyConfig.ignores.add("d3-wall-force.html");
+
+  // Configure markdown with Kramdown-like attributes
+  eleventyConfig.amendLibrary("md", mdLib => {
+    mdLib.use(mdAttrs, {
+      leftDelimiter: '{:',
+      rightDelimiter: '}',
+      allowedAttributes: ['id', 'class', 'rel'] // extend this list as needed
+    });
+  });
 
   // Add shortcode for post URLs (replacing Jekyll's post_url tag)
   eleventyConfig.addShortcode("postUrl", function (postName) {
@@ -78,14 +88,14 @@ export default function (eleventyConfig) {
     return new Date(date).toISOString();
   });
 
-  // Keep the same URL structure as Jekyll
-  eleventyConfig.addFilter("postUrl", (post) => {
-    const year = post.date.getFullYear();
-    const month = String(post.date.getMonth() + 1).padStart(2, "0");
-    const day = String(post.date.getDate()).padStart(2, "0");
-    const slug = post.fileSlug;
-    return `/${year}/${month}/${day}/${slug}/`;
-  });
+  // // Keep the same URL structure as Jekyll
+  // eleventyConfig.addFilter("postUrl", (post) => {
+  //   const year = post.date.getFullYear();
+  //   const month = String(post.date.getMonth() + 1).padStart(2, "0");
+  //   const day = String(post.date.getDate()).padStart(2, "0");
+  //   const slug = post.fileSlug;
+  //   return `/${year}/${month}/${day}/${slug}/`;
+  // });
 
   return {
     dir: {
