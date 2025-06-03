@@ -1,7 +1,30 @@
 import mdAttrs from 'markdown-it-attrs'
 import syntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
+import { feedPlugin } from "@11ty/eleventy-plugin-rss";
+
 
 export default function (eleventyConfig) {
+  // Add RSS plugin
+
+  eleventyConfig.addPlugin(feedPlugin, {
+    type: "atom", // or "rss", "json"
+    outputPath: "/atom.xml",
+    collection: {
+      name: "posts", // iterate over `collections.posts`
+      limit: 0,     // 0 means no limit
+    },
+    metadata: {
+      language: "en",
+      title: "BenjaminBenBen",
+      subtitle: "Personal site of Ben Foxall.",
+      base: "https://benjaminbenben.com/",
+      author: {
+        name: "Ben Foxall",
+        email: "", // Optional
+      }
+    }
+  });
+
   // Copy static files directly to output
   eleventyConfig.addPassthroughCopy("style");
   eleventyConfig.addPassthroughCopy("js");
@@ -10,7 +33,6 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("*.{ico,jpg,png,gif}");
   eleventyConfig.addPassthroughCopy("*.{css,js}");
   eleventyConfig.addPassthroughCopy("full.html");  // Copy the full.html file as-is
-  eleventyConfig.addPassthroughCopy("atom.xml");
   eleventyConfig.addPassthroughCopy("atom.xsl");
   eleventyConfig.addPassthroughCopy("speaking.html");
   eleventyConfig.addPassthroughCopy("cam.html");
@@ -30,7 +52,6 @@ export default function (eleventyConfig) {
   eleventyConfig.ignores.add("archive/**/*");
   eleventyConfig.ignores.add("migrate/**/*");
   eleventyConfig.ignores.add("full.html");  // Ignore full.html for processing
-  eleventyConfig.ignores.add("atom.xml");
   eleventyConfig.ignores.add("atom.xsl");
   eleventyConfig.ignores.add("speaking.html");
   eleventyConfig.ignores.add("cam.html");
@@ -76,7 +97,7 @@ export default function (eleventyConfig) {
   // Handle posts collection with proper sorting
   eleventyConfig.addCollection("posts", function (collectionApi) {
     const posts = collectionApi.getFilteredByGlob("_posts/*.md").sort((a, b) => {
-      return b.date - a.date;
+      return a.date - b.date;
     });
 
     return posts
@@ -125,7 +146,7 @@ export default function (eleventyConfig) {
       output: "_site"
     },
     // Use Nunjucks as the template engine
-    templateFormats: ["md", "njk", "html"],
+    templateFormats: ["md", "njk", "html", "xml", "njk.xml"],
     markdownTemplateEngine: "njk",
     htmlTemplateEngine: "njk",
     dataTemplateEngine: "njk"
