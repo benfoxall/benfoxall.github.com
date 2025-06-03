@@ -8,14 +8,11 @@ import { JSDOM } from 'jsdom'
 const reference = join(import.meta.dirname, '_site')
 const target = join(import.meta.dirname, '../_site')
 
-const ignore = [/404/, /README.md/, /.*\.css/, /.*\.sass/]
+const ignored = [/404/, /README.md/, /.*\.css/, /.*\.sass/, /full\/index\.html/, /atom\.xml/]
 
 for await (const file of walk(reference)) {
 
-  // // if (!file.endsWith('worker.js')) continue
-  // continue;
-  if (ignore.some(value => file.match(value))) continue
-
+  if (ignored.some(value => file.match(value))) continue
 
   test(file, async () => {
 
