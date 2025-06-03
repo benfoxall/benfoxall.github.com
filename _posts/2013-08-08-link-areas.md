@@ -15,7 +15,7 @@ With phantomjs you are able to access more than just the HTML/DOM of a page - ho
 
 Using this script we can get a map of the links to the element areas, which looks something like this:
 
-{% highlight javascript %}
+```js
 {
   "http://benjaminbenben.com/":6534,
   "http://bit.ly/Pesy75":10640,
@@ -32,7 +32,7 @@ Using this script we can get a map of the links to the element areas, which look
   "http://www.torchbox.com/":3360,
   "https://github.com/LuRsT":8580
 }
-{% endhighlight %}
+```
 
 ## Graphing the data
 

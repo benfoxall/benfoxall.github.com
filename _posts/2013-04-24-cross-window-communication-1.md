@@ -16,7 +16,7 @@ The websockets/binaryJS/webRTC things are on the way - just working on getting t
 
 When you have a window that you can reference from with js - either by getting an iframe from the DOM, or as returned by window.open() - you can use postMessage to communicate with that window (crucially, even if that window has a different origin).
 
-{% highlight javascript %}
+```js
 // Send messages from parent window
 var win = window.open('http://benjaminbenben.com/pink.html','','width=200');
 document.onselectionchange = function(e){
@@ -28,7 +28,7 @@ window.addEventListener('message', function(e){
 	echo.textContent = e.data;
 });
 
-{% endhighlight %}
+```
 
 #### [&gt;demo](#demo1) <small>opens a window and sends it the text selection from this page</small>
 
@@ -42,7 +42,7 @@ When you aren't able to access a window directly,  but it shares the same origin
 
 A storage event is fired when another window changes the localStorage for that page.  By listening to these events - you can keep objects in sync across windows.
 
-{% highlight javascript %}
+```js
 // listen for changes from other windows
 window.addEventListener("storage", function(e){
 	if(e.key == 'example') $('#el').css(JSON.parse(e.newValue));
@@ -51,7 +51,7 @@ window.addEventListener("storage", function(e){
 // update a local element and notify other windows of the change
 $('#el').css({color:"red"});
 localStorage.setItem('example','{color:"red"}');
-{% endhighlight %}
+```
 
 A nice side effect of this is that you have the state of an element persisted in localStorage, so you could render that on page load.  See [this gist](https://gist.github.com/benfoxall/5477514) for a general way of doing this.
 

@@ -11,7 +11,7 @@ title: PhantomJS WebServer
 
 Let's start with a base PhantomJS script - this loads the Oxfordshire [lanyrd page](http://lanyrd.com/places/oxfordshire/) and outputs the names of any upcoming events:
 
-{% highlight javascript %}
+```js
 var page = new WebPage();
 
 page.open("http://lanyrd.com/places/oxfordshire/", function(){
@@ -26,7 +26,7 @@ page.open("http://lanyrd.com/places/oxfordshire/", function(){
 
   phantom.exit();
 });
-{% endhighlight %}
+```
 
 This script can be run with `phantomjs example.js` and it will print the names of all upcoming events in the terminal - something like this:
 
@@ -45,7 +45,7 @@ This script can be run with `phantomjs example.js` and it will print the names o
 
 To expose this script with the [webserver module](https://github.com/ariya/phantomjs/wiki/API-Reference-WebServer), you have to add a few things:
 
-{% highlight javascript %}
+```js
 // import the webserver module, and create a server
 var server = require('webserver').create();
 
@@ -82,7 +82,7 @@ server.listen(8080, function(request, response) {
 
   });
 });
-{% endhighlight %}
+```
 
 This can be run in the same way as the previous script - `phantomjs example.js` - then when you visit [localhost:8080](http://localhost:8080), you should see the list of events in your browser.
 
@@ -98,10 +98,10 @@ To get your app ready for deployment you have to do a few things:
 
 #### Set the port based on environment variable `PORT`
 
-{% highlight javascript %}
+```js
 var port = require('system').env.PORT || 8080; // default back to 8080
 server.listen(port, function(request, response) {
-{% endhighlight %}
+```
 
 #### Add a file named `Procfile` containing the command to spin it up:
 

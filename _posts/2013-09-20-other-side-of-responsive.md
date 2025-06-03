@@ -37,7 +37,7 @@ My first slide was the short url for the [benjaminbenben.com/party](http://benja
 
 The hello message looks something like this:
 
-{% highlight javascript %}
+```js
 message = {
   uuid: 'some-long-random-id',
   type: 'hello',
@@ -46,7 +46,7 @@ message = {
   innerC: 'red', // random colours
   outerC: 'blue' // for the circles
 }
-{% endhighlight %}
+```
 
 The counter on the slide deck increments when it gets one of these messages, the features and colours are stored - so from this point I know that I can display the capabilities chart (which is nice).
 
@@ -54,9 +54,9 @@ I then continue to the title slide and wave my hands about a bit.  I've got the 
 
 The next slide is a file input field, which looks like this:
 
-{% highlight javascript %}
+```js
 <input type="file" id="photo" accept="image/*" capture="camera"/>
-{% endhighlight %}
+```
 
 The capture attribute means that it fires up the camera on my phone rather than asking where I want to get my file from.
 

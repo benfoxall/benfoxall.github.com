@@ -24,17 +24,17 @@ I thought it was a pretty good candidate for taking the processing off to a web 
 Once you've got the [imageData](https://developer.mozilla.org/en-US/docs/HTML/Canvas/Pixel_manipulation_with_canvas) from your canvas,  you can run it through [jsqrcode](https://github.com/LazarSoft/jsqrcode) by setting attributes of the qrcode object, then call .render():
 
 
-{% highlight javascript %}
+```js
 qrcode.imagedata = imagedata;
 qrcode.width = imagedata.width;
 qrcode.height = imagedata.height;
 
 var content = qrcode.process();
-{% endhighlight %}
+```
 
 It was [pretty straightforward](https://github.com/benfoxall/jsqrcode/blob/master/src/worker.js) to pull the code into a web worker,  I spent a bit of time before I realised that console.logs were making it fall over.  Here's the interface for responding to messages with the worker:
 
-{% highlight javascript %}
+```js
 self.onmessage = function(event) {
     var imagedata = event.data;
     qrcode.imagedata = imagedata;
@@ -49,12 +49,12 @@ self.onmessage = function(event) {
     }
     postMessage(resp);
 };
-{% endhighlight %}
+```
 
 
 Back in the original page,  you can creater the worker and deliver messages to it using the `.postMessage` function.  You can optionally list [Transferable objects](http://www.whatwg.org/specs/web-apps/current-work/multipage/common-dom-interfaces.html#transferable) to efficiently move them to the web worker.
 
-{% highlight javascript %}
+```js
 var worker = new Worker("jsqrcode/worker.js"),
 worker.onmessage = function(event) {
     console.log("qr code is:" + event.data);
@@ -62,7 +62,7 @@ worker.onmessage = function(event) {
 
 // imagedata = ctx.getImageData(…)
 worker.postMessage(imagedata, [imagedata.data.buffer]);
-{% endhighlight %}
+```
 
 
 Jsqrcode is on [github](https://github.com/LazarSoft/jsqrcode), as is [my fork](https://github.com/benfoxall/jsqrcode) with the starts of the worker interface. You can either view source on the examples above, or view them on [github](https://github.com/benfoxall/benfoxall.github.com/tree/master/qr).

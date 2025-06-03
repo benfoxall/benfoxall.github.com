@@ -19,28 +19,28 @@ I didn't want to serve all my js files together in one blob with each page load:
 
 I use [require.js](http://requirejs.org/) to modularise my code.  If I want to make part of the document *fancy* - then I define it in a file called `fancy.js` like this:
 
-{% highlight javascript %}
+```js
 define(['jquery'], function($){
   return function(element){
     $(element).doFancyStuff()
   }
 })
-{% endhighlight %}
+```
 
 &hellip; the module defines a function that can be applied with a particular dom node.
 
 Then, in the markup - I specify which module I want to apply to a particular piece of markup:
 
-{% highlight html %}
+```html
 <div class="cr" data-cr="fancy">
 	<h1>RAINBOWS</h1>
 	<p>UNICORNS</p>
 </div>
-{% endhighlight %}
+```
 
 I then stitch this together with another require.js module which looks through the page, loads any modules and applies them appropriately.  It looks something like this (I've used jQuery here for succinctness):
 
-{% highlight javascript %}
+```js
 $('.cr').each(function(){
   var self = this, requirement = $(self).data('cr');
 
@@ -48,7 +48,7 @@ $('.cr').each(function(){
     module(self);
   })
 })
-{% endhighlight %}
+```
 
 ### Profit
 
@@ -70,7 +70,7 @@ This approach kind of sucked for my homepage though - I've got all my posts in f
 
 So I rewrote my script to defer the loading of a module until the related element is on-screen.  It looks something like this (again, jQuery here for brevity):
 
-{% highlight javascript %}
+```js
 // using jquery.inview
 $('.cr-defer').one('inview', function(){
   var self = this, requirement = $(self).data('cr');
@@ -79,7 +79,7 @@ $('.cr-defer').one('inview', function(){
     module(self);
   })
 })
-{% endhighlight %}
+```
 
 I've written a way to display the modules as they are loaded, which you can turn on with the button below (if the module loaded okay!)
 
