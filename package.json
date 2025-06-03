@@ -1,0 +1,9 @@
+{
+  "type": "module",
+  "dependencies": {
+    "@11ty/eleventy": "^3.1.0"
+  },
+  "devDependencies": {
+    "jsdom": "^26.1.0"
+  }
+}
