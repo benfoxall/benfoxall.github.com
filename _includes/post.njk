@@ -1,0 +1,29 @@
+---
+layout: default.njk
+---
+
+{% if published == "draft" %}
+<h1>[DRAFT]</h1>
+{% endif %}
+
+<h1 class="post-title">
+	<a href="/" class="home">&larr;</a>
+
+	<a href="{{ page.url }}">
+		{{ title }}
+	</a>
+
+	<time class="date" datetime="{{ date | date('YYYY-MM-DD') }}">
+		{{ date | date("DD MMMM YYYY") }}
+	</time>
+</h1>
+
+<div {% if cr %}class="cr" data-cr="{{ cr }}" data-cr-defer="" {% endif %}>
+	{% if published == "draft" %}
+	<p class="alert alert-warning">this is a draft post - there are probably errors and the url may change</p>
+	{% endif %}
+
+	<div class="main">
+		{{ content | safe }}
+	</div>
+</div>
