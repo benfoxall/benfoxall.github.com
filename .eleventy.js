@@ -1,9 +1,28 @@
 import mdAttrs from 'markdown-it-attrs'
+import yaml from "js-yaml";
 import syntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
 import { feedPlugin } from "@11ty/eleventy-plugin-rss";
 
 
 export default function (eleventyConfig) {
+
+
+  // :robot: I can't be bothered fixing this properly at the moment
+  // Add date filter for events that handles UK date format (DD/MM/YYYY)
+  eleventyConfig.addFilter("date", function (date, format) {
+    if (!date) return '';
+    // Handle UK date format (DD/MM/YYYY)
+    let d;
+    if (typeof date === 'string' && date.match(/^\d{1,2}\/\d{1,2}\/\d{4}$/)) {
+      const [day, month, year] = date.split('/').map(n => parseInt(n, 10));
+      d = new Date(year, month - 1, day); // month is 0-based in Date constructor
+    } else {
+      d = new Date(date);
+    }
+    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    return `${months[d.getMonth()]} ${d.getFullYear()}`;
+  });
+
   // Add RSS plugin
 
   eleventyConfig.addPlugin(feedPlugin, {
@@ -34,7 +53,6 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("*.{css,js}");
   eleventyConfig.addPassthroughCopy("full.html");  // Copy the full.html file as-is
   eleventyConfig.addPassthroughCopy("atom.xsl");
-  eleventyConfig.addPassthroughCopy("speaking.html");
   eleventyConfig.addPassthroughCopy("cam.html");
   eleventyConfig.addPassthroughCopy("details.html");
   eleventyConfig.addPassthroughCopy("foc.html");
@@ -53,7 +71,6 @@ export default function (eleventyConfig) {
   eleventyConfig.ignores.add("migrate/**/*");
   eleventyConfig.ignores.add("full.html");  // Ignore full.html for processing
   eleventyConfig.ignores.add("atom.xsl");
-  eleventyConfig.ignores.add("speaking.html");
   eleventyConfig.ignores.add("cam.html");
   eleventyConfig.ignores.add("details.html");
   eleventyConfig.ignores.add("foc.html");
@@ -99,30 +116,23 @@ export default function (eleventyConfig) {
     const posts = collectionApi.getFilteredByGlob("_posts/*.md").sort((a, b) => {
       return a.date - b.date;
     });
-
-    return posts
+    return posts;
   });
 
-  // Add date filters for different formats
-  eleventyConfig.addFilter("date", function (date, format) {
-    const d = new Date(date);
-    if (format === 'YYYY-MM-DD') {
-      return d.toISOString().split('T')[0];
-    }
-    if (format === 'DD MMMM YYYY') {
-      return d.toLocaleDateString('en-GB', {
-        day: '2-digit',
-        month: 'long',
-        year: 'numeric'
-      });
-    }
-    // Default format
-    return d.toLocaleDateString('en-GB', {
-      day: '2-digit',
-      month: 'long',
-      year: 'numeric'
+  // Add events collection
+  eleventyConfig.addCollection("events", function (collectionApi) {
+    const events = collectionApi.getAll()[0].data.events || [];
+    return events.sort((a, b) => {
+      return new Date(b.date) - new Date(a.date); // Sort in reverse chronological order
     });
   });
+
+
+  eleventyConfig.addDataExtension("yml", (contents) => {
+    console.log(yaml.load(contents))
+    return yaml.load(contents)
+  });
+
 
   eleventyConfig.addFilter("date_to_xmlschema", function (date) {
     return new Date(date).toISOString();

@@ -9,6 +9,7 @@
     "@11ty/eleventy": "^3.1.0",
     "@11ty/eleventy-plugin-rss": "^2.0.4",
     "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.1",
+    "js-yaml": "^4.1.0",
     "markdown-it-attrs": "^4.3.1",
     "prismjs": "^1.30.0"
   },
