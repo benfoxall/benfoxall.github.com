@@ -2,7 +2,10 @@ import mdAttrs from 'markdown-it-attrs'
 import yaml from "js-yaml";
 import syntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
 import { feedPlugin } from "@11ty/eleventy-plugin-rss";
-
+import { pathToFileURL } from "node:url";
+import { evaluate } from "@mdx-js/mdx";
+import { renderToStaticMarkup } from "react-dom/server";
+import * as runtime from "react/jsx-runtime";
 
 export default function (eleventyConfig) {
 
@@ -113,7 +116,7 @@ export default function (eleventyConfig) {
 
   // Handle posts collection with proper sorting
   eleventyConfig.addCollection("posts", function (collectionApi) {
-    const posts = collectionApi.getFilteredByGlob("_posts/*.md").sort((a, b) => {
+    const posts = collectionApi.getFilteredByGlob(["_posts/*.md", "_posts/*.mdx"]).sort((a, b) => {
       return a.date - b.date;
     });
     return posts;
@@ -129,23 +132,27 @@ export default function (eleventyConfig) {
 
 
   eleventyConfig.addDataExtension("yml", (contents) => {
-    console.log(yaml.load(contents))
     return yaml.load(contents)
   });
-
 
   eleventyConfig.addFilter("date_to_xmlschema", function (date) {
     return new Date(date).toISOString();
   });
 
-  // // Keep the same URL structure as Jekyll
-  // eleventyConfig.addFilter("postUrl", (post) => {
-  //   const year = post.date.getFullYear();
-  //   const month = String(post.date.getMonth() + 1).padStart(2, "0");
-  //   const day = String(post.date.getDate()).padStart(2, "0");
-  //   const slug = post.fileSlug;
-  //   return `/${year}/${month}/${day}/${slug}/`;
-  // });
+  eleventyConfig.addExtension("mdx", {
+    compile: async (str, inputPath) => {
+      const { default: mdxContent } = await evaluate(str, {
+        ...runtime,
+        baseUrl: pathToFileURL(inputPath)
+      });
+
+      return async function (data) {
+        let res = await mdxContent(data);
+        return renderToStaticMarkup(res); // todo, handle interactive components
+      }
+    }
+  });
+
 
   return {
     dir: {
@@ -155,8 +162,7 @@ export default function (eleventyConfig) {
       data: "_data",
       output: "_site"
     },
-    // Use Nunjucks as the template engine
-    templateFormats: ["md", "njk", "html", "xml", "njk.xml"],
+    templateFormats: ["md", "njk", "html", "mdx"],
     markdownTemplateEngine: "njk",
     htmlTemplateEngine: "njk",
     dataTemplateEngine: "njk"

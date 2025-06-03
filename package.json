@@ -9,9 +9,11 @@
     "@11ty/eleventy": "^3.1.0",
     "@11ty/eleventy-plugin-rss": "^2.0.4",
     "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.1",
+    "@mdx-js/mdx": "^3.1.0",
     "js-yaml": "^4.1.0",
     "markdown-it-attrs": "^4.3.1",
-    "prismjs": "^1.30.0"
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
   },
   "devDependencies": {
     "jsdom": "^26.1.0"
