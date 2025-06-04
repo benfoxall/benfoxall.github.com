@@ -11,6 +11,10 @@
 	<link rel="stylesheet" href="/style/next.css">
 	<link rel="stylesheet" href="/style/prism.css">
 	<link rel="shortcut icon" href="/favicon.ico" />
+	
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=PT+Mono&display=swap" rel="stylesheet">
 
 	<link href="https://twitter.com/benjaminbenben" rel="me">
 	<link href="https://github.com/benfoxall" rel="me">
@@ -19,6 +23,17 @@
 	
 	<!-- mini-modernizr -->
 	<script type="text/javascript">document.getElementsByTagName('html')[0].className = 'js';</script>
+
+	<script type=speculationrules>
+  {
+    "prerender": [
+      {
+        "where": { "href_matches": "/*" },
+        "eagerness": "moderate"
+      }
+    ]
+  }
+</script>
 </head>
 <body>
 	{{ content | safe }}
