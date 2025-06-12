@@ -9,9 +9,21 @@ body {
   font-family: sans-serif;
   padding: 1em;
   background: #fff;
+  color: #000;
   font-size: 100%;
   margin: auto;
   font-weight: 400;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #1a1a1a;
+    color: #eee;
+  }
+
+  hr {
+    background: linear-gradient(90deg, #555, #333);
+  }
 }
 
 h1.title {
@@ -23,9 +35,9 @@ h1.title {
 }
 
 a {
-  color: #49B737;
+  color: #49b737;
   text-decoration: none;
-  transition: color .4s;
+  transition: color 0.4s;
 }
 
 img {
@@ -71,7 +83,11 @@ h1 a:before,
   bottom: 0%;
   left: 0;
   /* background: #2A7B9B; */
-  background: linear-gradient(90deg, rgba(255, 0, 115, 0.605) 0%, rgb(0, 255, 234) 100%);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 0, 115, 0.605) 0%,
+    rgb(0, 255, 234) 100%
+  );
 
   transform-origin: 0 0;
   transform: scaleX(0) scaleY(0.1);
@@ -119,7 +135,7 @@ ul.posts a,
 ul.posts time,
 .post-title time {
   display: block;
-  font-size: min(2vw, .75rem);
+  font-size: min(2vw, 0.75rem);
 }
 
 img {
@@ -164,7 +180,7 @@ footer ul {
 footer li {
   list-style: none;
   display: inline-block;
-  margin-right: .5em;
+  margin-right: 0.5em;
 }
 
 footer a {
@@ -173,7 +189,7 @@ footer a {
 }
 
 footer a:hover {
-  color: #49B737;
+  color: #49b737;
 }
 
 .social {
@@ -199,12 +215,12 @@ footer a:hover {
 }
 
 .social:hover a img {
-  transition: transform 1s, filter .5s;
+  transition: transform 1s, filter 0.5s;
   transform: scale(1);
   filter: none;
 }
 
 .social:hover a:hover img {
-  transition: transform .1s, filter .2s;
+  transition: transform 0.1s, filter 0.2s;
   transform: scale(1.2) translateY(-5px);
 }
