@@ -174,3 +174,137 @@ pre>code.highlight {
   background: -webkit-linear-gradient(left, rgba(45, 32, 6, 0.2) 70%, rgba(45, 32, 6, 0));
   background: linear-gradient(to right, rgba(45, 32, 6, 0.2) 70%, rgba(45, 32, 6, 0));
 }
+
+
+@media (prefers-color-scheme: dark) {
+  code[class*="language-"],
+  pre[class*="language-"] {
+    background: #2d2d2d; /* Dark background */
+    color: #f8f8f2; /* Light text color */
+  }
+
+  pre[class*="language-"]::-moz-selection,
+  pre[class*="language-"] ::-moz-selection,
+  code[class*="language-"]::-moz-selection,
+  code[class*="language-"] ::-moz-selection {
+    text-shadow: none;
+    background: #444444; /* Selection background in dark mode */
+  }
+
+  pre[class*="language-"]::selection,
+  pre[class*="language-"] ::selection,
+  code[class*="language-"]::selection,
+  code[class*="language-"] ::selection {
+    text-shadow: none;
+    background: #444444; /* Selection background in dark mode */
+  }
+
+  .token.comment,
+  .token.prolog,
+  .token.doctype,
+  .token.cdata {
+    color: #888888; /* Darker comment color */
+  }
+
+  .token.punctuation {
+    color: #cccccc; /* Lighter punctuation color */
+  }
+
+  .token.namespace {
+    opacity: .7;
+  }
+
+  .token.tag,
+  .token.operator,
+  .token.number {
+    color: #ff79c6; /* Pinkish for tags, operators, numbers */
+  }
+
+  .token.property,
+  .token.function {
+    color: #50fa7b; /* Green for properties, functions */
+  }
+
+  .token.tag-id,
+  .token.selector,
+  .token.atrule-id {
+    color: #bd93f9; /* Purple for IDs, selectors */
+  }
+
+  code.language-javascript,
+  .token.attr-name {
+    color: #f1fa8c; /* Yellow for JS code, attribute names */
+  }
+
+  code.language-css,
+  code.language-scss,
+  .token.boolean,
+  .token.string,
+  .token.entity,
+  .token.url,
+  .language-css .token.string,
+  .language-scss .token.string,
+  .style .token.string,
+  .token.attr-value,
+  .token.keyword,
+  .token.control,
+  .token.directive,
+  .token.unit,
+  .token.statement,
+  .token.regex,
+  .token.atrule {
+    color: #8be9fd; /* Cyan for strings, keywords, etc. */
+  }
+
+  .token.placeholder,
+  .token.variable {
+    color: #ffb86c; /* Orange for placeholders, variables */
+  }
+
+  .token.deleted {
+    text-decoration: line-through;
+  }
+
+  .token.inserted {
+    border-bottom: 1px dotted #50fa7b;
+    text-decoration: none;
+  }
+
+  .token.italic {
+    font-style: italic;
+  }
+
+  .token.important,
+  .token.bold {
+    font-weight: bold;
+  }
+
+  .token.important {
+    color: #ff6e6e; /* Red for important */
+  }
+
+  .token.entity {
+    cursor: help;
+  }
+
+  pre>code.highlight {
+    outline: .4em solid #ff79c6; /* Highlight outline in dark mode */
+    outline-offset: .4em;
+  }
+
+  /* Line Numbers plugin */
+  .line-numbers.line-numbers .line-numbers-rows {
+    border-right-color: #44475a; /* Line numbers border in dark mode */
+  }
+
+  .line-numbers .line-numbers-rows>span:before {
+    color: #6272a4; /* Line number color in dark mode */
+  }
+
+  /* Line Highlight plugin */
+  .line-highlight.line-highlight {
+    background: rgba(98, 114, 164, 0.2);
+    background: -webkit-linear-gradient(left, rgba(98, 114, 164, 0.2) 70%, rgba(98, 114, 164, 0));
+    background: linear-gradient(to right, rgba(98, 114, 164, 0.2) 70%, rgba(98, 114, 164, 0));
+  }
+}
