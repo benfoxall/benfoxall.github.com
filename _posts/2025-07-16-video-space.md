@@ -47,8 +47,7 @@ This works for other videos too.
 - <a href="#bike-dog">Cycling next to a friendly dog</a>
 - <a href="#drone-chile">A confluence in Chile</a>
 - <a href="#mizen-walk">A start/finish line</a>
-<!-- - <a href="#mizen-fly">Flying over some cliffs</a>
-- <a href="#mizen-walk">Walking around</a> -->
+- <a href="#mizen-fly">Flying over some cliffs</a>
 
 <output id="vs">
     <section class="blank-vs"></section>
