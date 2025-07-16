@@ -1,6 +1,6 @@
 ---
 layout: post.njk
-title: stacks.camera
+title: Stacks Camera
 permalink: 2025/06/29/stacks-camera/
 ---
 
