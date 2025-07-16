@@ -2,7 +2,6 @@
 layout: post.njk
 title: Dublin London Dublin
 permalink: 2025/06/12/london+dublin/
-draft: true
 ---
 
 I've not posted here for a while <small style="opacity:0.4; font-size: .6em">5 years 😱</small>

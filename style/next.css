@@ -7,6 +7,12 @@ body {
 
 body {
   font-family: sans-serif;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  
   padding: 1em;
   background: #fff;
   color: #000;
@@ -29,6 +35,8 @@ body {
 
 h1.title {
   font-size: min(9vw, 4em);
+  font-weight: 400;
+  margin-bottom: 1.5em;
 }
 
 .main {
@@ -67,7 +75,7 @@ figure {
 
 h1,
 .posts {
-  font-family: "PT Mono", monospace;
+  font-family: "IBM Plex Mono", monospace;
 }
 
 h1 a,
@@ -82,7 +90,7 @@ h1 a:before,
   position: absolute;
   width: 100%;
   height: 2px;
-  bottom: 0%;
+  bottom: 2px;
   left: 0;
   /* background: #2A7B9B; */
   background: linear-gradient(
@@ -92,7 +100,7 @@ h1 a:before,
   );
 
   transform-origin: 0 0;
-  transform: scaleX(0) scaleY(0.1);
+  transform: scaleX(0) scaleY(1);
   transition: all 0.25s ease-in-out 0s;
 }
 
@@ -119,7 +127,8 @@ h6 {
 ul.posts,
 .post-title {
   padding: 0;
-  font-family: "PT Mono", monospace;
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 400;
 }
 
 ul.posts li,
@@ -131,13 +140,13 @@ ul.posts li,
 ul.posts a,
 .post-title a {
   font-size: 2em;
-  font-weight: 900;
 }
 
 ul.posts time,
 .post-title time {
   display: block;
   font-size: min(2vw, 0.75rem);
+  opacity: 0.5;
 }
 
 img {
