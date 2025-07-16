@@ -51,7 +51,7 @@ This works for other videos too.
 - <a href="#mizen-walk">Walking around</a> -->
 
 <output id="vs">
-    <section class="blank"></section>
+    <section class="blank-vs"></section>
 </output>
 
 <script>
@@ -65,7 +65,7 @@ This works for other videos too.
 
     function update() {
         const hash = location.hash.slice(1);
-        
+
         if(valid.includes(hash)) {
             output.innerHTML = `
                 <pose-tracker poses="https://vs.benjaminbenben.com/${hash}/poses.ply" points="https://vs.benjaminbenben.com/${hash}/points.bin.ply">
@@ -83,6 +83,24 @@ This works for other videos too.
 </script>
 
 <script src="/js/pose-tracker.js" async></script>
+
+<style>
+    .blank-vs {
+        background-color: #eee;
+        background: linear-gradient(180deg,rgba(238, 238, 238, 1) 0%, rgba(170, 170, 170, 1) 100%);
+
+        display: flex;
+        padding: 0;
+        position: relative;
+        margin: auto;
+        aspect-ratio: 16 / 9;
+        max-height: 80vh;
+        max-width: 90vw;
+        overflow: hidden;
+        opacity: 0.2;
+        border-radius: 5px 
+    }
+</style>
 
 [drone]: https://www.dji.com/mini-4-pro
 [motovideo]: https://customer-j0h94e0v9rsg8l40.cloudflarestream.com/0c7e1abdb84a5752024cbd417fadc08c/watch
