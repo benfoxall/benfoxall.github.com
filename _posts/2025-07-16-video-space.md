@@ -1,49 +1,88 @@
 ---
 layout: post.njk
-title: Video in Space
+title: Video Space
+description: Pose-aligned video tracking with WebGL
 permalink: 2025/07/16/video-space/
 draft: true
 ---
 
-Here's a video from my [drone] aligned to the path of flight.
+Here's a drone video aligned with it's flight path
+{: .lead}
 
-<pose-aligned poses="https://vs.benjaminbenben.com/motocamp/poses.ply" points="https://vs.benjaminbenben.com/motocamp/points.bin.ply">
-    <video src="https://vs.benjaminbenben.com/motocamp/720.mp4" crossorigin="anonymous" muted id="autoplay"></video>
-</pose-aligned>
+<pose-tracker poses="https://vs.benjaminbenben.com/motocamp/poses.ply" points="https://vs.benjaminbenben.com/motocamp/points.bin.ply">
+    <video src="https://vs.benjaminbenben.com/motocamp/720.mp4" crossorigin="anonymous" muted autoplay></video>
+</pose-tracker>
 
+… it's interactive! Drag around to see from different angles.
 
+### Locating my drone
 
-### Locating frames
-
-Consumer DJI drones can provide you a telemetry data file with it’s location & altitude but unfortunately nothing about the orientation or camera angle.  So I extracted video frames and ran them through [colmap][colmap] to find the orientation of each frame of the video. As a bonus I got a sparse point cloud of the matching points in the scene.
+[My drone][drone] records telemetry data with it’s location & altitude but unfortunately nothing about the orientation or camera angle. So I decided to extract video frames and use [colmap][colmap] to calculate the orientation of each frame of the video. As a bonus I got a sparse point cloud generated in the process.
 
 I wrote some slightly scrappy code to extract and serialise the poses and points into a ply file that I could load into a webgl component.
 
+You can see some of the process for this on my [bluesky] post.
+
 ### Implementation
 
-I’m pretty happy with my approach for embedding this, it’s a web component that wraps a `<video />` element with links to the colmap data:
+I’m pretty happy with how this is structured, it’s a web component that wraps a `<video />` element with links to the colmap data:
 
 ```html
-<pose-aligned poses="poses.ply" points="points.ply">
+<pose-tracker poses="poses.ply" points="points.ply">
   <video src="motocamp.mp4"></video>
-</pose-aligned>
+</pose-tracker>
 ```
 
-Internally it hides the video element, loads the pose/points resources, then adds a canvas and some html controls.  The video element playback drives the visualisation, which I found pretty handy for adding play/pause/seek controls.
+Internally the video element is hidden but still drives the playback of the component, which is some html controls & a webgl canvas element.
 
-The scene is rendered with threejs. The key element is a 2d texture array to stash the all the video frames in, with an instanced mesh that allows everything to be drawn together. My original approach for pushing the frames was using a 2dCanvas to write the pixels into a array buffer, but I found `WebGLArrayRenderTarget` which lets you populate texture arrays directly!
+The canvas is rendered by threejs. The key trick is using a single 2d texture array to stash the all the video frames, with an instanced mesh that allows everything to be drawn together. My original approach for pushing the frames was using a 2dCanvas to write the pixels into a array buffer, but I found `WebGLArrayRenderTarget` which lets you populate texture arrays directly!
 
-I don’t want/need to capture a pose for every frame of video so downsampled it (from 60 &rarr; 2hz) and interpolated to find the frames. Orientation is quite straightforward in threejs, but for translation I was really happy when I found [curve-interpolator].
+It would have been quite time consuming to calculate the poses for every frame of the video so downsampled it (from 60 &rarr; 2 Hz) and interpolate to find the position at a set timestamp. Orientation is quite straightforward in threejs, but for translation I was really happy when I found [curve-interpolator].
 
+## Other videos
 
+This works for other videos too.
 
+- <a href="#wall">Walking along a beach towards some grafitti</a>
+- <a href="#bike-dog">Cycling next to a friendly dog</a>
+- <a href="#drone-chile">A confluence in Chile</a>
+- <a href="#mizen-walk">A start/finish line</a>
+<!-- - <a href="#mizen-fly">Flying over some cliffs</a>
+- <a href="#mizen-walk">Walking around</a> -->
 
-<script src="/js/video-space.js"></script>
+<output id="vs">
+    <section class="blank"></section>
+</output>
+
 <script>
-    document.getElementById('autoplay')?.addEventListener('loadeddata', function() {
+    // not sure why this is needed
+    document.querySelector('[autoplay]')?.addEventListener('loadeddata', function() {
         this.play();
     });
+
+    const valid = [ "wall", "bike-dog", "drone-chile", "mizen-fly", "mizen-walk" ]
+    const output = document.querySelector("output#vs")
+
+    function update() {
+        const hash = location.hash.slice(1);
+        
+        if(valid.includes(hash)) {
+            output.innerHTML = `
+                <pose-tracker poses="https://vs.benjaminbenben.com/${hash}/poses.ply" points="https://vs.benjaminbenben.com/${hash}/points.bin.ply">
+                    <video src="https://vs.benjaminbenben.com/${hash}/720.mp4" crossorigin="anonymous" muted autoplay></video>
+                </pose-tracker>
+            `
+
+            output.querySelector("video").play()
+        }
+    }
+
+    window.addEventListener("hashchange", update);
+    update()
+
 </script>
+
+<script src="/js/pose-tracker.js" async></script>
 
 [drone]: https://www.dji.com/mini-4-pro
 [motovideo]: https://customer-j0h94e0v9rsg8l40.cloudflarestream.com/0c7e1abdb84a5752024cbd417fadc08c/watch
@@ -51,3 +90,4 @@ I don’t want/need to capture a pose for every frame of video so downsampled it
 [colmap]: https://colmap.github.io/
 [done-dataset]: https://fpv.ifi.uzh.ch/datasets/
 [curve-interpolator]: https://www.npmjs.com/package/curve-interpolator
+[bluesky]: https://bsky.app/profile/benfoxall.bsky.social/post/3lt2wjk6tgc22
