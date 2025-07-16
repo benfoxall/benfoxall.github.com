@@ -18,8 +18,8 @@ body {
 
 @media (prefers-color-scheme: dark) {
   body {
-    background: #1a1a1a;
-    color: #eee;
+    background: #2c2c2c;
+    color: #fff;
   }
 
   hr {
@@ -231,5 +231,5 @@ footer a:hover {
   border: 1px solid;
   border-radius: 4px;
   display: inline-block;
-  padding: .5em;
+  padding: 0.5em;
 }
