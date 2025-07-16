@@ -224,3 +224,10 @@ footer a:hover {
   transition: transform 0.1s, filter 0.2s;
   transform: scale(1.2) translateY(-5px);
 }
+
+.notice {
+  border: 1px solid;
+  border-radius: 4px;
+  display: inline-block;
+  padding: .5em;
+}
