@@ -38,7 +38,7 @@ export default function (eleventyConfig) {
     metadata: {
       language: "en",
       title: "BenjaminBenBen",
-      subtitle: "Personal site of Ben Foxall.",
+      subtitle: "Some stuff by Ben Foxall",
       base: "https://benjaminbenben.com/",
       author: {
         name: "Ben Foxall",
