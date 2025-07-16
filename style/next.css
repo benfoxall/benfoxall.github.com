@@ -32,7 +32,8 @@ h1.title {
 }
 
 .main {
-  max-width: 35em;
+  max-width: 38em;
+  margin-bottom: 5em;
 }
 
 a {
