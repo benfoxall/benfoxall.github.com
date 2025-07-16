@@ -114,9 +114,9 @@ export default function (eleventyConfig) {
     return post.url;
   });
 
-  // Handle posts collection with proper sorting
+  // Handle posts collection with proper sorting and draft filtering
   eleventyConfig.addCollection("posts", function (collectionApi) {
-    const posts = collectionApi.getFilteredByGlob(["_posts/*.md", "_posts/*.mdx"]).sort((a, b) => {
+    const posts = collectionApi.getFilteredByGlob(["_posts/*.md", "_posts/*.mdx"]).filter(post => !post.data.draft).sort((a, b) => {
       return a.date - b.date;
     });
     return posts;
