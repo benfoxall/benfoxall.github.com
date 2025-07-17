@@ -4,13 +4,12 @@ title: Video Space
 description: Pose-aligned video tracking with WebGL
 permalink: 2025/07/16/video-space/
 image: /img/social/video-space.jpg
-draft: true
 ---
 
 Here's a video that's played back in the space it was captured
 {:.lead}
 
-👀 It's interactive, drag the viewer to explore
+👀 It's interactive, drag the viewer to adjust the viewpoint
 
 <pose-tracker poses="https://vs.benjaminbenben.com/motocamp/poses.ply" points="https://vs.benjaminbenben.com/motocamp/points.bin.ply">
     <video src="https://vs.benjaminbenben.com/motocamp/720.mp4" crossorigin="anonymous" muted autoplay playsinline></video>
@@ -21,11 +20,11 @@ Here's a video that's played back in the space it was captured
 <label style="padding-top: .5em; display: block">
     <select>
         <option value="motocamp">Motocamping</option>
-        <option value="wall">Walking along a beach towards some grafitti</option>
+        <option value="wall">A beach near Poolbeg Lighthouse</option>
         <option value="bike-dog">Cycling next to a friendly dog</option>
         <option value="drone-chile">A confluence in Chile</option>
-        <option value="mizen-walk">A start/finish line</option>
-        <option value="mizen-fly">Flying over some cliffs</option>
+        <option value="mizen-walk">Mizen head: A start/finish line</option>
+        <option value="mizen-fly">Mizen head: Flying over some cliffs</option>
     </select>
     <script>
         document.currentScript.previousElementSibling.addEventListener('change', ({target: {value}}) => {
@@ -46,7 +45,7 @@ Here's a video that's played back in the space it was captured
 
 I was hoping to use the telemetry data from my [drone]; it produces a text file with it's location as it captures video. However this doesn't include orientation or camera gimble info so I wasn't able to map it into a pose.
 
-So I decided to use [COLMAP], a Structure-from-Motion tool which allows you to take a series of images to build a 3d scene. COLMAP stores the position from which each image was captured which I was able to use for aligning the video frames. As a bonus, this works for for other video sources, not just drone footage.
+So I decided to use [COLMAP], a Structure-from-Motion tool which allows you to take a series of images to build a scene. COLMAP stores the position from which each image was captured which I was able to use for aligning the video frames. As a bonus, this works for other video sources, not just drone footage.
 
 I wrote some slightly scrappy code to extract and serialise the poses and points into a ply file that I could load into a webgl component. You can read some of the process (and see some gaussian splats) on this [bluesky] thread.
 
