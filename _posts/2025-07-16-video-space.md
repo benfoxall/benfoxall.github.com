@@ -7,13 +7,17 @@ image: /img/social/video-space.jpg
 draft: true
 ---
 
-Here's a drone video aligned with it's flight path
-{: .lead}
+Here's a video that's played back in the space it was captured
+{:.lead}
+
+👀 It's interactive, drag the viewer to explore
 
 <pose-tracker poses="https://vs.benjaminbenben.com/motocamp/poses.ply" points="https://vs.benjaminbenben.com/motocamp/points.bin.ply">
     <video src="https://vs.benjaminbenben.com/motocamp/720.mp4" crossorigin="anonymous" muted autoplay playsinline></video>
 </pose-tracker>
+
 <script src="/js/pose-tracker.js" async></script>
+
 <label style="padding-top: .5em; display: block">
     <select>
         <option value="motocamp">Motocamping</option>
@@ -38,15 +42,14 @@ Here's a drone video aligned with it's flight path
     &larr; More videos 
 </label>
 
-… it's interactive! Drag around to see from different angles.
 
-### Locating my drone
+### Locating frames
 
-[My drone][drone] records telemetry data with it’s location & altitude but unfortunately nothing about the orientation or camera angle. So I decided to extract video frames and use [colmap][colmap] to calculate the orientation of each frame of the video. As a bonus I got a sparse point cloud generated in the process.
+I was hoping to use the telemetry data from my [drone]; it produces a text file with the location of the drone as it captures video.  However this doesn't include orientation or camera gimble info so I wasn't able to map it into a pose.
 
-I wrote some slightly scrappy code to extract and serialise the poses and points into a ply file that I could load into a webgl component.
+So I decided to use [COLMAP], a Structure-from-Motion tool which allows you to take a series of images to build a 3d scene.  COLMAP also captures the position from which each image was captured which I was able to use for working. And because this is general purpose, I could use it for videos other than drone footage.
 
-You can see some of the process for this on my [bluesky] post.
+I wrote some slightly scrappy code to extract and serialise the poses and points into a ply file that I could load into a webgl component.  You can read some of the process (and some gaussian splats) on this [bluesky] thread.
 
 ### Implementation
 
@@ -68,11 +71,10 @@ It would have been quite time consuming to calculate the poses for every frame o
 
 This works for other videos too.
 
-
 [drone]: https://www.dji.com/mini-4-pro
 [motovideo]: https://customer-j0h94e0v9rsg8l40.cloudflarestream.com/0c7e1abdb84a5752024cbd417fadc08c/watch
 [webvtt]: https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API
-[colmap]: https://colmap.github.io/
+[COLMAP]: https://colmap.github.io/
 [done-dataset]: https://fpv.ifi.uzh.ch/datasets/
 [curve-interpolator]: https://www.npmjs.com/package/curve-interpolator
 [bluesky]: https://bsky.app/profile/benfoxall.bsky.social/post/3lt2wjk6tgc22
