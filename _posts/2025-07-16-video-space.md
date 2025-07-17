@@ -42,14 +42,13 @@ Here's a video that's played back in the space it was captured
     &larr; More videos 
 </label>
 
-
 ### Locating frames
 
 I was hoping to use the telemetry data from my [drone]; it produces a text file with the location of the drone as it captures video.  However this doesn't include orientation or camera gimble info so I wasn't able to map it into a pose.
 
-So I decided to use [COLMAP], a Structure-from-Motion tool which allows you to take a series of images to build a 3d scene.  COLMAP also captures the position from which each image was captured which I was able to use for working. And because this is general purpose, I could use it for videos other than drone footage.
+So I decided to use [COLMAP], a Structure-from-Motion tool which allows you to take a series of images to build a 3d scene.  COLMAP also captures the position from which each image was captured which I was able to use for aligning the video frames. As a bonus, this works for for other video sources, not just drones.
 
-I wrote some slightly scrappy code to extract and serialise the poses and points into a ply file that I could load into a webgl component.  You can read some of the process (and some gaussian splats) on this [bluesky] thread.
+I wrote some slightly scrappy code to extract and serialise the poses and points into a ply file that I could load into a webgl component.  You can read some of the process (and see some gaussian splats) on this [bluesky] thread.
 
 ### Implementation
 
@@ -63,18 +62,31 @@ I’m pretty happy with how this is structured, it’s a web component that wrap
 
 Internally the video element is hidden but still drives the playback of the component, which is some html controls & a webgl canvas element.
 
-The canvas is rendered by threejs. The key trick is using a single 2d texture array to stash the all the video frames, with an instanced mesh that allows everything to be drawn together. My original approach for pushing the frames was using a 2dCanvas to write the pixels into a array buffer, but I found `WebGLArrayRenderTarget` which lets you populate texture arrays directly!
+The canvas is rendered by threejs. The key trick is using a single 2d texture array to stash the historical video frames, with an instanced mesh that allows everything to be drawn together. My original approach for pushing the frames was using a 2dCanvas to write the pixels into a array buffer, but I found `WebGLArrayRenderTarget` which lets you populate texture arrays directly!
 
-It would have been quite time consuming to calculate the poses for every frame of the video so downsampled it (from 60 &rarr; 2 Hz) and interpolate to find the position at a set timestamp. Orientation is quite straightforward in threejs, but for translation I was really happy when I found [curve-interpolator].
+I didn't want/need every frame of the video, so I sampled it (from 60 &rarr; 2-5 Hz) and interpolate to find the position at a set timestamp. Orientation is quite straightforward in threejs, but for translation I was really happy when I found [curve-interpolator].
 
-## Other videos
+## Data sources & formats
 
-This works for other videos too.
+Using structure from motion is cool, but you can get potentially richer data from sensors on the capture device.
+
+For drones, the [UZH-FPV Drone Racing Dataset][done-dataset] is a great example of the sort of data that's available.
+
+For capturing from a mobile device [WebXR Raw Camera Access][webxr] could be an option for capturing pose-aligned video.
+
+GoPro cameras have a [telemetry format][gpmf] which looks like it captures a bunch of metadata.
+
+And for output formats, I enjoyed using [ply] because it's so lightweight/flexible (it can be just a text file!). But if I was doing this properly I'd probably use something like [mcap] to link everything together.
+
 
 [drone]: https://www.dji.com/mini-4-pro
 [motovideo]: https://customer-j0h94e0v9rsg8l40.cloudflarestream.com/0c7e1abdb84a5752024cbd417fadc08c/watch
 [webvtt]: https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API
 [COLMAP]: https://colmap.github.io/
 [done-dataset]: https://fpv.ifi.uzh.ch/datasets/
+[webxr]: https://immersive-web.github.io/raw-camera-access/
 [curve-interpolator]: https://www.npmjs.com/package/curve-interpolator
 [bluesky]: https://bsky.app/profile/benfoxall.bsky.social/post/3lt2wjk6tgc22
+[gpmf]: https://github.com/gopro/gpmf-parser
+[ply]: https://en.wikipedia.org/wiki/PLY_(file_format)
+[mcap]: https://mcap.dev/
