@@ -78,7 +78,7 @@ GoPro cameras have a [telemetry format][gpmf] which looks like it captures a bun
 
 And for output formats, I enjoyed using [ply] because it's so lightweight/flexible (it can be just a text file!). But if I was doing this properly I'd probably use something like [mcap] to link everything together.
 
-
+I've got a fairly shonky pipeline for processing videos now, so if there's something that you think would be interesting give me a shout and I'll run it through!
 
 [drone]: https://www.dji.com/mini-4-pro
 [motovideo]: https://customer-j0h94e0v9rsg8l40.cloudflarestream.com/0c7e1abdb84a5752024cbd417fadc08c/watch
