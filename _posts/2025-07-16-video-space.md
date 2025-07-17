@@ -13,6 +13,30 @@ Here's a drone video aligned with it's flight path
 <pose-tracker poses="https://vs.benjaminbenben.com/motocamp/poses.ply" points="https://vs.benjaminbenben.com/motocamp/points.bin.ply">
     <video src="https://vs.benjaminbenben.com/motocamp/720.mp4" crossorigin="anonymous" muted autoplay playsinline></video>
 </pose-tracker>
+<script src="/js/pose-tracker.js" async></script>
+<label style="padding-top: .5em; display: block">
+    <select>
+        <option value="motocamp">Motocamping</option>
+        <option value="wall">Walking along a beach towards some grafitti</option>
+        <option value="bike-dog">Cycling next to a friendly dog</option>
+        <option value="drone-chile">A confluence in Chile</option>
+        <option value="mizen-walk">A start/finish line</option>
+        <option value="mizen-fly">Flying over some cliffs</option>
+    </select>
+    <script>
+        document.currentScript.previousElementSibling.addEventListener('change', ({target: {value}}) => {
+            document.querySelector('pose-tracker').outerHTML = `
+                    <pose-tracker 
+                        poses="https://vs.benjaminbenben.com/${value}/poses.ply" 
+                        points="https://vs.benjaminbenben.com/${value}/points.bin.ply">
+                        <video src="https://vs.benjaminbenben.com/${value}/720.mp4" crossorigin="anonymous" muted autoplay playsinline></video>
+                    </pose-tracker>
+                `
+            document.querySelector('pose-tracker video').play()
+        })
+    </script>
+    &larr; More videos 
+</label>
 
 … it's interactive! Drag around to see from different angles.
 
@@ -44,63 +68,6 @@ It would have been quite time consuming to calculate the poses for every frame o
 
 This works for other videos too.
 
-- <a href="#wall">Walking along a beach towards some grafitti</a>
-- <a href="#bike-dog">Cycling next to a friendly dog</a>
-- <a href="#drone-chile">A confluence in Chile</a>
-- <a href="#mizen-walk">A start/finish line</a>
-- <a href="#mizen-fly">Flying over some cliffs</a>
-
-<output id="vs">
-    <section class="blank-vs"></section>
-</output>
-
-<script>
-    // not sure why this is needed
-    document.querySelector('[autoplay]')?.addEventListener('loadeddata', function() {
-        this.play();
-    });
-
-    const valid = [ "wall", "bike-dog", "drone-chile", "mizen-fly", "mizen-walk" ]
-    const output = document.querySelector("output#vs")
-
-    function update() {
-        const hash = location.hash.slice(1);
-
-        if(valid.includes(hash)) {
-            output.innerHTML = `
-                <pose-tracker poses="https://vs.benjaminbenben.com/${hash}/poses.ply" points="https://vs.benjaminbenben.com/${hash}/points.bin.ply">
-                    <video src="https://vs.benjaminbenben.com/${hash}/720.mp4" crossorigin="anonymous" muted autoplay playsinline></video>
-                </pose-tracker>
-            `
-
-            output.querySelector("video").play()
-        }
-    }
-
-    window.addEventListener("hashchange", update);
-    update()
-
-</script>
-
-<script src="/js/pose-tracker.js" async></script>
-
-<style>
-    .blank-vs {
-        background-color: #eee;
-        background: linear-gradient(180deg,rgba(238, 238, 238, 1) 0%, rgba(170, 170, 170, 1) 100%);
-
-        display: flex;
-        padding: 0;
-        position: relative;
-        margin: auto;
-        aspect-ratio: 16 / 9;
-        max-height: 80vh;
-        max-width: 90vw;
-        overflow: hidden;
-        opacity: 0.2;
-        border-radius: 5px 
-    }
-</style>
 
 [drone]: https://www.dji.com/mini-4-pro
 [motovideo]: https://customer-j0h94e0v9rsg8l40.cloudflarestream.com/0c7e1abdb84a5752024cbd417fadc08c/watch
