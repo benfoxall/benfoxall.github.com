@@ -13,6 +13,14 @@
 	<link rel="stylesheet" href="/style/prism.css">
 	<link rel="shortcut icon" href="/favicon.ico" />
 
+	{% if image %}
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://benjaminbenben.com{{ page.url }}" />
+	<meta property="og:title" content="{% if title %}{{ title }}{% else %}BenjaminBenBen{% endif %}" />
+	<meta property="og:description" content="{% if description %}{{ description }}{% else %}Some stuff by Ben Foxall{% endif %}" />
+	<meta property="og:image" content="https://benjaminbenben.com{{image}}" />
+	{% endif %}
+
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
@@ -20,7 +28,8 @@
 	<link href="https://twitter.com/benjaminbenben" rel="me">
 	<link href="https://github.com/benfoxall" rel="me">
 	<link href="mailto:benfoxall@gmail.com" rel="me">
-	<meta name="author" content="@benjaminbenben">
+
+	<meta name="author" content="Ben Foxall">
 	
 	<!-- mini-modernizr -->
 	<script type="text/javascript">document.getElementsByTagName('html')[0].className = 'js';</script>

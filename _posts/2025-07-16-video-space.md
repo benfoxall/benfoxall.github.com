@@ -3,6 +3,7 @@ layout: post.njk
 title: Video Space
 description: Pose-aligned video tracking with WebGL
 permalink: 2025/07/16/video-space/
+image: /img/social/video-space.jpg
 draft: true
 ---
 
