@@ -11,7 +11,7 @@ Here's a drone video aligned with it's flight path
 {: .lead}
 
 <pose-tracker poses="https://vs.benjaminbenben.com/motocamp/poses.ply" points="https://vs.benjaminbenben.com/motocamp/points.bin.ply">
-    <video src="https://vs.benjaminbenben.com/motocamp/720.mp4" crossorigin="anonymous" muted autoplay></video>
+    <video src="https://vs.benjaminbenben.com/motocamp/720.mp4" crossorigin="anonymous" muted autoplay playsinline></video>
 </pose-tracker>
 
 … it's interactive! Drag around to see from different angles.
@@ -69,7 +69,7 @@ This works for other videos too.
         if(valid.includes(hash)) {
             output.innerHTML = `
                 <pose-tracker poses="https://vs.benjaminbenben.com/${hash}/poses.ply" points="https://vs.benjaminbenben.com/${hash}/points.bin.ply">
-                    <video src="https://vs.benjaminbenben.com/${hash}/720.mp4" crossorigin="anonymous" muted autoplay></video>
+                    <video src="https://vs.benjaminbenben.com/${hash}/720.mp4" crossorigin="anonymous" muted autoplay playsinline></video>
                 </pose-tracker>
             `
 
