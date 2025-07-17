@@ -44,11 +44,11 @@ Here's a video that's played back in the space it was captured
 
 ### Locating frames
 
-I was hoping to use the telemetry data from my [drone]; it produces a text file with the location of the drone as it captures video.  However this doesn't include orientation or camera gimble info so I wasn't able to map it into a pose.
+I was hoping to use the telemetry data from my [drone]; it produces a text file with it's location as it captures video. However this doesn't include orientation or camera gimble info so I wasn't able to map it into a pose.
 
-So I decided to use [COLMAP], a Structure-from-Motion tool which allows you to take a series of images to build a 3d scene.  COLMAP also captures the position from which each image was captured which I was able to use for aligning the video frames. As a bonus, this works for for other video sources, not just drones.
+So I decided to use [COLMAP], a Structure-from-Motion tool which allows you to take a series of images to build a 3d scene. COLMAP stores the position from which each image was captured which I was able to use for aligning the video frames. As a bonus, this works for for other video sources, not just drone footage.
 
-I wrote some slightly scrappy code to extract and serialise the poses and points into a ply file that I could load into a webgl component.  You can read some of the process (and see some gaussian splats) on this [bluesky] thread.
+I wrote some slightly scrappy code to extract and serialise the poses and points into a ply file that I could load into a webgl component. You can read some of the process (and see some gaussian splats) on this [bluesky] thread.
 
 ### Implementation
 
@@ -77,6 +77,7 @@ For capturing from a mobile device [WebXR Raw Camera Access][webxr] could be an 
 GoPro cameras have a [telemetry format][gpmf] which looks like it captures a bunch of metadata.
 
 And for output formats, I enjoyed using [ply] because it's so lightweight/flexible (it can be just a text file!). But if I was doing this properly I'd probably use something like [mcap] to link everything together.
+
 
 
 [drone]: https://www.dji.com/mini-4-pro
