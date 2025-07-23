@@ -52,7 +52,7 @@ I've got a few blog posts ideas logged as [github issues][gh-blog]; so I'm going
 
 Although I’ve not been posting much online; other people have been putting stuff online with my face on it:
 
-* [Max](https://twitter.com/omgmog) built [bensmindpalace.co.uk](http://www.bensmindpalace.co.uk); it’s got my face, some code, and a soundtrack.
+* [Max](https://twitter.com/omgmog) built [bensmindpalace.co.uk](https://web.archive.org/web/20180831115054/http://www.bensmindpalace.co.uk/); it’s got my face, some code, and a soundtrack.
 * [Michael](https://twitter.com/rogue_michael) made [this page](http://michaelblatherwick.co.uk/ben/), which transitions from [lorem-ipsum](https://en.wikipedia.org/wiki/Lorem_ipsum) to [lorem-bensum](https://github.com/peterjwest/lorem_bensum), then into a picture of my face.
 
 Thanks, guys.

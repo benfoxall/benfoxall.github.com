@@ -19,7 +19,7 @@ There are services that let you download a pdf streamgraph: [lastgraph.aeracode.
 I originally started creating a large svg for the whole chart,  though this became quite slow, so I used separate canvas elements for each week of data and .  This is slightly limiting - I couldn't sort or colour the artists based on when they appear in your history (as the original does).
 
 
-[lgraph]: /projects/lgraph/
+[lgraph]: /archive/projects/lgraph/
 [listHist]: http://www.leebyron.com/what/lastfm/
 [paper]: http://www.leebyron.com/else/streamgraph/download.php?file=stackedgraphs_byron_wattenberg.pdf
 [areacode]: http://lastgraph.aeracode.org/

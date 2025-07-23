@@ -16,7 +16,7 @@ This is some stuff that I've been doing since then:
 - **Sarah and I got married** it was a lovely day with lovely people 🥰.
 - **Left Wayve and moved back to Dublin** earlier this year we left London and returned to Dublin.
 
-I've managed to travel a lot - Namibia, Whistler, France, Chile and a few trips to California for work. I've taken some [motorbiking trips](motoreuro), been snowboarding a bunch of times, and travelled by bicycle on a few trips.
+I've managed to travel a lot - Namibia, Whistler, France, Chile and a few trips to California for work. I've taken some [motorbiking trips][motoreuro], been snowboarding a bunch of times, and travelled by bicycle on a few trips.
 
 During lockdowns we started [Remote Hack](https://remotehack.space/) which was such a lovely way to connect and explore some fun projects. And in person I loved catching up with folks at places like MKGN, OGN & emfcamp.
 

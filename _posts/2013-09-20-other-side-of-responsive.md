@@ -19,7 +19,7 @@ My laptop has a node.js server which does two things:
 
 My phone has a 3g connection, and acts as a hotspot for my laptop (I would have used the wifi, but it was a bit shakey on my phone - this worked a lot better)
 
-There's a page hosted at [benjaminbenben.com/party](https://github.com/benfoxall/benfoxall.github.com/blob/master/party/index.html) which has the markup for each of the phone slides, and some JavaScript to link it up to my talk.  I took some effort to make this as performant as possible (from accessing the web server with your phone, the "hello" is able to display within the first network roundtrip!); so I was glad to hear [Drew](https://twitter.com/intent/user?screen_name=drewm) talk about web performance, it's such an important aspect of working with the web.
+There's a page hosted at [benjaminbenben.com/archive/party](https://github.com/benfoxall/benfoxall.github.com/blob/master/party/index.html) which has the markup for each of the phone slides, and some JavaScript to link it up to my talk.  I took some effort to make this as performant as possible (from accessing the web server with your phone, the "hello" is able to display within the first network roundtrip!); so I was glad to hear [Drew](https://twitter.com/intent/user?screen_name=drewm) talk about web performance, it's such an important aspect of working with the web.
 
 I used <a href="http://www.pubnub.com/">PubNub</a> to communicate with the devices in the room.  I had two channels, one to give the status of the slides and another for devices to publish information about themselves and forward touch events when we "went collaborative".  The publish / subscribe style worked brilliantly for this - all devices would publish and the slide deck would be the only subscriber, and the other way round for the slide states.  PubNub has a few features which were really useful for this:
 
@@ -29,7 +29,7 @@ I used <a href="http://www.pubnub.com/">PubNub</a> to communicate with the devic
 
 ## The talk
 
-My first slide was the short url for the [benjaminbenben.com/party](http://benjaminbenben.com/party) with a counter below it.  When someone loads the page, there is a script that:
+My first slide was the short url for the [benjaminbenben.com/party](http://benjaminbenben.com/archive/party) with a counter below it.  When someone loads the page, there is a script that:
 
 1. Generates and locks down a uuid for the user, so that reloading the page won't create more devices
 2. Uses modernizr to find the capabilities of the device
