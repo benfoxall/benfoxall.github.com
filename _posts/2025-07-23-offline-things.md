@@ -10,32 +10,47 @@ draft: true
 How do we get data from something that isn't connected to the internet?
 {:.lead}
 
-…there's loads of ways, but the one I'm interested in is **✨QR Codes✨**.
+…there's loads of ways, but I'm interested in **✨QR Codes✨**.
 
-I’ve got a microcontroller, every few minutes it checks the temperature and encodes recent values in a QR Code, which takes you to a collector page, which can then show the data captured.
+## ✨ From ~~Io~~T sensors
+
+If you have a display attached to your sensor then you can encode it's data in a url so that it can be viewed by any device that scans it.
+
+[I used a Pi Pico's temprature sensor][sensor] connected to an e-ink display.  There's an accompanying collector page which can decode that data and plot a graph.
 
 ![offline collector](/img/offline-collector.png){:.no-border}
 
 Some neat stuff about this:
 
-- Both devices can be offline
-  - Zero network dependency for the microcontroller
-  - The collector page is offline
-- power efficient - using a persistent display, the controller can go into deep sleep and only wake to capture data and update the display.
-- robust & stateless. There’s no networking, bridges or connections to handle. You could even take a picture of the QR code to scan later, or share the link to another device to see the same data.
-- potential for browser storage to merge many readings.
+- **Everything works offline**.
+  - The Pico has no network code
+  - The collector page works offline using a service worker
+- **Power efficient**. E-ink displays don't require continous power so controller could go into deep sleep between readings.
+- **Robustness**. There’s no networking code or reliance on infrastructure to offload data.
 
-You don’t have to share the raw data either, qDraw simplifies paths and shares them
+### Bonus: forwarding to a server
 
-## Relaying data to a server
+If we did want to store these readings centrally, you can do that too.
 
-Sharing data like this is ephemeral, as soon as you close the page it’s gone. If we want to store this somewhere can implement this by adding a signature to the payload:
+1. Sign the data on the device
+2. In the collector page, forward the message to a server (use [background sync] to support offline)
+3. Confirm the signature and store on your server
 
-collector?data={data}&sig={hash(data + secret)}
+## ✨ From a web page
 
-If the signature matches on the server expectation, then we insert the data into our database. This can be done before the page is displayed to the user.
+You don't need a microcontroller to collect data.
 
-It’s possible to do this while maintaining offline capabilities by using [background sync] to defer the posting until we’ve network.
+[draw something here, qr code appears here]
+
+Source: [benfoxall/qdraw][qdraw].
+
+Here, any lines you draw are encoded into the QR Code.  A cool feature is that you can add more lines on the collector page and then reshare your appended content.
+
+Implementing this boils down to saving any state you can in the url to make it sharable (even without using a QR Code).
+
+There's a really nice fit with offline support.
+
+If you've an offline map, you can encode the You Are Here points quite well.
 
 ## Between offline devices
 
@@ -66,3 +81,5 @@ Some interesting applications:
 [Panda]: https://www.ticklethepanda.dev/
 [QRSocket]: https://remotehack.space/QR-TX/
 [hacked]: https://remotehack.space/
+[sensor]: https://github.com/benfoxall/sensor
+[qdraw]: https://github.com/benfoxall/qdraw
