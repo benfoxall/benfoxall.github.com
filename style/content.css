@@ -219,7 +219,7 @@ ul#events li {
 }
 
 ul#events a {
-  color: #000;
+  color: inherit;
   text-decoration: underline;
   transition: .2s;
   padding: .3em;
