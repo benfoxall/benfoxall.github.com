@@ -5,7 +5,10 @@ permalink: /speaking/
 
 <h1>Speaking</h1>
 
-<p>I've been lucky enough to speak at a number of conferences and meetups on a variety of topics.</p>
+<p>
+  I've been lucky enough to speak at a number of conferences and meetups on a
+  variety of topics.
+</p>
 
 <ul id="events">
   {%- for event in collections.events -%}
@@ -13,19 +16,24 @@ permalink: /speaking/
     <h3>
       {% if event.link %}
       <a href="{{ event.link }}">{{ event.event }}</a>
-      {% else %}
-      {{ event.event }}
-      {% endif %}
-
-      {% if event.date %}
+      {% else %} {{ event.event }} {% endif %} {% if event.date %}
       <small>{{ event.date | date }}</small>
       {% endif %}
     </h3>
     <div class="detail">
       <h4>{{ event.info | safe }} {{ event.name}}</h4>
+
       {% if event.talk_link %}
       <p><a href="{{ event.talk_link }}">Watch the talk</a></p>
       {% endif %}
+
+      <ul class="links">
+        {% for name, url in event.links %}
+        <li>
+          <a href="{{url}}">{{name | title}}</a>
+        </li>
+        {% endfor %}
+      </ul>
     </div>
   </li>
   {%- endfor -%}

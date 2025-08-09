@@ -228,3 +228,9 @@ ul#events a {
 ul#events a:hover {
   background: aquamarine;
 }
+
+ul#events li .links {
+  display: flex;
+  list-style: none;
+  padding: 0;
+}

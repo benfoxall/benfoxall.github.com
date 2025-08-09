@@ -1,3 +1,72 @@
+- 
+  date: 25/6/2025
+  event: DubSec
+  link: https://www.meetup.com/dub-sec/events/308415418
+  info: Authenticating the web with Passkeys.  I talked about building a passkey-only login flow for a side project.
+  links: 
+    slides: /assets/slides/passkeys.pdf
+
+-
+  date: 5/12/2024
+  event: MKGN 50
+  link: https://mkgeeknight.co.uk/events/mkgn-50
+  info: Scanning QR Codes
+  links: 
+    video: https://www.youtube.com/watch?v=mJnzN8pd8Gc
+  
+  abstract: |
+    Printed QR codes act as gateways, linking our physical world to digital entities. In this talk, we will explore how dynamically generating QR codes can provide us more interactive use cases.
+    
+    We’ll then ask the question: “What exactly is a QR code?”, finding out how they store data, and propose a hypothetical QR code that is, in a few ways, worse.
+    
+    Finally, we’ll use a QR code to capture and process distributed data about our environment.
+    
+
+- 
+  date: 1/9/2024
+  event: LNUG
+  link: https://lnug.org/talks/collaborative-file-systems-ben-foxall-at-lnug-107-sept-2024-v919R5RuHK0
+  info: Collaborative File Systems. File system access, peer-to-peer sharing & crdts.
+  links: 
+    slides: https://docs.google.com/presentation/d/1M7U8SuN-OmLri0EuzFuhKQgUXDi_l-bZolAKlkqz9gc/edit?usp=sharing
+    video: https://www.youtube.com/watch?v=v919R5RuHK0
+
+
+-
+  date: 12/4/2024
+  event: Future of Coding
+  link: https://lu.ma/xdgw5rc1?tk=FCWJiG
+  info: Sending stuff with QR codes
+  links: 
+    slides: /assets/slides/qrtx.pdf
+
+- 
+  date: 15/11/2023
+  event: Future of Coding
+  link: https://lu.ma/xdgw5rc1?tk=FCWJiG
+  info: Slicing videos with webcodecs
+  links: 
+    slides: /foc.html
+
+
+-
+  date: 17/3/2022
+  event: MKGN 40
+  link: https://mkgeeknight.co.uk/events/mkgn-40#Ben
+  info: Doing stuff with pixels and time
+  links: 
+    video: https://www.youtube.com/watch?v=mJnzN8pd8Gc
+  
+  abstract: |
+    We’ll strip things right back to the building blocks of digital visual content and explore some of the things we can do when we think of images as data.
+
+    There will probably be some demos, maths and maybe some time warping 🕺
+
+-
+  date: 16/11/2022
+  event: OGN 52
+  link: https://www.meetup.com/oxford-geek-night/events/289113071/
+  info: Video, time & space
 
 - 
   date: 8/3/2021
@@ -5,7 +74,8 @@
   link: https://www.meetup.com/JavaScript-Cambridge/events/275679649/
   info: Visualising LIDAR data in the browser
   # talk_name: Visualising LIDAR data in the browser
-  talk_link: https://www.youtube.com/watch?v=VtfsB9GJPBU
+  links: 
+    video: https://www.youtube.com/watch?v=VtfsB9GJPBU
 
 - 
   date: 11/3/2021
@@ -69,7 +139,8 @@
   link: https://adayofrest.hm/boston-2017/speakers/339/
   info: I <a href="https://speakerdeck.com/benfoxall/making-simple-things?slide=16">leveled</a> with some HTTP API developers, then described the MQTT protocol to a byte level. Going on to show live demos of integrating WordPress with IoT devices
   talk_name: Making simple things
-  talk_link: https://speakerdeck.com/benfoxall/making-simple-things
+  links:
+    slides: https://speakerdeck.com/benfoxall/making-simple-things
 
 # -
 #   date: 8/3/2017
