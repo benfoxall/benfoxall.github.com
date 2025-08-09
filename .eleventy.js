@@ -68,6 +68,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("CNAME");
   eleventyConfig.addPassthroughCopy("card");
   eleventyConfig.addPassthroughCopy("show+ask.html");
+  eleventyConfig.addPassthroughCopy("assets");
 
   // Ignore directories and files for template processing
   eleventyConfig.ignores.add("archive/**/*");
