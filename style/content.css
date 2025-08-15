@@ -234,3 +234,32 @@ ul#events li .links {
   list-style: none;
   padding: 0;
 }
+
+
+.qdraw {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 1em;
+  height: 15em;
+}
+
+
+.qdraw-paint {
+  background: #5557;
+  height: 100%;
+  border-radius: 5px;
+  cursor:crosshair
+}
+
+
+.qdraw-link {
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 5px;
+  height: 50%;
+  display: flex;
+}
+.qdraw-qr {
+  /* aspect-ratio: 1/1; */
+}
