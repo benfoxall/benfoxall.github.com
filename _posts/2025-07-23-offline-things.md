@@ -3,17 +3,15 @@ layout: post.njk
 title: Offline things
 description: Have you tried using a QR Code for that?
 permalink: 2025/07/23/offline-things/
-image: /img/social/video-space.jpg
 draft: true
 ---
 
 Using QR Codes to send data from offline devices
 {:.lead}
 
-
 ## 👉 From a sensor
 
-If a sensor has a display, it can show a qr code with the data encoded in a url.  A use case for this might be [a temperature sensor][sensor] sharing recent values in a [collector page][sensor_values].
+If a sensor has a display, it can show a qr code with the data encoded in a url. A use case for this might be [a temperature sensor][sensor] sharing recent values in a [collector page][sensor_values].
 
 ![A Pi Pico + e-ink display linking to a web page that shows a graph of values](/img/offline-collector.png){:.no-border}
 
@@ -42,7 +40,7 @@ You don't need a microcontroller to collect data. Browsers are a rich source of 
   </script>
 </div>
 
-You might notice as you add more lines the QR code becomes more dense.  There's some limits to the amount of content you can share, but with path simplification and compression it's not too bad.
+You might notice as you add more lines the QR code becomes more dense. There's some limits to the amount of content you can share, but with path simplification and compression it's not too bad.
 
 The key requirement is that page state should be derived from the url, and once you've got that you can save and share content in any number of ways, not just a qr code.
 
@@ -50,28 +48,27 @@ The key requirement is that page state should be derived from the url, and once 
 
 ## 👉 Between web pages
 
-Browser can also **scan** QR Codes using [media streams][media] and [barcode detection][barcode].  This allows us to create a bidirectional socket between two offline devices using their front-facing cameras.
+Browser can also **scan** QR Codes using [media streams][media] and [barcode detection][barcode]. This allows us to create a bidirectional socket between two offline devices using their front-facing cameras.
 
 ![QR Socket Demo](/img/qr-socket-sim.svg){:.no-border}
 
-I [implemented this][QRSocket] – initially as a joke but as I ironed out issues it started feeling pretty cool. 
+I [implemented this][QRSocket] – initially as a joke but as I ironed out issues it started feeling pretty cool.
 
 **Data format**. When transferring data, the QR code is a string "**[RX, TX, …Data]**"
 
-* RX - is the last message id seen by the device
-* TX - is the message id being transmitted
-* Data - the payload.
+- RX - is the last message id seen by the device
+- TX - is the message id being transmitted
+- Data - the payload.
 
-
-👋 **Bootstrapping**.  Before the socket goes into "data mode", I show the url of the current page.  This turned out pretty neat choice for giving people demos - by scanning the first code they're on the right page to continue the demo.
+👋 **Bootstrapping**. Before the socket goes into "data mode", I show the url of the current page. This turned out pretty neat choice for giving people demos - by scanning the first code they're on the right page to continue the demo.
 
 📦 **Chunking**. I chose a pretty arbitraty chunk size. This could be improved to align with a selected qr code size, and it'd be possible to cycle between code sizes to switch to a higher capacity.
 
 _Side note: QR Codes support [structured append] for spreading messages over multiple codes. Pretty cool, but I didn't use it._
 
-📡 **Offline**. The page has a service worker which means that it loads offline.  There's something cool that it works while you're on aeroplane mode.
+📡 **Offline**. The page has a service worker which means that it loads offline. There's something cool that it works while you're on aeroplane mode.
 
-💻 **Usage**. [Panda] and I hacked together [QRSocket], which feels a bit like a WebSocket.  One issue is that it feels awkward to keep a connection/camera open, maybe something to solve at a UX level by entering a sync mode.
+💻 **Usage**. [Panda] and I hacked together [QRSocket], which feels a bit like a WebSocket. One issue is that it feels awkward to keep a connection/camera open, maybe something to solve at a UX level by entering a sync mode.
 
 ```js
 const qs = new QRSocket();
@@ -81,32 +78,25 @@ qs.send("Hello World!");
 ```
 
 🕹️ **Demos**. There's some stuff to play around with at [remotehack.space/QR-TX][QRSocket]
+
 - [Chat](https://remotehack.space/QR-TX/?demo=chat) - a chat demo which shows pending message state.
 - [Signalling](https://remotehack.space/QR-TX/?demo=signal) - negotiates a peer-to-peer webrtc video connection between devices.
 
-
 🤔 **Other things**. I think this could fit pretty well with a [CRDT] - where you've got a local version of some content and you use qr codes to sync state with other devices.
-
 
 🎙️ **Talks**. I demoed this at [Future of Coding][foclondon] last year [[slides][foc slides]]. and also gave a longer talk about QR Codes and other stuff at [MKGN][mkgn50] [[video][mkgn video]].
 
-
 ---
-
-
-
-
 
 random other things;
 
-* gopro config by qr code
-* qr scanner hack I build
-* qr flatten
+- gopro config by qr code
+- qr scanner hack I build
+- qr flatten
 
-* making a qr code from scratch (video)
-* tetris as a qr code
-* flatten codes
-
+- making a qr code from scratch (video)
+- tetris as a qr code
+- flatten codes
 
 [background sync]: https://developer.mozilla.org/en-US/docs/Web/API/Background_Synchronization_API
 [Panda]: https://www.ticklethepanda.dev/
