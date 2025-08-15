@@ -60,7 +60,7 @@ I [implemented this][QRSocket] – initially as a joke but when I ironed out iss
 - TX - is the message id being transmitted
 - Data - the payload
 
-👋 **Bootstrapping**. Before the socket goes into "data mode", I show the url of the current page. This turned out pretty neat choice for giving people demos - by scanning the first code they're on the right page to continue the demo.
+👋 **Bootstrapping**. Before the socket goes into "data mode", I show the url of the current page. This turned out pretty neat choice for giving people demos - by scanning the first code they're on the right page to send data.
 
 📦 **Chunking**. I chose an arbitraty chunk size. This could be improved to fit with a selected qr code size, and I guess it would be possible to cycle between code sizes to switch to a higher capacity.
 
@@ -82,7 +82,7 @@ One issue is that it feels awkward to keep a connection/camera open, maybe somet
 🕹️ **Demos**. There's some stuff to play around with at [remotehack.space/QR-TX][QRSocket]
 
 - [Chat](https://remotehack.space/QR-TX/?demo=chat) - a chat demo which shows pending message state.
-- [Signalling](https://remotehack.space/QR-TX/?demo=signal) - negotiates a peer-to-peer webrtc video connection between devices.
+- [Signalling](https://remotehack.space/QR-TX/?demo=signal) - negotiates a peer-to-peer webrtc video connection between devices.  This upgrade works even when both devices are connected to a local-only network.
 
 🤔 **Data Sync**. I think this could fit pretty well with a [CRDT] - where you've got a local version of some content and you use qr codes to sync state with other devices.
 
@@ -94,7 +94,7 @@ One issue is that it feels awkward to keep a connection/camera open, maybe somet
 
 That I've built:
 
-- [QR Code Scanner](https://benjaminbenben.com/qr/) - I couldn't find one that did what I want; when a qr code is detected visit that link.
+- [QR Code Scanner](https://benjaminbenben.com/qr/) - I couldn't find one that did what I want; when a qr code is detected visit that link (including if that url is 'javascript:alert("hello")' 😬).
 - [QR Undistort](https://benjaminbenben.com/flatten/live.html) - This looks for a QR Code from a camera feed and transforms the video element so that it's central. [Like this](/img/qr-undistort.jpg)!
 - [QR Text](https://benjaminbenben.com/qtext/) - An text-based version of [qdraw].
 
