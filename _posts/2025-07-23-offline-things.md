@@ -52,9 +52,9 @@ Browser can also **scan** QR Codes using [media streams][media] and [barcode det
 
 ![QR Socket Demo](/img/qr-socket-sim.svg){:.no-border}
 
-I [implemented this][QRSocket] – initially as a joke but when I ironed out issues it started feeling pretty cool.
+[Panda] and I [worked on this][QRSocket] – initially as a joke but when we ironed out issues it started feeling pretty cool.
 
-**Data format**. When transferring data, the QR code is a string "**[RX, TX, …Data]**"
+✏️ **Data Format**. When transferring data, the QR code is a string "**[RX, TX, …Data]**"
 
 - RX - is the last message id seen by the device
 - TX - is the message id being transmitted
@@ -68,7 +68,7 @@ _Side note: QR Codes support [structured append] for spreading messages over mul
 
 📡 **Offline**. The page has a service worker which means that it loads offline. There's something cool that it works while you're on aeroplane mode.
 
-💻 **Usage**. [Panda] and I hacked together [QRSocket], which feels a bit like a WebSocket.
+💻 **Usage**. [QRSocket] feels a bit like a WebSocket.
 
 ```js
 const qs = new QRSocket();
@@ -82,7 +82,7 @@ One issue is that it feels awkward to keep a connection/camera open, maybe somet
 🕹️ **Demos**. There's some stuff to play around with at [remotehack.space/QR-TX][QRSocket]
 
 - [Chat](https://remotehack.space/QR-TX/?demo=chat) - a chat demo which shows pending message state.
-- [Signalling](https://remotehack.space/QR-TX/?demo=signal) - negotiates a peer-to-peer webrtc video connection between devices.  This upgrade works even when both devices are connected to a local-only network.
+- [Signalling](https://remotehack.space/QR-TX/?demo=signal) - negotiates a peer-to-peer webrtc video connection between devices. This upgrade works even when both devices are connected to a local-only network.
 
 🤔 **Data Sync**. I think this could fit pretty well with a [CRDT] - where you've got a local version of some content and you use qr codes to sync state with other devices.
 
@@ -103,7 +103,6 @@ Other things:
 - ["I built a QR code with my bare hands to see how it works"][veritasium] - great video exploring how qr codes work. This made reed solomon encoding finally click for me.
 - [Snake in a QR Code][snake-bin] - there's something I love about "chmod +x" on something you captured from your webcam.
 - [qrs] & [txr] - cool approach for one-way streaming using [fountain] codes.
-
 
 [background sync]: https://developer.mozilla.org/en-US/docs/Web/API/Background_Synchronization_API
 [Panda]: https://www.ticklethepanda.dev/
