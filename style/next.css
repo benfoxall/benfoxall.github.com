@@ -19,7 +19,17 @@ body {
   font-size: 100%;
   margin: auto;
   font-weight: 400;
-  line-height: 130%;
+  line-height: 125%;
+  max-width: 38em;
+}
+
+hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, #aaa, #eee);
+  opacity: 0.7;
+  display: block;
+  margin: 3em;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -29,7 +39,7 @@ body {
   }
 
   hr {
-    background: linear-gradient(90deg, #555, #333);
+    background: linear-gradient(90deg, #444, #eee5);
   }
 }
 
@@ -40,7 +50,6 @@ h1.title {
 }
 
 .main {
-  max-width: 38em;
   margin-bottom: 5em;
 }
 
@@ -169,15 +178,6 @@ iframe {
   max-width: 100%;
 }
 
-hr {
-  border: none;
-  height: 1px;
-  background-color: #fff;
-  background: linear-gradient(90deg, #aaa, #eee);
-  opacity: 0.4;
-  display: block;
-  /* border-top: 1px solid #eee */
-}
 
 .post-separator {
   margin-bottom: 5em;
