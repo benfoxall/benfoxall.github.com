@@ -7,79 +7,120 @@ image: /img/social/video-space.jpg
 draft: true
 ---
 
-How do we get data from something that isn't connected to the internet?
+Using QR Codes to send data from offline devices
 {:.lead}
 
-…there's loads of ways, but I'm interested in **✨QR Codes✨**.
 
-## ✨ From ~~Io~~T sensors
+## 👉 From a sensor
 
-If you have a display attached to your sensor then you can encode it's data in a url so that it can be viewed by any device that scans it.
+If a sensor has a display, it can show a qr code with the data encoded in a url.  A use case for this might be [a temperature sensor][sensor] sharing recent values in a [collector page][sensor_values].
 
-[I used a Pi Pico's temprature sensor][sensor] connected to an e-ink display.  There's an accompanying collector page which can decode that data and plot a graph.
+![A Pi Pico + e-ink display linking to a web page that shows a graph of values](/img/offline-collector.png){:.no-border}
 
-![offline collector](/img/offline-collector.png){:.no-border}
+🛜 **Everything works offline**. The microcontroller has no network code and the collector page uses a service worker to load offline.
 
-Some neat stuff about this:
+🔋 **Power efficient**. E-ink displays don't require continous power so controller could go into deep sleep between readings.
 
-- **Everything works offline**.
-  - The Pico has no network code
-  - The collector page works offline using a service worker
-- **Power efficient**. E-ink displays don't require continous power so controller could go into deep sleep between readings.
-- **Robustness**. There’s no networking code or reliance on infrastructure to offload data.
+🔨 **Robust**. You could take a polaroid photo of the sensor and mail it to your friend for them to scan it.
 
-### Bonus: forwarding to a server
+💾 **Collection**. If we want to store readings, we could [sync][background sync] with a server when the collector gets online.
 
-If we did want to store these readings centrally, you can do that too.
+---
 
-1. Sign the data on the device
-2. In the collector page, forward the message to a server (use [background sync] to support offline)
-3. Confirm the signature and store on your server
+## 👉 From a web page
 
-## ✨ From a web page
+You don't need a microcontroller to collect data. Browsers are a rich source of content, for example when you draw in the box below it'll get encode your art in a qr code ([source][qdraw]).
 
-You don't need a microcontroller to collect data.
+<div class="qdraw" data-target="https://benjaminbenben.com/qdraw/">
+  <canvas class="qdraw-paint" width="1024" height="1024"></canvas>
+  <a href="#" class="qdraw-link" target="_blank">
+    <canvas class="qdraw-qr" width="100" height="100"></canvas>
+  </a>
+  <script src="/js/qdraw.js"></script>
+  <script>
+    document.querySelector('.qdraw-paint').addEventListener('touchstart', e => e.preventDefault())
+  </script>
+</div>
 
-[draw something here, qr code appears here]
+You might notice as you add more lines the QR code becomes more dense.  There's some limits to the amount of content you can share, but with path simplification and compression it's not too bad.
 
-Source: [benfoxall/qdraw][qdraw].
+The key requirement is that page state should be derived from the url, and once you've got that you can save and share content in any number of ways, not just a qr code.
 
-Here, any lines you draw are encoded into the QR Code.  A cool feature is that you can add more lines on the collector page and then reshare your appended content.
+---
 
-Implementing this boils down to saving any state you can in the url to make it sharable (even without using a QR Code).
+## 👉 Between web pages
 
-There's a really nice fit with offline support.
+Browser can also **scan** QR Codes using [media streams][media] and [barcode detection][barcode].  This allows us to create a bidirectional socket between two offline devices using their front-facing cameras.
 
-If you've an offline map, you can encode the You Are Here points quite well.
+![QR Socket Demo](/img/qr-socket-sim.svg){:.no-border}
 
-## Between offline devices
+I [implemented this][QRSocket] – initially as a joke but as I ironed out issues it started feeling pretty cool. 
 
-Our phones/laptops/tablets have screens too. Which means we can use them to share and collect data simultaneously.
+**Data format**. When transferring data, the QR code is a string "**[RX, TX, …Data]**"
 
-I [hacked] around this with [Panda] and built [QRSocket]
+* RX - is the last message id seen by the device
+* TX - is the message id being transmitted
+* Data - the payload.
 
-[qr socket video]
 
-This protocol is a bit more involved:
+👋 **Bootstrapping**.  Before the socket goes into "data mode", I show the url of the current page.  This turned out pretty neat choice for giving people demos - by scanning the first code they're on the right page to continue the demo.
 
-- the collector url acts like a bootstrap, when a device sees it, it then switches into a data mode. This is pretty handy for the initial setup
-- messages are chunked and then displayed with a transmit & receive token, so each device can
+📦 **Chunking**. I chose a pretty arbitraty chunk size. This could be improved to align with a selected qr code size, and it'd be possible to cycle between code sizes to switch to a higher capacity.
 
-At the end of this, you’ve got something that feels like a WebSocket but
+_Side note: QR Codes support [structured append] for spreading messages over multiple codes. Pretty cool, but I didn't use it._
 
-Some interesting applications:
+📡 **Offline**. The page has a service worker which means that it loads offline.  There's something cool that it works while you're on aeroplane mode.
 
-- chat
-- signalling
-- crdts
+💻 **Usage**. [Panda] and I hacked together [QRSocket], which feels a bit like a WebSocket.  One issue is that it feels awkward to keep a connection/camera open, maybe something to solve at a UX level by entering a sync mode.
 
-1. A micro controller displaying data
-2. Signing data for remote storage
-3. Sending data between offline devices
+```js
+const qs = new QRSocket();
+
+qs.on("message", (message) => console.log(message));
+qs.send("Hello World!");
+```
+
+🕹️ **Demos**. There's some stuff to play around with at [remotehack.space/QR-TX][QRSocket]
+- [Chat](https://remotehack.space/QR-TX/?demo=chat) - a chat demo which shows pending message state.
+- [Signalling](https://remotehack.space/QR-TX/?demo=signal) - negotiates a peer-to-peer webrtc video connection between devices.
+
+
+🤔 **Other things**. I think this could fit pretty well with a [CRDT] - where you've got a local version of some content and you use qr codes to sync state with other devices.
+
+
+🎙️ **Talks**. I demoed this at [Future of Coding][foclondon] last year [[slides][foc slides]]. and also gave a longer talk about QR Codes and other stuff at [MKGN][mkgn50] [[video][mkgn video]].
+
+
+---
+
+
+
+
+
+random other things;
+
+* gopro config by qr code
+* qr scanner hack I build
+* qr flatten
+
+* making a qr code from scratch (video)
+* tetris as a qr code
+* flatten codes
+
 
 [background sync]: https://developer.mozilla.org/en-US/docs/Web/API/Background_Synchronization_API
 [Panda]: https://www.ticklethepanda.dev/
 [QRSocket]: https://remotehack.space/QR-TX/
 [hacked]: https://remotehack.space/
 [sensor]: https://github.com/benfoxall/sensor
+[sensor_values]: https://benjaminbenben.com/sensor/?d=905,904,902,902,900,900,899,899,898,898,897,897,897,896,896,896,896,896,894,894&c=35
 [qdraw]: https://github.com/benfoxall/qdraw
+[barcode]: https://developer.mozilla.org/en-US/docs/Web/API/Barcode_Detection_API
+[media]: https://developer.mozilla.org/en-US/docs/Web/API/MediaStream
+[qrs]: https://github.com/qifi-dev/qrs
+[structured append]: https://ozeki.hu/p_3465-qr-code-encoding.html#:~:text=0011-,Structured%20append
+[foc slides]: https://benjaminbenben.com/assets/slides/qrtx.pdf
+[mkgn video]: https://www.youtube.com/watch?v=mJnzN8pd8Gc
+[mkgn50]: https://mkgeeknight.co.uk/events/mkgn-50
+[CRDT]: https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type
+[foclondon]: https://lu.ma/foclondon
