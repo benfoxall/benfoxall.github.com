@@ -7,7 +7,7 @@
     <rect x="135" y="120" width="60" height="60" fill="url(#pattern0_11_8)">
         <animate
             attributeName="opacity"
-            values="0;0;0;1;1;1;1;1;1;0"
+            values="0;0;0;1;1;1;1;1;1;1;1;1;0"
             dur="5s"
             repeatCount="indefinite" />
     </rect>
@@ -18,7 +18,7 @@
     <rect x="305" y="120" width="60" height="60" fill="url(#pattern1_11_8)">
         <animate
             attributeName="opacity"
-            values="0;0;0;0;0;1;1;1;1;0"
+            values="0;0;0;0;0;1;1;1;1;1;1;1;0"
             dur="5s"
             repeatCount="indefinite" />
     </rect>
@@ -30,7 +30,7 @@
         fill="#0088FF">
         <animate
             attributeName="opacity"
-            values="0;0;0;0;1;1;1;1;1;0"
+            values="0;0;0;0;1;1;1;1;1;1;1;1;0"
             dur="5s"
             repeatCount="indefinite" />
     </path>
@@ -41,7 +41,7 @@
         fill="#f08">
         <animate
             attributeName="opacity"
-            values="0;0;0;0;0;0;1;1;1;0"
+            values="0;0;0;0;0;0;1;1;1;1;1;1;0"
             dur="5s"
             repeatCount="indefinite" />
     </path>
@@ -53,7 +53,7 @@
         fill="#08f">
         <animate
             attributeName="opacity"
-            values="0;0;0;0;1;1;1;1;1;0"
+            values="0;0;0;0;1;1;1;1;1;1;1;1;0"
             dur="5s"
             repeatCount="indefinite" />
     </path>
@@ -65,7 +65,7 @@
 
         <animate
             attributeName="opacity"
-            values="0;0;0;0;0;0;0;1;1;0"
+            values="0;0;0;0;0;0;0;1;1;1;1;1;0"
             dur="5s"
             repeatCount="indefinite" />
 
