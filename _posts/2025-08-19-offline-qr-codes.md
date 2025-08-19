@@ -3,6 +3,7 @@ layout: post.njk
 title: Offline QR Codes
 description: Have you tried using a QR Code for that?
 permalink: 2025/08/19/offline-qr-codes/
+image: /img/qr-socket.svg
 draft: true
 ---
 
