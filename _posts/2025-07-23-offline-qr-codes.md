@@ -2,7 +2,7 @@
 layout: post.njk
 title: Offline QR Codes
 description: Have you tried using a QR Code for that?
-permalink: 2025/08/15/offline-qr-codes/
+permalink: 2025/08/19/offline-qr-codes/
 draft: true
 ---
 
@@ -54,26 +54,26 @@ Browser can also **scan** QR Codes. This allows us to create a bidirectional soc
 
 I [built this][QRSocket] as a joke, but as I ironed out issues it started feeling pretty good.
 
-A client bootstraps the connection by displaying the url of the current page.  When a matching url is detected, they go into "data mode", encoding a string of **`[RX, TX, …Data]`**.
+A client bootstraps the connection by displaying the url of the current page. When a matching url is detected, they go into "data mode", encoding a string of **`[RX, TX, …Data]`**.
 
 - `RX` - last message id seen by the device
 - `TX` - message id being transmitted
 - `Data` - payload
 
-Messages are chunked to a fairly arbitrary string length.  This could definitely be improved to target the capacity of a particular code size. An interesting extension could be switching between different resolutions to pick the highest capacity for a camera+screen combination.
+Messages are chunked to a fairly arbitrary string length. This could definitely be improved to target the capacity of a particular code size. An interesting extension could be switching between different resolutions to pick the highest capacity for a camera+screen combination.
 
 _Side note: QR Codes support [structured append] for spreading messages over multiple codes. Pretty cool, but I didn't use it._
 
 The coding interface feels a bit like a WebSocket:
 
 ```js
-const qs = new QRSocket()
+const qs = new QRSocket();
 
-qs.on('message', (message) => console.log(message))
-qs.send('Hello World!')
+qs.on("message", (message) => console.log(message));
+qs.send("Hello World!");
 ```
 
-Something that feels awkward is having to close the page to stop the camera.  Having some UI for pausing the socket might make this feel less intrusive.
+Something that feels awkward is having to close the page to stop the camera. Having some UI for pausing the socket might make this feel less intrusive.
 
 🕹️ There's some demos online at [remotehack.space/QR-TX][QRSocket] and [source on github][source].
 
