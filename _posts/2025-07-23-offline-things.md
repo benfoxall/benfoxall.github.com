@@ -50,7 +50,7 @@ The key requirement is that target page state should be derived from the url, an
 
 Browser can also **scan** QR Codes using [media streams][media] and [barcode detection][barcode]. This allows us to create a bidirectional socket between two offline devices using their front-facing cameras.
 
-![QR Socket Demo](/img/qr-socket-sim.svg){:.no-border}
+![QR Socket Demo](/img/qr-socket.svg){:.no-border}
 
 [Panda] and I [worked on this][QRSocket] – initially as a joke but when we ironed out issues it started feeling pretty cool.
 
