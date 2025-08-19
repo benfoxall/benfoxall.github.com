@@ -91,7 +91,7 @@ I showed a quick demo at [Future of Coding][foclondon] [[slides][foc slides]] la
 
 That I've built:
 
-- [QR Code Scanner](https://benjaminbenben.com/qr/) - I couldn't find one that did what I want; when a qr code is detected visit that link (including if that url is `'javascript:alert("hello")'` 😬).
+- [QR Code Scanner](https://benjaminbenben.com/qr/) - This scanner auto-redirects to any detected urls (even if that url is `'javascript:alert("hello")'` 😬).
 - [QR Undistort](https://benjaminbenben.com/flatten/live.html) - This looks for a QR Code from a camera feed and transforms the video element so that it's central. [Like this](/img/qr-undistort.jpg)!
 - [QR Text](https://benjaminbenben.com/qtext/) - An text-based version of [qdraw].
 
