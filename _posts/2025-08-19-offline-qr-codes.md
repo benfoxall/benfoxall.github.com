@@ -3,6 +3,7 @@ layout: post.njk
 title: Offline QR Codes
 description: Have you tried using a QR Code for that?
 permalink: 2025/08/19/offline-qr-codes/
+draft: true
 ---
 
 Using QR Codes to send data from offline devices
