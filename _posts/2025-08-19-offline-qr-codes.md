@@ -52,13 +52,13 @@ Browsers can also **scan** QR Codes. This allows us to create a bidirectional so
 
 ![QR Socket Demo](/img/qr-socket.svg){:.no-border}
 
-I [built this][QRSocket] as a joke, but as I ironed out issues it started feeling pretty good.
+I [implemented this][QRSocket] as a joke, but after a while it started seeming actually good.
 
-To manage the connection I created a simple protocol; a client bootstraps the connection by displaying the url of the current page (this is useful for getting the other client connected). When a matching url is detected, they go into "data mode", where a string of **`[RX, TX, …Data]`** is encoded in the qr code.
+To manage the connection I used a basic protocol; a client bootstraps the connection by displaying the url of the current page (useful for setting up the second device). When a matching url is detected the devices go into "data mode", where a string of **`[RX, TX, Data]`** is encoded in the qr code.
 
 - `RX` - last message id seen by the device
 - `TX` - message id being transmitted
-- `Data` - payload
+- `Data` - payload (string)
 
 Messages are chunked to a fairly arbitrary string length. This could definitely be improved to target the capacity of a particular code size. An interesting extension could be switching between different resolutions to pick the highest capacity for a camera+screen combination.
 
@@ -73,15 +73,17 @@ qs.on("message", (message) => console.log(message));
 qs.send("Hello World!");
 ```
 
-One area that could do with improvement is that you have to close the page to stop the camera. Having some UI for pausing the socket might make this feel more natural.
+One area for improvement is disposing of the socket; currently you have to close the page otherwise the camera will still be active. Having some method for pausing the socket might make this feel more natural.
 
 🕹️ There's some demos online at [remotehack.space/QR-TX][QRSocket] and [source on github][source].
 
 - [Send](https://remotehack.space/QR-TX/?demo=send) - Basic example that sends text of different lengths.
 - [Chat](https://remotehack.space/QR-TX/?demo=chat) - Send multiple messages between devices. [Panda] and I built this at [remote hack], it was a lot of fun and slightly mind-bending when we were lining up our phones remotely over a discord room.
-- [Signalling](https://remotehack.space/QR-TX/?demo=signal) - Negotiates a peer-to-peer webrtc video connection between devices. This could also be a DataChannel to upgrade the connection between two clients.
+- [Signalling](https://remotehack.space/QR-TX/?demo=signal) - Negotiates a peer-to-peer webrtc video link between devices. This could be a DataChannel to create an upgraded connection between the clients.
 
-I showed a demo at [Future of Coding][foclondon] [[slides][foc slides]] last year. And a longer talk about QR Codes and other stuff at [MKGN][mkgn50] [[video][mkgn video]].
+As before, these demos have a Serice Worker so they load offline. I've enjoyed giving demos to people before showing them that my phone is in aeroplane mode 🤯. It feels like there's interesting use cases of being able to sync with someone when either of you are completely offline.
+
+I showed a quick demo at [Future of Coding][foclondon] [[slides][foc slides]] last year. And a longer talk about QR Codes and other stuff at [MKGN][mkgn50] [[video][mkgn video]].
 
 ---
 
@@ -98,7 +100,7 @@ That I like:
 - ["I built a QR code with my bare hands to see how it works"][veritasium] - great video exploring how qr codes work. This made reed solomon encoding finally click for me.
 - [Snake in a QR Code][snake-bin] - there's something I love about "chmod +x" on something you captured from your webcam.
 - [qrs] & [txr] - cool approach for one-way streaming using [fountain] codes.
-- [meshtastic] - not QR codes, but it's cool use of WebBluetooth to communicate with devices on a different network.
+- [meshtastic] - not QR codes, but it's pretty cool to use WebBluetooth to communicate with devices over a different network.
 
 [background sync]: https://developer.mozilla.org/en-US/docs/Web/API/Background_Synchronization_API
 [Panda]: https://www.ticklethepanda.dev/
