@@ -4,7 +4,6 @@ title: Offline QR Codes
 description: Have you tried using a QR Code for that?
 permalink: 2025/08/19/offline-qr-codes/
 image: /img/social/qr-socket.jpg
-draft: true
 ---
 
 Using QR Codes to send data from offline devices
@@ -41,7 +40,7 @@ You don't need a microcontroller to collect data. Browsers are a rich source of 
   </script>
 </div>
 
-You might notice as you draw more lines the QR code becomes more dense. I implemented some rudementary path simplification, but there's limits to the amount of content you can share this way.
+You might notice as you draw more lines the QR code becomes more dense. I implemented some rudimentary path simplification, but there's limits to the amount of content you can share this way.
 
 The key requirement is that target page state should be derived from the url, and once you've got that you can save and share content in any number of ways, not just a qr code.
 
@@ -49,13 +48,13 @@ The key requirement is that target page state should be derived from the url, an
 
 ## 👉 Between web pages
 
-Browser can also **scan** QR Codes. This allows us to create a bidirectional socket between two offline devices using their front-facing cameras.
+Browsers can also **scan** QR Codes. This allows us to create a bidirectional socket between two offline devices using their front-facing cameras.
 
 ![QR Socket Demo](/img/qr-socket.svg){:.no-border}
 
 I [built this][QRSocket] as a joke, but as I ironed out issues it started feeling pretty good.
 
-A client bootstraps the connection by displaying the url of the current page. When a matching url is detected, they go into "data mode", encoding a string of **`[RX, TX, …Data]`**.
+To manage the connection I created a simple protocol; a client bootstraps the connection by displaying the url of the current page (this is useful for getting the other client connected). When a matching url is detected, they go into "data mode", where a string of **`[RX, TX, …Data]`** is encoded in the qr code.
 
 - `RX` - last message id seen by the device
 - `TX` - message id being transmitted
@@ -74,7 +73,7 @@ qs.on("message", (message) => console.log(message));
 qs.send("Hello World!");
 ```
 
-Something that feels awkward is having to close the page to stop the camera. Having some UI for pausing the socket might make this feel less intrusive.
+One area that could do with improvement is that you have to close the page to stop the camera. Having some UI for pausing the socket might make this feel more natural.
 
 🕹️ There's some demos online at [remotehack.space/QR-TX][QRSocket] and [source on github][source].
 
