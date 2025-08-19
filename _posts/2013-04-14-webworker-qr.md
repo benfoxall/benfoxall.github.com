@@ -4,11 +4,11 @@ permalink: 2013/04/14/webworker-qr/
 title: Image processing + web workers
 ---
 
-### tl;dr - examples (currently requires chrome):
+### tl;dr - examples:
 
-<h3><a href="javascript:window.open('/qr/web-worker.html','scanner','width=700,height=600');">&gt;with web worker</a> <small>(should be smoother)</small></h3>
+<h3><a href="javascript:window.open('/qr-worker/web-worker.html','scanner','width=700,height=600');">&gt;with web worker</a> <small>(should be smoother)</small></h3>
 
-<h3><a href="javascript:window.open('/qr/inline.html','scanner','width=700,height=600');">&gt;without web worker</a></h3>
+<h3><a href="javascript:window.open('/qr-worker/inline.html','scanner','width=700,height=600');">&gt;without web worker</a></h3>
 
 
 <hr />

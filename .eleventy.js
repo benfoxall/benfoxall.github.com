@@ -61,7 +61,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("foc.html");
   eleventyConfig.addPassthroughCopy("d3-wall-force.html");
   eleventyConfig.addPassthroughCopy("world");
-  eleventyConfig.addPassthroughCopy("qr");
+  eleventyConfig.addPassthroughCopy("qr-worker");
   eleventyConfig.addPassthroughCopy("scan*");
   eleventyConfig.addPassthroughCopy("max.html");
   eleventyConfig.addPassthroughCopy("fidelity");

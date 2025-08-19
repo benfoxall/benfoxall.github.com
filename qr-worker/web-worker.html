@@ -2,8 +2,7 @@
 <head>
     <title>jsqrcode - getUserMedia + Web worker</title>
 
-	<link rel="stylesheet" href="/style/bootstrap.css">
-	<link rel="stylesheet" href="/style/main.css">
+	<link rel="stylesheet" href="/style/next.css">
 </head>
 <body>
 
@@ -17,11 +16,9 @@
 
 
     <script type="text/javascript">
-
-        if( typeof navigator.webkitGetUserMedia === 'function' && 
+        if( 
             typeof window.requestAnimationFrame === 'function' && 
             typeof window.Worker === 'function'){
-
 
             // continously monitor a video element for qr codes
             // using jsqrcode in a web worker
@@ -76,8 +73,9 @@
                 // canvas = document.getElementsByTagName('canvas')[0],
                 ctx;
 
-            navigator.webkitGetUserMedia({video:true}, function(stream){
-                video.src = webkitURL.createObjectURL(stream);
+            navigator.mediaDevices.getUserMedia({video:true})
+            .then(function(stream){
+                video.srcObject = stream
                 // video.play();
 
                 // start looking for qrcodes
@@ -86,7 +84,6 @@
                         document.getElementById('message').innerText = message;
                     console.log(">>>", message)
                 });
-
             });
 
         }

@@ -2,8 +2,7 @@
 <head>
     <title>jsqrcode - getUserMedia + WITHOUT Web worker</title>
 
-	<link rel="stylesheet" href="/style/bootstrap.css">
-	<link rel="stylesheet" href="/style/main.css">
+	<link rel="stylesheet" href="/style/next.css">
 
 	<script type="text/javascript" src="jsqrcode/grid.js"></script>
 	<script type="text/javascript" src="jsqrcode/version.js"></script>
@@ -110,8 +109,9 @@
                 // canvas = document.getElementsByTagName('canvas')[0],
                 ctx;
 
-            navigator.webkitGetUserMedia({video:true}, function(stream){
-                video.src = webkitURL.createObjectURL(stream);
+            navigator.mediaDevices.getUserMedia({video:true})
+            .then(function(stream){
+                video.srcObject = stream
                 // video.play();
 
                 // start looking for qrcodes
