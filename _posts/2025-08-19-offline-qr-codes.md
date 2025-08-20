@@ -81,6 +81,11 @@ One area for improvement is disposing of the socket; currently you have to close
 - [Chat](https://remotehack.space/QR-TX/?demo=chat) - Send multiple messages between devices. [Panda] and I built this at [remote hack], it was a lot of fun and slightly mind-bending when we were lining up our phones remotely over a discord room.
 - [Signalling](https://remotehack.space/QR-TX/?demo=signal) - Negotiates a peer-to-peer webrtc video link between devices. This could be a DataChannel to create an upgraded connection between the clients.
 
+<figure style="max-width: 50%; margin-left: 25%; text-align:center; display: flex; flex-direction: column">
+  <video src="/img/qr-sock-hello.mp4" muted autoplay loop controls></video>
+  <figcaption>Messaging between desktop &amp; phone</figcaption>
+</figure>
+
 As before, these demos have a Serice Worker so they load offline. I've enjoyed giving demos to people before showing them that my phone is in aeroplane mode 🤯. It feels like there's interesting use cases of being able to sync with someone when either of you are completely offline.
 
 I showed a quick demo at [Future of Coding][foclondon] [[slides][foc slides]] last year. And a longer talk about QR Codes and other stuff at [MKGN][mkgn50] [[video][mkgn video]].
@@ -126,3 +131,4 @@ That I like:
 [snake-bin]: https://www.youtube.com/watch?v=ExwqNreocpg
 [remote hack]: https://remotehack.space
 [meshtastic]: https://meshtastic.org/
+[claycode]: https://claycode.io/
