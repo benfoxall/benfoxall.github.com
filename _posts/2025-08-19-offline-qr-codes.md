@@ -52,7 +52,7 @@ Browsers can also **scan** QR Codes. This allows us to create a bidirectional so
 
 ![QR Socket Demo](/img/qr-socket.svg){:.no-border}
 
-I [implemented this][QRSocket] as a joke, but after a while it started seeming actually good.
+I [implemented this][QRSocket] as a joke, but after a while it started working oddly well.
 
 To manage the connection I used a basic protocol; a client bootstraps the connection by displaying the url of the current page (useful for setting up the second device). When a matching url is detected the devices go into "data mode", where a string of **`[RX, TX, Data]`** is encoded in the qr code.
 
