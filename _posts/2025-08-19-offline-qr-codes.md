@@ -83,7 +83,7 @@ One area for improvement is disposing of the socket; currently you have to close
 
 <figure style="max-width: 50%; margin-left: 25%; text-align:center; display: flex; flex-direction: column">
   <video src="/img/qr-sock-hello.mp4" muted autoplay loop controls></video>
-  <figcaption>Offline messaging between desktop &amp; phone</figcaption>
+  <figcaption>[Chatting](https://remotehack.space/QR-TX/?demo=chat) between my desktop &amp; phone</figcaption>
 </figure>
 
 As before, these demos have a Service Worker which caches the page. I've enjoyed giving demos to people before showing them that my phone is in aeroplane mode 🤯. It feels like there's interesting use cases of being able to sync with someone when either of you are completely offline.
